@@ -20,10 +20,10 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
-	// app/Providers/Filament/AdminPanelProvider.php
 	public function panel(Panel $panel): Panel
 	{
 		return $panel
@@ -34,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
 			->sidebarCollapsibleOnDesktop()
 			->colors([
 				'primary' => Color::Amber,
+				'gray' => 'rgb(107, 114, 128)',
 			])
 			->authGuard('admin')
 			->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
@@ -66,7 +67,14 @@ class AdminPanelProvider extends PanelProvider
 					->myProfile()
 					->myProfileComponents([
 						'personal_info' => CustomProfile::class
-					])
+					]),
+				FilamentGeneralSettingsPlugin::make()
+					->canAccess(fn() => auth()->user()->can('page_GeneralSettingsPage'))
+					->setSort(3)
+					->setIcon('heroicon-o-cog')
+					->setNavigationGroup('Settings')
+					->setTitle('General Settings')
+					->setNavigationLabel('General Settings'),
 			]);
 	}
 }
