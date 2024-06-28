@@ -23,6 +23,7 @@ use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 class AdminPanelProvider extends PanelProvider
 {
+	// app/Providers/Filament/AdminPanelProvider.php
 	public function panel(Panel $panel): Panel
 	{
 		return $panel
@@ -34,6 +35,7 @@ class AdminPanelProvider extends PanelProvider
 			->colors([
 				'primary' => Color::Amber,
 			])
+			->authGuard('admin')
 			->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
 			->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
 			->pages([
@@ -55,7 +57,6 @@ class AdminPanelProvider extends PanelProvider
 				DisableBladeIconComponents::class,
 				DispatchServingFilamentEvent::class,
 			])
-			->authGuard('admin')
 			->authMiddleware([
 				Authenticate::class,
 			])
