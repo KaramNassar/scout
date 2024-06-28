@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Livewire\CustomProfile;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -18,6 +19,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -27,7 +29,6 @@ class AdminPanelProvider extends PanelProvider
 			->default()
 			->id('admin')
 			->path('admin')
-			->profile()
 			->login()
 			->sidebarCollapsibleOnDesktop()
 			->colors([
@@ -54,11 +55,17 @@ class AdminPanelProvider extends PanelProvider
 				DisableBladeIconComponents::class,
 				DispatchServingFilamentEvent::class,
 			])
+			->authGuard('admin')
 			->authMiddleware([
 				Authenticate::class,
 			])
 			->plugins([
-				FilamentShieldPlugin::make()
+				FilamentShieldPlugin::make(),
+				BreezyCore::make()
+					->myProfile()
+					->myProfileComponents([
+						'personal_info' => CustomProfile::class
+					])
 			]);
 	}
 }

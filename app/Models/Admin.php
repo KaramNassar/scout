@@ -17,6 +17,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
 use function config;
+use function ucwords;
 
 class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar, HasName, HasMedia
 {
@@ -60,7 +61,7 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
 
 	public function getFilamentName(): string
 	{
-		return $this->username;
+		return ucwords($this->username);
 	}
 
 	public function canAccessPanel(Panel $panel): bool
