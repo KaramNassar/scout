@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Livewire\CustomProfile;
+use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -75,6 +76,7 @@ class AdminPanelProvider extends PanelProvider
 					->setNavigationGroup('Settings')
 					->setTitle('General Settings')
 					->setNavigationLabel('General Settings'),
+				FilamentExceptionsPlugin::make(),
 			]);
 	}
 }
