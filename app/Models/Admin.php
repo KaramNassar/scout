@@ -16,85 +16,82 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
-use function config;
-use function ucwords;
-
 class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar, HasName, HasMedia
 {
-	use InteractsWithMedia;
-	use HasRoles;
-	use Notifiable;
-	use SoftDeletes;
+    use InteractsWithMedia;
+    use HasRoles;
+    use Notifiable;
+    use SoftDeletes;
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array<int, string>
-	 */
-	protected $fillable = [
-		'username',
-		'email',
-		'firstname',
-		'lastname',
-		'password',
-	];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'username',
+        'email',
+        'firstname',
+        'lastname',
+        'password',
+    ];
 
-	/**
-	 * The attributes that should be hidden for serialization.
-	 *
-	 * @var array<int, string>
-	 */
-	protected $hidden = [
-		'password',
-		'remember_token',
-	];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-	/**
-	 * The attributes that should be cast.
-	 *
-	 * @var array<string, string>
-	 */
-	protected $casts = [
-		'email_verified_at' => 'datetime',
-		'password'          => 'hashed',
-	];
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password'          => 'hashed',
+    ];
 
-	public function getFilamentName(): string
-	{
-		return ucwords($this->username);
-	}
+    public function getFilamentName(): string
+    {
+        return ucwords($this->username);
+    }
 
-	public function canAccessPanel(Panel $panel): bool
-	{
-		// if ($panel->getId() === 'admin') {
-		//     return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
-		// }
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // if ($panel->getId() === 'admin') {
+        //     return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+        // }
 
-		return true;
-	}
+        return true;
+    }
 
-	public function getFilamentAvatarUrl(): ?string
-	{
-		return $this->getMedia('avatars')?->first()?->getUrl() ?? $this->getMedia('avatars')?->first()?->getUrl(
-			'thumb'
-		) ?? null;
-	}
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->getMedia('avatars')?->first()?->getUrl() ?? $this->getMedia('avatars')?->first()?->getUrl(
+            'thumb'
+        ) ?? null;
+    }
 
-	// Define an accessor for the 'name' attribute
-	public function getNameAttribute(): string
-	{
-		return "{$this->firstname} {$this->lastname}";
-	}
+    // Define an accessor for the 'name' attribute
+    public function getNameAttribute(): string
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
 
-	public function isSuperAdmin(): bool
-	{
-		return $this->hasRole(config('filament-shield.super_admin.name'));
-	}
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole(config('filament-shield.super_admin.name'));
+    }
 
-	public function registerMediaConversions(Media|null $media = null): void
-	{
-		$this->addMediaConversion('thumb')
-			->fit(Fit::Contain, 300, 300)
-			->nonQueued();
-	}
+    public function registerMediaConversions(Media|null $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->fit(Fit::Contain, 300, 300)
+            ->nonQueued();
+    }
 }
