@@ -22,6 +22,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
+use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -37,6 +38,7 @@ class AdminPanelProvider extends PanelProvider
 				'primary' => Color::Amber,
 				'gray' => 'rgb(107, 114, 128)',
 			])
+            ->favicon(GeneralSetting::value('site_favicon'))
 			->authGuard('admin')
 			->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
 			->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
