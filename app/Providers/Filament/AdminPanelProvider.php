@@ -25,6 +25,7 @@ use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
 use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 use Rmsramos\Activitylog\ActivitylogPlugin;
+use Tapp\FilamentMailLog\FilamentMailLogPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -82,6 +83,7 @@ class AdminPanelProvider extends PanelProvider
 					->setNavigationLabel('General Settings'),
 				FilamentExceptionsPlugin::make(),
                 ActivitylogPlugin::make(),
+                FilamentMailLogPlugin::make(),
 			]);
 	}
 }
