@@ -27,6 +27,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+use Rmsramos\Activitylog\Actions\ActivityLogTimelineAction;
+
+use Rmsramos\Activitylog\RelationManagers\ActivitylogRelationManager;
+
 use function __;
 use function filled;
 
@@ -159,13 +163,23 @@ class AdminResource extends Resource
                 DeleteAction::make(),
                 RestoreAction::make(),
                 ForceDeleteAction::make(),
+                ActivityLogTimelineAction::make('Activities')
+                    ->timelineIcons([
+                        'created' => 'heroicon-m-check-badge',
+                        'updated' => 'heroicon-m-pencil-square',
+                    ])
+                    ->timelineIconColors([
+                        'created' => 'info',
+                        'updated' => 'warning',
+                    ])
+                    ->limit(10),
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            ActivitylogRelationManager::class,
         ];
     }
 
