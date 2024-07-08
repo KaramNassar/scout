@@ -26,6 +26,8 @@ use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
 use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 use Rmsramos\Activitylog\ActivitylogPlugin;
 use Tapp\FilamentMailLog\FilamentMailLogPlugin;
+use TomatoPHP\FilamentTranslations\FilamentTranslationsPlugin;
+use TomatoPHP\FilamentTranslations\FilamentTranslationsSwitcherPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -84,6 +86,8 @@ class AdminPanelProvider extends PanelProvider
 				FilamentExceptionsPlugin::make(),
                 ActivitylogPlugin::make(),
                 FilamentMailLogPlugin::make(),
+                FilamentTranslationsPlugin::make(),
+                FilamentTranslationsSwitcherPlugin::make()
 			]);
 	}
 }
