@@ -10004,16 +10004,16 @@
         },
         {
             "name": "tomatophp/filament-translations",
-            "version": "v1.0.14",
+            "version": "v1.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tomatophp/filament-translations.git",
-                "reference": "481d9ccc8556c6b531d6a8edfdb01fc803f24446"
+                "reference": "92b1b6fa136a16b53fb86ff7b28e4b3a96119d02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tomatophp/filament-translations/zipball/481d9ccc8556c6b531d6a8edfdb01fc803f24446",
-                "reference": "481d9ccc8556c6b531d6a8edfdb01fc803f24446",
+                "url": "https://api.github.com/repos/tomatophp/filament-translations/zipball/92b1b6fa136a16b53fb86ff7b28e4b3a96119d02",
+                "reference": "92b1b6fa136a16b53fb86ff7b28e4b3a96119d02",
                 "shasum": ""
             },
             "require": {
@@ -10056,7 +10056,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tomatophp/filament-translations/issues",
-                "source": "https://github.com/tomatophp/filament-translations/tree/v1.0.14"
+                "source": "https://github.com/tomatophp/filament-translations/tree/v1.0.17"
             },
             "funding": [
                 {
@@ -10064,7 +10064,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-03T10:35:55+00:00"
+            "time": "2024-07-08T10:03:26+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
