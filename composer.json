@@ -19,6 +19,7 @@
         "livewire/livewire": "^3.5",
         "rmsramos/activitylog": "^1.0",
         "schmeits/filament-character-counter": "^1.2",
+        "shuvroroy/filament-spatie-laravel-backup": "^2.2",
         "shuvroroy/filament-spatie-laravel-health": "^2.0",
         "spatie/cpu-load-health-check": "^1.0",
         "spatie/laravel-medialibrary": "^11.7",
