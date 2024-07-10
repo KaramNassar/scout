@@ -8,6 +8,7 @@
         "php": "^8.2",
         "bezhansalleh/filament-exceptions": "^2.1",
         "bezhansalleh/filament-shield": "^3.2",
+        "doctrine/dbal": "^3.8",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
         "jeffgreco13/filament-breezy": "^2.4",
@@ -18,7 +19,10 @@
         "livewire/livewire": "^3.5",
         "rmsramos/activitylog": "^1.0",
         "schmeits/filament-character-counter": "^1.2",
+        "shuvroroy/filament-spatie-laravel-health": "^2.0",
+        "spatie/cpu-load-health-check": "^1.0",
         "spatie/laravel-medialibrary": "^11.7",
+        "spatie/security-advisories-health-check": "^1.2",
         "tapp/filament-maillog": "^1.0",
         "tomatophp/filament-translations": "^1.0"
     },

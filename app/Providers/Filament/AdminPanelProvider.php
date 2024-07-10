@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\HealthCheckResults;
 use App\Filament\Resources\ActivityLogResource;
 use App\Livewire\CustomProfile;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
@@ -25,6 +26,7 @@ use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Joaopaulolndev\FilamentGeneralSettings\FilamentGeneralSettingsPlugin;
 use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 use Rmsramos\Activitylog\ActivitylogPlugin;
+use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 use Tapp\FilamentMailLog\FilamentMailLogPlugin;
 use TomatoPHP\FilamentTranslations\FilamentTranslationsPlugin;
 use TomatoPHP\FilamentTranslations\FilamentTranslationsSwitcherPlugin;
@@ -87,7 +89,9 @@ class AdminPanelProvider extends PanelProvider
                 ActivitylogPlugin::make(),
                 FilamentMailLogPlugin::make(),
                 FilamentTranslationsPlugin::make(),
-                FilamentTranslationsSwitcherPlugin::make()
+                FilamentTranslationsSwitcherPlugin::make(),
+                FilamentSpatieLaravelHealthPlugin::make()
+                    ->usingPage(HealthCheckResults::class),
 			]);
 	}
 }
