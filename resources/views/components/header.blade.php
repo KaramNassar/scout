@@ -2,7 +2,7 @@
 
     <div class="container mx-auto px-4 lg:px-8 xl:max-w-7xl">
         <nav x-data="{ mobileMenuIsOpen: false }" @click.away="mobileMenuIsOpen = false"
-             class="flex items-center justify-between px-3 py-4" aria-label="penguin ui menu">
+             class="flex items-center justify-between gap-2 py-4" aria-label="penguin ui menu">
             <div class="flex items-center">
                 <a href="{{ route('home') }}"
                    class="group inline-flex items-center gap-2 text-lg font-bold tracking-wide text-gray-900 hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-300">
@@ -25,7 +25,7 @@
                 <x-header.desktop-menu/>
             </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center sm:gap-2">
                 <x-header.searchbar/>
 
                 <x-header.language-switcher/>
