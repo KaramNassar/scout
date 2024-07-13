@@ -1,5 +1,5 @@
 <section
-    class="relative bg-[url('{{ asset('hero-bg.jpg') }}')] bg-cover bg-center bg-no-repeat"
+    class="relative bg-[url('https://scout.test/hero-bg.jpg')] bg-cover bg-center bg-no-repeat"
 >
     <div
         class="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l dark:bg-gray-900/75 dark:sm:bg-transparent dark:sm:from-gray-900/75 dark:sm:to-gray-900/25"

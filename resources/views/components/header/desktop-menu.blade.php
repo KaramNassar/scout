@@ -3,10 +3,10 @@
         <x-header.submenu-btn title="Who we are"/>
 
         <x-header.submenu class="absolute">
-            <x-header.submenu-link href="/history">History of the SSC Movement</x-header.submenu-link>
-            <x-header.submenu-link href="/about">About SSC</x-header.submenu-link>
-            <x-header.submenu-link href="">SSC Anthem</x-header.submenu-link>
-            <x-header.submenu-link href="">SSC Troops</x-header.submenu-link>
+            <x-header.submenu-link href="/history">History of the SSS Movement</x-header.submenu-link>
+            <x-header.submenu-link href="/about">About SSS</x-header.submenu-link>
+            <x-header.submenu-link href="">SSS Anthem</x-header.submenu-link>
+            <x-header.submenu-link href="">SSS Troops</x-header.submenu-link>
         </x-header.submenu>
     </x-header.submenu-navlink>
 
@@ -14,9 +14,9 @@
         <x-header.submenu-btn title="News and Activities"/>
 
         <x-header.submenu class="absolute">
-            <x-header.submenu-link href="/about">SSC Meetings</x-header.submenu-link>
-            <x-header.submenu-link href="">SSC Decisions</x-header.submenu-link>
-            <x-header.submenu-link href="">SSC Camps</x-header.submenu-link>
+            <x-header.submenu-link href="/about">SSS Meetings</x-header.submenu-link>
+            <x-header.submenu-link href="">SSS Decisions</x-header.submenu-link>
+            <x-header.submenu-link href="">SSS Camps</x-header.submenu-link>
         </x-header.submenu>
     </x-header.submenu-navlink>
 
