@@ -6,7 +6,7 @@ return [
     | Paths
     |--------------------------------------------------------------------------
     |
-    | add path that will be show to the scaner to catch lanuages tags
+    | add path that will be shown to the scaner to catch lanuages tags
     |
     */
     "paths" => [
@@ -55,14 +55,7 @@ return [
             "label" => "Arabic",
             "flag" => "sy"
         ],
-        "pt_BR" => [
-            "label" => "Português (Brasil)",
-            "flag" => "br"
-        ],
-        "my" => [
-            "label" => "Burmese",
-            "flag" => "mm"
-        ],
+
     ],
 
 

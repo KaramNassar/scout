@@ -24,6 +24,7 @@
         "spatie/cpu-load-health-check": "^1.0",
         "spatie/laravel-medialibrary": "^11.7",
         "spatie/security-advisories-health-check": "^1.2",
+        "stichoza/google-translate-php": "^5.1",
         "tapp/filament-maillog": "^1.0",
         "tomatophp/filament-translations": "^1.0"
     },
