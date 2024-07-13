@@ -3,4 +3,6 @@
 @section('content')
     <x-header/>
 
+    <x-hero/>
+
 @endsection
