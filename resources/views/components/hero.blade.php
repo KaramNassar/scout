@@ -12,7 +12,7 @@
             <h1 class="text-3xl font-extrabold sm:text-6xl text-gray-900 dark:text-white">
                 {{ __('Syrian Syrian Scout') }}
 
-                <strong class="block font-extrabold text-2xl text-rose-700 dark:text-rose-500"> SSC Slogan </strong>
+                <strong class="block font-extrabold text-2xl text-rose-700 dark:text-rose-500"> SSS Slogan </strong>
             </h1>
 
             <p class="mt-4 max-w-lg text-gray-900 sm:text-2xl/relaxed dark:text-white">

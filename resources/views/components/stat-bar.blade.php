@@ -1,7 +1,7 @@
 <section class="my-20">
     <div class="gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-20">
 
-        <x-stat color="text-purple dark:text-pink-500 " title="+19K" description="Scouts and volunteers">
+        <x-stat color="text-purple dark:text-pink-500 " title="+19K" :description="__('Scouts and volunteers')">
             <svg xmlns="http://www.w3.org/2000/svg" width="92" height="92" viewBox="0 0 92 92">
                 <g fill="none" fill-rule="evenodd">
                     <g fill="currentColor">
@@ -13,7 +13,7 @@
             </svg>
         </x-stat>
 
-        <x-stat color="text-orange" title="14" description="Scouts troops">
+        <x-stat color="text-orange" title="14" :description="__('Scouts troops')">
             <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84">
                 <g fill="none" fill-rule="evenodd">
                     <g fill="currentColor">
@@ -25,7 +25,7 @@
             </svg>
         </x-stat>
 
-        <x-stat color="text-green" title="+57K" description="Hours of community service">
+        <x-stat color="text-green" title="+57K" :description="__('Hours of community service')">
             <svg xmlns="http://www.w3.org/2000/svg" width="125" height="75" viewBox="0 0 125 75">
                 <g fill="none" fill-rule="evenodd">
                     <g fill="currentColor">
@@ -37,7 +37,7 @@
             </svg>
         </x-stat>
 
-        <x-stat color="text-dark-blue dark:text-blue-500" title="+500" description="Service projects and actions">
+        <x-stat color="text-dark-blue dark:text-blue-500" title="+500" :description="__('Service projects and actions')">
             <svg xmlns="http://www.w3.org/2000/svg" width="106" height="87" viewBox="0 0 106 87">
                 <g fill="none" fill-rule="evenodd">
                     <g fill="currentColor">
