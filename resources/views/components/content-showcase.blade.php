@@ -1,5 +1,5 @@
 @props(['heading'])
-<section class="text-center mt-32">
+<section class="text-center mt-32" data-aos="fade-right">
     <h2 class="text-4xl font-bold dark:text-white/85">{{ $heading }}</h2>
 
     <div class="grid md:grid-cols-3 gap-6 max-md:max-w-md mx-auto mt-10">

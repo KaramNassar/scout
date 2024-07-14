@@ -1,4 +1,4 @@
-<section class="mt-32">
+<section class="mt-32" data-aos="fade-up">
     <div class="gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-20">
 
         <x-stat color="text-purple dark:text-pink-500 " title="+19K" :description="__('Scouts and volunteers')">
