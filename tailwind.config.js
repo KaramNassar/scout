@@ -15,7 +15,8 @@ module.exports = {
                 'dark-blue': '#033781',
             },
             height: {
-                '144': '144px', // 144 * 0.25rem = 36rem
+                '144': '144px',
+                '100': '35rem'
             },
         },
 

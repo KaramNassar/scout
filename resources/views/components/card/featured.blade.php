@@ -3,7 +3,7 @@
     <a href="#" class="block rounded-lg p-4 max-md:max-w-md shadow-sm shadow-indigo-100 group hover:shadow-lg hover:shadow-indigo-200 transition duration-300 ease-in-out relative">
         <img
             alt="{{ $address }}"
-            class="h-56 w-full rounded-md object-cover transition duration-300 ease-in-out group-hover:brightness-50 lozad"
+            class="w-full rounded-md object-cover transition duration-300 ease-in-out group-hover:brightness-50 lozad"
             data-src="{{ $src }}"
         />
 

@@ -100,6 +100,11 @@
             </div>
         </x-content-showcase>
 
+        <x-content-showcase :heading="__('Where We Work')">
+            <livewire:map/>
+        </x-content-showcase>
+
     </main>
 
 @endsection
+

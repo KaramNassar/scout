@@ -7,6 +7,8 @@ import Swiper from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 
+import 'leaflet/dist/leaflet.css';
+
 const observer = lozad();
 observer.observe();
 
