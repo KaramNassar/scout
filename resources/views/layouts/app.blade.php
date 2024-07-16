@@ -1,11 +1,20 @@
 @extends('layouts.base')
 
 @section('body')
-    @yield('content')
+
+    <x-header/>
+
+    @yield('hero')
+
+    <main class="container mx-auto px-4 xl:px-32">
+        @yield('content')
+    </main>
 
     @isset($slot)
         {{ $slot }}
     @endisset
+
+    <x-footer/>
 
 @endsection
 

@@ -45,5 +45,8 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 });
 
+Route::view('/troops', 'troops.index')->name('troops.index');
+
 Route::get('/locale/{locale}', LocalesController::class)
     ->name('locale.switch');
+

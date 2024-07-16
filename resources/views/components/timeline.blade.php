@@ -1,0 +1,32 @@
+<div class="w-full max-w-6xl mx-auto px-4 md:px-6 py-24">
+    <div class="flex flex-col justify-center divide-y divide-slate-200 [&>*]:py-16">
+
+        <div class="w-full max-w-5xl mx-auto">
+            <div class="-my-6">
+
+                <x-card.timeline :name="__('The Patriarchal Mar Ephrem the Syrian Troop')"
+                                 created_at="May, 1990"
+                                 :city="__('Damascus')"
+                                 :img="asset('storage/images/1.jpg')"/>
+
+                <x-card.timeline :name="__('Mar Ephrem the Syrian Scouts in Aleppo')"
+                                 created_at="May, 1995"
+                                 :city="__('Aleppo')"
+                                 :img="asset('storage/images/2.jpg')"/>
+
+                <x-card.timeline :name="__('The Fourth Scout Troop in Qamishli')"
+                                 created_at="May, 2000"
+                                 :city="__('Qamishli')"
+                                 :img="asset('storage/images/3.jpg')"/>
+
+                <x-card.timeline :name="__('The Fourth Musical Scout Troop in Al-Hasakah')"
+                                 created_at="May, 2005"
+                                 :city="__('AlHasaka')"
+                                 :img="asset('storage/images/4.jpg')"/>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

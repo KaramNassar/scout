@@ -6,7 +6,7 @@
             <x-header.submenu-link href="/history">{{ __('History of the Movement') }}</x-header.submenu-link>
             <x-header.submenu-link href="/about">{{ __('About the Scout') }}</x-header.submenu-link>
             <x-header.submenu-link href="">{{ __('The Scout Anthem') }}</x-header.submenu-link>
-            <x-header.submenu-link href="">{{ __('Scout Troops') }}</x-header.submenu-link>
+            <x-header.submenu-link href="{{ route('troops.index') }}">{{ __('Scout Troops') }}</x-header.submenu-link>
         </x-header.submenu>
     </x-header.submenu-navlink>
 
