@@ -3,10 +3,10 @@
         <x-header.submenu-btn title="Who we are"/>
 
         <x-header.submenu class="absolute">
-            <x-header.submenu-link href="/history">{{ __('History of the SSS Movement') }}</x-header.submenu-link>
-            <x-header.submenu-link href="/about">{{ __('About SSS') }}</x-header.submenu-link>
-            <x-header.submenu-link href="">{{ __('SSS Anthem') }}</x-header.submenu-link>
-            <x-header.submenu-link href="">{{ __('SSS Troops') }}</x-header.submenu-link>
+            <x-header.submenu-link href="/history">{{ __('History of the Movement') }}</x-header.submenu-link>
+            <x-header.submenu-link href="/about">{{ __('About the Scout') }}</x-header.submenu-link>
+            <x-header.submenu-link href="">{{ __('The Scout Anthem') }}</x-header.submenu-link>
+            <x-header.submenu-link href="">{{ __('Scout Troops') }}</x-header.submenu-link>
         </x-header.submenu>
     </x-header.submenu-navlink>
 
@@ -14,9 +14,9 @@
         <x-header.submenu-btn title="News and Activities"/>
 
         <x-header.submenu class="absolute">
-            <x-header.submenu-link href="/about">{{ __('SSS Meetings') }}</x-header.submenu-link>
-            <x-header.submenu-link href="">{{ __('SSS Decisions') }}</x-header.submenu-link>
-            <x-header.submenu-link href="">{{ __('SSS Camps') }}</x-header.submenu-link>
+            <x-header.submenu-link href="/about">{{ __('Scout Meetings') }}</x-header.submenu-link>
+            <x-header.submenu-link href="">{{ __('Scout Decisions') }}</x-header.submenu-link>
+            <x-header.submenu-link href="">{{ __('Scout Camps') }}</x-header.submenu-link>
         </x-header.submenu>
     </x-header.submenu-navlink>
 

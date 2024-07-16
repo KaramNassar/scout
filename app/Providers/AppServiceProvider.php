@@ -8,7 +8,9 @@ use App\Policies\MailLogPolicy;
 use App\Policies\TranslationPolicy;
 use BezhanSalleh\FilamentExceptions\Models\Exception;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 use Spatie\Activitylog\Models\Activity;
 use Spatie\CpuLoadHealthCheck\CpuLoadCheck;
 use Spatie\Health\Checks\Checks\BackupsCheck;
@@ -43,6 +45,8 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Activity::class, ActivityPolicy::class);
         Gate::policy(MailLog::class, MailLogPolicy::class);
         Gate::policy(Translation::class, TranslationPolicy::class);
+
+        View::share('settings', GeneralSetting::first());
 
         Health::checks([
             OptimizedAppCheck::new(),

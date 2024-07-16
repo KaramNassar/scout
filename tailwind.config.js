@@ -18,6 +18,9 @@ module.exports = {
                 '144': '144px',
                 '100': '35rem'
             },
+            maxWidth: {
+                '8xl': '84rem'
+            }
         },
 
     },
