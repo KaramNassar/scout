@@ -6,6 +6,6 @@
         {{ __('Syrian Syriac Scout Troops') }}
     </x-page-header>
 
-    <x-timeline></x-timeline>
+    <x-timeline />
 
 @endsection

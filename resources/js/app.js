@@ -5,7 +5,6 @@ import 'aos/dist/aos.css';
 
 import Swiper from 'swiper';
 import { Navigation } from 'swiper/modules';
-import 'swiper/css';
 
 import 'leaflet/dist/leaflet.css';
 

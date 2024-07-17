@@ -7,22 +7,22 @@
                 <x-card.timeline :name="__('The Patriarchal Mar Ephrem the Syrian Troop')"
                                  created_at="May, 1990"
                                  :city="__('Damascus')"
-                                 :img="asset('storage/images/1.jpg')"/>
+                                 :img="asset('storage/images/1.jpg')" alt="image"/>
 
                 <x-card.timeline :name="__('Mar Ephrem the Syrian Scouts in Aleppo')"
                                  created_at="May, 1995"
                                  :city="__('Aleppo')"
-                                 :img="asset('storage/images/2.jpg')"/>
+                                 :img="asset('storage/images/2.jpg')" alt="image"/>
 
                 <x-card.timeline :name="__('The Fourth Scout Troop in Qamishli')"
                                  created_at="May, 2000"
                                  :city="__('Qamishli')"
-                                 :img="asset('storage/images/3.jpg')"/>
+                                 :img="asset('storage/images/3.jpg')" alt="image"/>
 
                 <x-card.timeline :name="__('The Fourth Musical Scout Troop in Al-Hasakah')"
                                  created_at="May, 2005"
                                  :city="__('AlHasaka')"
-                                 :img="asset('storage/images/4.jpg')"/>
+                                 :img="asset('storage/images/4.jpg')" alt="image"/>
 
 
             </div>

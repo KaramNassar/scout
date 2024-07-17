@@ -14,7 +14,9 @@
  *
  * See: https://github.com/laravel-frontend-presets/tall/issues/7
  */
- input:invalid, textarea:invalid, select:invalid {
+
+
+input:invalid, textarea:invalid, select:invalid {
     box-shadow: none;
 }
 
@@ -49,6 +51,7 @@
  * .bg-pattern-graph-paper { ... }
  * .skew-45 { ... }
  */
+@import '/node_modules/swiper/swiper.min.css';
 
 [x-cloak] {
     display: none;
@@ -62,6 +65,26 @@
     transition-timing-function: linear !important;
     position: relative;
 }
+
 .swiper-pagination-bullet {
     background: #4f46e5;
+}
+
+
+.image-container {
+    @apply relative overflow-hidden;
+}
+
+.image-container.loading::before {
+    content: "";
+    @apply block w-full h-full bg-gray-300 absolute top-0 left-0;
+    background-size: cover;
+}
+
+.image-container img {
+    @apply absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 ease-in-out;
+}
+
+.image-container img.loaded {
+    @apply opacity-100;
 }
