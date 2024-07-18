@@ -4,7 +4,7 @@
     <a href="#" class="block rounded-lg p-4 max-md:max-w-md shadow-sm shadow-indigo-100 group hover:shadow-lg hover:shadow-indigo-200 transition duration-300 ease-in-out relative">
         <x-img :src="$src" :alt="$address" class="rounded-md transition duration-300 ease-in-out group-hover:brightness-50"/>
 
-        <div class="mt-2 relative h-12 overflow-hidden">
+        <div class="mt-2 relative h-12 text-center overflow-hidden">
             <dl>
                 <div>
                     <dt class="sr-only">{{ __('Address') }}</dt>
