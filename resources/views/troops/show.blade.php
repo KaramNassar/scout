@@ -14,27 +14,29 @@
         {{ __('The Fourth Musical Scout Troop in Al-Hasakah') }}
     </h1>
     <div class="flex flex-col gap-4 lg:flex-row mt-20">
-        <article class="prose dark:prose-invert flex-grow bg-white dark:bg-gray-800 px-10 py-4 rounded-md">
+        <article class="basis-3/4 bg-white dark:bg-gray-800 pr-10 rtl:pl-10 py-4 rounded-md">
+            <div class="prose dark:prose-invert max-w-full">
 
-            <p>In the heart of Al-Hasakah, a vibrant ensemble known as <strong>The Fourth Musical Scout Troop</strong>
-                brings joy and unity through their melodious performances. Established in the early 2000s, this troop
-                has become a symbol of cultural heritage and communal spirit in the region.</p>
+                <p>In the heart of Al-Hasakah, a vibrant ensemble known as <strong>The Fourth Musical Scout Troop</strong>
+                    brings joy and unity through their melodious performances. Established in the early 2000s, this troop
+                    has become a symbol of cultural heritage and communal spirit in the region.</p>
 
-            <p>The troop, consisting of passionate young musicians, offers an array of performances that blend
-                traditional Syrian music with contemporary tunes. Their repertoire includes classical pieces, folk
-                melodies, and innovative compositions that captivate audiences of all ages.</p>
+                <p>The troop, consisting of passionate young musicians, offers an array of performances that blend
+                    traditional Syrian music with contemporary tunes. Their repertoire includes classical pieces, folk
+                    melodies, and innovative compositions that captivate audiences of all ages.</p>
 
-            <p>Throughout the years, The Fourth Musical Scout Troop has not only entertained but also educated the
-                community about the rich musical traditions of Syria. Their dedication to preserving and promoting
-                cultural heritage has earned them admiration and support from local residents and beyond.</p>
+                <p>Throughout the years, The Fourth Musical Scout Troop has not only entertained but also educated the
+                    community about the rich musical traditions of Syria. Their dedication to preserving and promoting
+                    cultural heritage has earned them admiration and support from local residents and beyond.</p>
 
-            <p>Whether performing at local festivals, community events, or educational institutions, The Fourth Musical
-                Scout Troop continues to inspire with their talent, creativity, and commitment to musical excellence.
-                They stand as a testament to the power of music in fostering unity and celebrating diversity.</p>
+                <p>Whether performing at local festivals, community events, or educational institutions, The Fourth Musical
+                    Scout Troop continues to inspire with their talent, creativity, and commitment to musical excellence.
+                    They stand as a testament to the power of music in fostering unity and celebrating diversity.</p>
+            </div>
 
         </article>
         <aside
-            class="w-full min-w-80 lg:w-1/3 bg-gray-100/50 dark:bg-gray-700/50 p-4 rounded-md mt-8 lg:mt-0"
+            class="lg:w-1/3 basis-1/4 bg-gray-100/50 dark:bg-gray-700/50 p-4 rounded-md mt-8 lg:mt-0"
             aria-labelledby="sidebar-label">
             <div class="mb-6">
                 <h4 id="sidebar-label"
