@@ -9,7 +9,7 @@
                     <a href="{{ url('') }}"
                        class="text-lg font-bold text-black dark:text-white flex items-center gap-2">
                         <img
-                            src="{{ $settings->site_logo }}"
+                            src="{{ asset($settings->site_logo) }}"
                             alt="logo" width="50">
                         @if(app()->getLocale() === 'ar')
                             <x-logo.ar-light/>

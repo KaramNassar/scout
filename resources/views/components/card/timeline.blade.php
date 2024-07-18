@@ -1,4 +1,4 @@
-@props(['name', 'created_at', 'city', 'img', 'alt'])
+@props(['name', 'created_at', 'link', 'city', 'img', 'alt'])
 
 <div class="relative pl-8 sm:pl-32 py-16 group">
     <div class="font-caveat font-medium text-2xl text-indigo-500 mb-1 sm:mb-0">{{ $name }}</div>
@@ -11,7 +11,7 @@
         <div class="text-xl font-bold text-slate-900 dark:text-white/60">Was founded in {{ $city }}</div>
     </div>
     <div class="text-slate-500">
-        <a href="#" class="block">
+        <a href="{{ $link }}" class="block">
             <x-img :src="$img" :alt="$alt" class="rounded-bl-3xl rounded-tr-3xl sm:h-64 lg:h-72"/>
 
             <div class="mt-4 flex items-center justify-center">

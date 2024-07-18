@@ -1,4 +1,3 @@
-@php use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting; @endphp
 <footer class="bg-white dark:bg-gray-800 shadow-inner dark:shadow-white/15 mt-32">
     <div class="mx-auto max-w-8xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -6,7 +5,7 @@
                 <div class="col-span-full lg:col-span-2 lg:mb-0">
                     <a href="{{ route('home') }}"
                        class="text-lg font-bold text-black dark:text-white flex items-center gap-2">
-                        <img src="{{ GeneralSetting::value('site_logo') }}"
+                        <img src="{{ asset($settings->site_logo) }}"
                              alt="logo" width="50">
                         @if(app()->getLocale() === 'ar')
                             <x-logo.ar-light/>

@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::view('/troops', 'troops.index')->name('troops.index');
+Route::view('/troops/{troop:slug}', 'troops.show')->name('troops.show');
 
 Route::get('/locale/{locale}', LocalesController::class)
     ->name('locale.switch');

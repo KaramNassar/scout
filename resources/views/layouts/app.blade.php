@@ -6,6 +6,8 @@
 
     @yield('hero')
 
+    @yield('header')
+
     <main class="container mx-auto px-4 xl:px-32">
         @yield('content')
     </main>
