@@ -14,7 +14,7 @@
         {{ __('The Fourth Musical Scout Troop in Al-Hasakah') }}
     </h1>
     <div class="flex flex-col gap-4 lg:flex-row mt-20">
-        <article class="basis-3/4 bg-white dark:bg-gray-800 pr-10 rtl:pl-10 py-4 rounded-md">
+        <article class="basis-3/4 bg-white dark:bg-gray-800 py-4 rounded-md px-0 lg:px-4">
             <div class="prose dark:prose-invert max-w-full">
 
                 <p>In the heart of Al-Hasakah, a vibrant ensemble known as <strong>The Fourth Musical Scout Troop</strong>
@@ -36,11 +36,11 @@
 
         </article>
         <aside
-            class="lg:w-1/3 basis-1/4 bg-gray-100/50 dark:bg-gray-700/50 p-4 rounded-md mt-8 lg:mt-0"
+            class="min-w-80 lg:w-1/3 basis-1/4 bg-gray-100/50 dark:bg-gray-700/50 p-4 rounded-md mt-8 lg:mt-0"
             aria-labelledby="sidebar-label">
             <div class="mb-6">
                 <h4 id="sidebar-label"
-                    class="text-lg font-semibold text-gray-900 dark:text-white">{{ __('search') }}</h4>
+                    class="text-md font-semibold text-gray-900 dark:text-white">{{ __('search') }}</h4>
                 <div class="mt-4">
                     <form action="#" method="GET" class="mb-4">
                         <label for="search" class="sr-only">Search</label>
