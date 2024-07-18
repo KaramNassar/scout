@@ -1,10 +1,10 @@
-<footer class="bg-white dark:bg-gray-800 shadow-inner dark:shadow-white/15 mt-32">
+<footer class="bg-white dark:bg-gray-800 shadow-inner dark:shadow-white/15 mt-32 text-center sm:text-start">
     <div class="mx-auto max-w-8xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div class="mb-10">
                 <div class="col-span-full lg:col-span-2 lg:mb-0">
                     <a href="{{ route('home') }}"
-                       class="text-lg font-bold text-black dark:text-white flex items-center gap-2">
+                       class="text-lg font-bold text-black dark:text-white flex items-center justify-center sm:justify-start gap-2">
                         <img src="{{ asset($settings->site_logo) }}"
                              alt="logo" width="50">
                         @if(app()->getLocale() === 'ar')
@@ -17,7 +17,7 @@
                     </a>
                     <p class="py-8 text-sm text-gray-500 dark:text-gray-400 lg:max-w-xs">{{ __('hero-description') }}</p>
                     <a href="javascript:"
-                       class="py-2.5 px-5 h-9 block w-fit bg-indigo-600 rounded-full shadow-sm text-xs text-white transition-all duration-500 hover:bg-indigo-700">
+                       class="py-2.5 px-5 h-9 block mx-auto sm:mx-0 w-fit bg-indigo-600 rounded-full shadow-sm text-xs text-white transition-all duration-500 hover:bg-indigo-700">
                         {{ __('Contact us') }}
                     </a>
                 </div>
@@ -35,7 +35,7 @@
                         <li><a href="javascript:" class="hover:text-gray-900 dark:hover:text-gray-200">{{ __('Who we are') }}</a></li>
                     </ul>
                 </div>
-                <div class="lg:mx-auto rtl:lg:mr-0 rtl:lg:ml-auto text-left rtl:text-right">
+                <div class="lg:mx-auto rtl:lg:mr-0 rtl:lg:ml-auto">
                     <h4 class="text-lg text-gray-900 dark:text-white font-medium mb-7">{{ __('News and Activities') }}</h4>
                     <ul class="text-sm text-gray-600 dark:text-gray-400 transition-all duration-500">
                         <li class="mb-6"><a href="javascript:" class="hover:text-gray-900 dark:hover:text-gray-200">{{ __('News and Activities') }}</a></li>
@@ -43,16 +43,18 @@
                         <li><a href="javascript:" class="hover:text-gray-900 dark:hover:text-gray-200">{{ __('News and Activities') }} </a></li>
                     </ul>
                 </div>
-                <div class="lg:mx-auto rtl:lg:mr-0 rtl:lg:ml-auto text-left rtl:text-right">
+                <div class="lg:mx-auto rtl:lg:mr-0 rtl:lg:ml-auto">
                     <h4 class="text-lg text-gray-900 dark:text-white font-medium mb-7">{{ __('Subscribe') }}</h4>
                     <p class="text-sm text-gray-500 dark:text-gray-400 leading-6 mb-7">{{ __('Subscribe to get the latest news from us') }}</p>
                     <a href="javascript:"
-                       class="flex items-center justify-center gap-2 border border-indigo-600 dark:border-indigo-400 rounded-full py-3 px-6 w-fit lg:mx-0 text-sm text-indigo-600 dark:text-indigo-400 font-semibold transition-all duration-500 hover:bg-indigo-50 dark:hover:bg-indigo-900">{{ __('Subscribe') }}
-                        <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.25 6L13.25 6M9.5 10.5L13.4697 6.53033C13.7197 6.28033 13.8447 6.15533 13.8447 6C13.8447 5.84467 13.7197 5.71967 13.4697 5.46967L9.5 1.5"
-                                stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                       class="flex items-center justify-center gap-2 border border-indigo-600 dark:border-indigo-400 rounded-full py-3 px-6 w-fit mx-auto sm:mx-0 text-sm text-indigo-600 dark:text-indigo-400 font-semibold transition-all duration-500 hover:bg-indigo-50 dark:hover:bg-indigo-900">{{ __('Subscribe') }}
+                        <span>
+                             @if(app()->getLocale() === 'ar')
+                                 &larr;
+                             @else
+                                 &rarr;
+                             @endif
+                        </span>
                     </a>
                 </div>
             </div>
