@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
-@section('content')
 
-    <x-page-header>
-        {{ __('About Syrian Syriac Scout') }}
-    </x-page-header>
+@section('header')
+    <x-page-header :title="__('About Syrian Syriac Scout')"/>
+@endsection
+
+
+@section('content')
 
     <article class="dark:bg-gray-800 py-4 rounded-md px-0 lg:px-4 prose dark:prose-invert max-w-full">
         <p>The Syrian Syriac Scout organization is dedicated to empowering the youth of the Syrian Syriac community

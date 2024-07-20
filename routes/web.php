@@ -51,6 +51,7 @@ Route::view('/anthem', 'anthem')->name('anthem');
 Route::view('/about-the-scout', 'about')->name('about');
 Route::view('/history-of-the-scout', 'history')->name('history-of-the-scout');
 Route::view('/contact', 'contact')->name('contact');
+Route::view('/all-news', 'all-news')->name('all-news');
 
 Route::get('/locale/{locale}', LocalesController::class)
     ->name('locale.switch');
