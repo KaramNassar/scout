@@ -47,6 +47,10 @@ Route::middleware('auth')->group(function () {
 
 Route::view('/troops', 'troops.index')->name('troops.index');
 Route::view('/troops/{troop:slug}', 'troops.show')->name('troops.show');
+Route::view('/anthem', 'anthem')->name('anthem');
+Route::view('/about-the-scout', 'about')->name('about');
+Route::view('/history-of-the-scout', 'history')->name('history-of-the-scout');
+Route::view('/contact', 'contact')->name('contact');
 
 Route::get('/locale/{locale}', LocalesController::class)
     ->name('locale.switch');
