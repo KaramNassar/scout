@@ -1,6 +1,6 @@
 @props(['title'])
 
-<section class="sm:py-20 py-12 bg-gray-50 dark:bg-gray-700/50">
+<section class="sm:py-20 py-12 bg-gray-50 dark:bg-gray-700/50 mb-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:max-w-7xl">
         <div class="md:justify-between md:flex-row items-center flex-col w-full flex">
             <div class="md:flex-row md:mt-0 md:order-1 items-center flex-col flex mt-8 order-2">

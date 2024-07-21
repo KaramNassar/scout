@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
 
-    <x-page-header>
-        {{ __('Contact us') }}
-    </x-page-header>
+@section('header')
+    <x-page-header :title="__('Contact us')"/>
+@endsection
+
+@section('content')
 
     <div
         class="grid md:grid-cols-2 gap-16 p-8 mx-auto max-w-4xl shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] dark:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.9)] rounded-md text-[#333] font-[sans-serif] dark:text-gray-100 dark:bg-gray-800">

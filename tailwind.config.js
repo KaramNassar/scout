@@ -9,10 +9,14 @@ module.exports = {
             },
             colors:{
                 'purple': '#622599',
+                'purple-600': '#9333ea',
+                'purple-100': '#f3e8ff',
                 'black': '#060609',
                 'orange': '#ffa500',
                 'green': '#05b65d',
+                'green-300': '#86efac',
                 'dark-blue': '#033781',
+                'instagram': '#E44E4E'
             },
             height: {
                 '144': '144px',
@@ -20,7 +24,16 @@ module.exports = {
             },
             maxWidth: {
                 '8xl': '84rem'
-            }
+            },
+            animation: {
+                border: 'background ease infinite',
+            },
+            keyframes: {
+                background: {
+                    '0%, 100%': { backgroundPosition: '0% 50%' },
+                    '50%': { backgroundPosition: '100% 50%' },
+                },
+            },
         },
 
     },
