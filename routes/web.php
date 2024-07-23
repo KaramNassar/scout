@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\LocalesController;
+use App\Http\Controllers\SearchResultsController;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Passwords\Confirm;
 use App\Livewire\Auth\Passwords\Email;
@@ -47,12 +48,12 @@ Route::middleware('auth')->group(function () {
 
 Route::view('/troops', 'troops.index')->name('troops.index');
 Route::view('/troops/{troop:slug}', 'troops.show')->name('troops.show');
-Route::view('/anthem', 'anthem')->name('anthem');
 Route::view('/about-the-scout', 'about')->name('about');
 Route::view('/history-of-the-scout', 'history')->name('history-of-the-scout');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/all-news', 'all-news')->name('all-news');
 
+Route::get('/search-results', SearchResultsController::class)->name('search-results');
+
 Route::get('/locale/{locale}', LocalesController::class)
     ->name('locale.switch');
-

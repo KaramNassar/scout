@@ -16,7 +16,11 @@ module.exports = {
                 'green': '#05b65d',
                 'green-300': '#86efac',
                 'dark-blue': '#033781',
-                'instagram': '#E44E4E'
+                'instagram': '#E44E4E',
+                'main-light': '#1c79cb',
+                'main-dark': '#f472b6',
+                'secondary-light': '#cd1616',
+                'secondary-dark': '#f463ac',
             },
             height: {
                 '144': '144px',

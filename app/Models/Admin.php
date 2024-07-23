@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Scout\Searchable;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Image\Enums\Fit;
@@ -25,6 +26,7 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
     use Notifiable;
     use SoftDeletes;
     use LogsActivity;
+    use Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -101,5 +103,13 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logFillable();
+    }
+
+    public function toSearchableArray()
+    {
+        // Only return the fields you want to be searchable
+        return [
+            'firstname' => $this->firstname,
+        ];
     }
 }

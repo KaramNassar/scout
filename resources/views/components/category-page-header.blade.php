@@ -7,7 +7,7 @@
                 <div class="md:text-start md:mt-0 md:ml-5 text-center mt-6">
                     <p class="text-red-700 tracking-wide uppercase text-xs leading-4 dark:text-pink-400">{{ __('Recent in') }}</p>
                     <h1 class="md:tracking-tight sm:text-3xl sm:leading-10 text-gray-900 dark:text-gray-100 tracking-normal font-medium text-2xl leading-9 mt-1.5">
-                        {{ $title }}
+                        {!! $title !!}
                     </h1>
                 </div>
             </div>
