@@ -1,6 +1,6 @@
 <header class="bg-white shadow-sm dark:bg-gray-800 sticky top-0 z-[10000]">
 
-    <div class="container mx-auto px-4 lg:px-8 xl:max-w-7xl">
+    <div class="container mx-auto px-4 lg:px-0 xl:max-w-7xl">
         <nav x-data="{ mobileMenuIsOpen: false }" @click.away="mobileMenuIsOpen = false"
              class="flex items-center justify-between gap-2 py-4" aria-label="penguin ui menu">
             <div class="flex items-center">
