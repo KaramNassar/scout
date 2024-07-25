@@ -33,7 +33,7 @@
                                         country’s sheer
                                         size and diversity. With 16 major islands, The Bahamas is an unmatched
                                         destination</p>
-                                    <x-read-more/>
+                                    <x-read-more-link/>
                                 </div>
                             </div>
 

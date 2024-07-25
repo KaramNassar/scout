@@ -16,10 +16,10 @@
                         @endif
                     </a>
                     <p class="py-8 text-sm text-gray-500 dark:text-gray-400 lg:max-w-xs">{{ __('hero-description') }}</p>
-                    <a href="javascript:"
-                       class="py-2.5 px-5 h-9 block mx-auto sm:mx-0 w-fit bg-indigo-600 rounded-full shadow-sm text-xs text-white transition-all duration-500 hover:bg-indigo-700">
+                    <x-round-button link="#">
                         {{ __('Contact us') }}
-                    </a>
+                    </x-round-button>
+
                 </div>
             </div>
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:col-span-2 mb-10">
@@ -46,16 +46,12 @@
                 <div class="lg:mx-auto rtl:lg:mr-0 rtl:lg:ml-auto">
                     <h4 class="text-lg text-gray-900 dark:text-white font-medium mb-7">{{ __('Subscribe') }}</h4>
                     <p class="text-sm text-gray-500 dark:text-gray-400 leading-6 mb-7">{{ __('Subscribe to get the latest news from us') }}</p>
-                    <a href="javascript:"
-                       class="flex items-center justify-center gap-2 border border-indigo-600 dark:border-indigo-400 rounded-full py-3 px-6 w-fit mx-auto sm:mx-0 text-sm text-indigo-600 dark:text-indigo-400 font-semibold transition-all duration-500 hover:bg-indigo-50 dark:hover:bg-indigo-900">{{ __('Subscribe') }}
-                        <span>
-                             @if(app()->getLocale() === 'ar')
-                                 &larr;
-                             @else
-                                 &rarr;
-                             @endif
+                    <x-round-button link="#">
+                        {{ __('Subscribe') }}
+                        <span class="rtl:rotate-180">
+                            &rarr;
                         </span>
-                    </a>
+                    </x-round-button>
                 </div>
             </div>
         </div>

@@ -15,7 +15,8 @@
         </div>
 
         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
-            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">{{ __('Read More') }}</button>
+{{--            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">{{ __('Read More') }}</button>--}}
+            <x-read-more-button link="#"/>
         </div>
     </a>
 </div>

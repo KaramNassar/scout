@@ -2,13 +2,11 @@ import './bootstrap';
 import lozad from 'lozad';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
-
+import {Navigation} from 'swiper/modules';
 import 'leaflet/dist/leaflet.css';
-
 import swipePlugin from "alpinejs-swipe";
+
 Alpine.plugin(swipePlugin);
 
 const observer = lozad();
