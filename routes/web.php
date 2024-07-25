@@ -13,6 +13,7 @@ Route::view('/contact', 'contact')->name('contact');
 Route::view('/troops', 'troops.index')->name('troops.index');
 Route::view('/troops/{troop:slug}', 'troops.show')->name('troops.show');
 Route::view('/all-news', 'all-news')->name('all-news');
+Route::view('/news/camp1', 'article')->name('news');
 
 Route::get('/search-results', SearchResultsController::class)->name('search-results');
 

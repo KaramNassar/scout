@@ -8,6 +8,9 @@ import { Navigation } from 'swiper/modules';
 
 import 'leaflet/dist/leaflet.css';
 
+import swipePlugin from "alpinejs-swipe";
+Alpine.plugin(swipePlugin);
+
 const observer = lozad();
 observer.observe();
 
