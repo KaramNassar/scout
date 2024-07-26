@@ -5,9 +5,25 @@ import 'aos/dist/aos.css';
 import Swiper from 'swiper';
 import {Navigation} from 'swiper/modules';
 import 'leaflet/dist/leaflet.css';
-import swipePlugin from "alpinejs-swipe";
 
-Alpine.plugin(swipePlugin);
+import lightGallery from 'lightgallery';
+import 'lightgallery/css/lightgallery-bundle.min.css';
+
+// LightGallery Plugins
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgFullScreen from 'lightgallery/plugins/fullscreen';
+import lgZoom from 'lightgallery/plugins/zoom';
+import lgAutoPlay from 'lightgallery/plugins/autoplay';
+
+
+lightGallery(document.getElementById('lightgallery'), {
+    plugins: [lgZoom, lgThumbnail, lgFullScreen, lgAutoPlay],
+    speed: 300,
+    mode: 'lg-fade',
+    selector: '.item',
+    toggleThumb: true,
+    allowMediaOverlap: true,
+});
 
 const observer = lozad();
 observer.observe();
