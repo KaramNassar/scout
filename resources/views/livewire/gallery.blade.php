@@ -1,4 +1,4 @@
-<div id="lightgallery">
+<div id="lightgallery" class="text-left">
     <x-swiper>
         <div class="swiper-slide">
             <a class="item" href="{{ asset('storage/images/1.jpg') }}">

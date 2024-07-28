@@ -4,7 +4,7 @@
     <div role="status"
          x-show="!imageLoaded"
         {{ $attributes->class(['absolute flex justify-center items-center inset-0 bg-gray-300 dark:bg-gray-500 animate-pulse']) }}>
-        <x-placeholder :class="$gallery ? 'w-72 mb-44' : 'w-60'"/>
+        <x-placeholder/>
     </div>
     <img
         :class="{ 'opacity-100': imageLoaded, 'opacity-0': !imageLoaded }"

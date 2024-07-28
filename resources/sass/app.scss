@@ -109,3 +109,7 @@ input:invalid, textarea:invalid, select:invalid {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+html[dir="rtl"] #lg-outer-1 {
+    text-align: right;
+}

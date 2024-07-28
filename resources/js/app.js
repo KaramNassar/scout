@@ -16,11 +16,13 @@ import lgAutoPlay from 'lightgallery/plugins/autoplay';
 
 lightGallery(document.getElementById('lightgallery'), {
     plugins: [lgZoom, lgThumbnail, lgFullScreen, lgAutoPlay],
+    licenseKey: 'GPLv3',
     speed: 300,
     mode: 'lg-fade',
     selector: '.item',
     toggleThumb: true,
     allowMediaOverlap: true,
+
 });
 
 const observer = lozad();

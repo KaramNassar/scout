@@ -40,6 +40,7 @@
                             diversity.</p>
                     </div>
 
+                    <p class="text-center mb-4"><--- {{ __('Swipe to view more photos') }} ---></p>
                     <livewire:gallery/>
 
                 </article>
