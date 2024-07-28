@@ -5,7 +5,7 @@
 
     <div x-show="showMapModal" @click.away="showMapModal = false" x-cloak @keydown.escape.window="showMapModal = false"
          @click.self="showMapModal = false"
-         class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75" x-transition>
+         class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-[1000]" x-transition>
         <div
             class="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-800">
             <x-img :src="asset('storage/images/1.jpg')" alt="fds"/>
