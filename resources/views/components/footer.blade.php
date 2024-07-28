@@ -1,4 +1,4 @@
-<footer class="mt-32 bg-white text-center shadow-inner dark:shadow-white/15 dark:bg-gray-800 sm:text-start">
+<footer class="mt-32 pb-6 sm:pb-0 bg-white text-center shadow-inner dark:shadow-white/15 dark:bg-gray-800 sm:text-start">
     <x-container>
         <div class="pt-16 pb-6 lg:pt-24">
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
