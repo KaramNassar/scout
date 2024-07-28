@@ -22,7 +22,6 @@ lightGallery(document.getElementById('lightgallery'), {
     selector: '.item',
     toggleThumb: true,
     allowMediaOverlap: true,
-
 });
 
 const observer = lozad();

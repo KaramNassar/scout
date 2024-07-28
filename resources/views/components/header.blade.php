@@ -1,4 +1,4 @@
-<header class="sticky top-0 bg-white shadow-sm z-[100] opacity-95 dark:bg-gray-800">
+<header class="sticky top-0 bg-white shadow-sm z-[100] dark:bg-gray-800">
 
     <x-container>
         <nav x-data="{ mobileMenuIsOpen: false }" @click.away="mobileMenuIsOpen = false"
