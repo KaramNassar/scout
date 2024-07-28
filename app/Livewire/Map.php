@@ -6,25 +6,46 @@ use Livewire\Component;
 
 class Map extends Component
 {
-    public $troops;
 
-    public function mount()
-    {
-        $this->troops = [
-            ['name' => '', 'lat' => 0, 'lng' => 0, 'img' => '', 'link' => ''],
-            ['name' => 'The Fourth Musical Scout Troop in Al-Hasakah', 'lat' => 36.4936, 'lng' => 40.7540, 'img' => asset('storage/images/1.jpg'), 'link' => '<a href="#">Read more</a>'],
-            ['name' => 'The Fourth Scout Troop in Qamishli', 'lat' => 37.0531, 'lng' => 41.2228, 'img' => asset('storage/images/2.jpg'), 'link' => '<a href="#">Read more</a>'],
-            ['name' => 'Mar Ephrem the Syrian Scouts in Aleppo', 'lat' => 36.2021, 'lng' => 37.1343, 'img' => asset('storage/images/3.jpg'), 'link' => '<a href="#">Read more</a>'],
-            ['name' => 'The Patriarchal Mar Ephrem the Syrian Troop', 'lat' => 33.5138, 'lng' => 36.2765, 'img' => asset('storage/images/4.jpg'), 'link' => '<a href="#">Read more</a>'],
-        ];
-
-
-
-
-    }
 
     public function render()
     {
-        return view('livewire.map');
+
+        $pins = [
+            ['lat' => 37.17, 'lng' => 42.14, 'title' => 'Malkiyah', 'info' => 'Damascus Information'],
+            ['lat' => 37.15, 'lng' => 41.22, 'title' => 'Qamishli', 'info' => 'Damascus Information'],
+            ['lat' => 36.50, 'lng' => 40.73, 'title' => 'Hasaka', 'info' => 'Damascus Information'],
+            ['lat' => 37.02, 'lng' => 41.60, 'title' => 'Qahtaniyah', 'info' => 'Damascus Information'],
+            ['lat' => 36.20, 'lng' => 37.15, 'title' => 'Aleppo', 'info' => 'Damascus Information'],
+            ['lat' => 33.50, 'lng' => 36.27, 'title' => 'Damascus', 'info' => 'Damascus Information'],
+            ['lat' => 35.96, 'lng' => 38.03, 'title' => 'Maskana', 'info' => 'Damascus Information'],
+            ['lat' => 34.31, 'lng' => 37.60, 'title' => 'Sadad', 'info' => 'Damascus Information'],
+            ['lat' => 34.70, 'lng' => 37.45, 'title' => 'Fhelah', 'info' => 'Damascus Information'],
+            ['lat' => 34.72, 'lng' => 36.77, 'title' => 'Zydal', 'info' => 'Damascus Information'],
+            ['lat' => 34.35, 'lng' => 37.15, 'title' => 'Fairozah', 'info' => 'Damascus Information'],
+            ['lat' => 34.71, 'lng' => 37.10, 'title' => 'Arman', 'info' => 'Damascus Information'],
+            ['lat' => 34.35, 'lng' => 36.80, 'title' => 'Adawieh', 'info' => 'Damascus Information'],
+            ['lat' => 34.73, 'lng' => 36.40, 'title' => 'Hamediah', 'info' => 'Damascus Information'],
+            ];
+        $mapBounds = ['top' => 37.2, 'bottom' => 32.0, 'left' => 35.8, 'right' => 42.8, 'width' => 500, 'height' => 500];
+
+        // Convert pin coordinates to pixel positions
+        $pins = array_map(function($pin) use ($mapBounds) {
+            $coords = $this->convertCoordinates($pin['lat'], $pin['lng'], $mapBounds);
+            return array_merge($pin, ['x' => $coords['x'], 'y' => $coords['y']]);
+        }, $pins);
+
+        return view('livewire.map', ['pins' => $pins]);
+    }
+
+    private function convertCoordinates($lat, $lng, $mapBounds)
+    {
+        $normalizedLat = ($lat - $mapBounds['bottom']) / ($mapBounds['top'] - $mapBounds['bottom']);
+        $normalizedLng = ($lng - $mapBounds['left']) / ($mapBounds['right'] - $mapBounds['left']);
+
+        $x = $normalizedLng * $mapBounds['width'];
+        $y = (1 - $normalizedLat) * $mapBounds['height'];
+
+        return ['x' => $x, 'y' => $y];
     }
 }

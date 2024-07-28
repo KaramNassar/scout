@@ -8,13 +8,13 @@
 @section('content')
 
     <div
-        class="grid md:grid-cols-2 gap-16 p-8 mx-auto max-w-4xl shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] dark:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.9)] rounded-md text-[#333] font-[sans-serif] dark:text-gray-100 dark:bg-gray-800">
+        class="grid md:grid-cols-2 gap-16 p-8 mx-auto max-w-4xl shadow rounded-md text-[#333] dark:text-gray-50 dark:bg-gray-700">
         <div>
             <p class="text-sm text-gray-400 dark:text-gray-300">
                 {{ __('contact form message') }}
             </p>
             <div class="mt-12">
-                <h2 class="text-lg font-extrabold">{{ __('Email') }}</h2>
+                <h2 class="text-lg">{{ __('Email') }}</h2>
                 <ul class="mt-3">
                     <li class="flex items-center gap-4">
                         <div
@@ -32,7 +32,7 @@
                 </ul>
             </div>
             <div class="mt-12">
-                <h2 class="text-lg font-extrabold">{{ __('Socials') }}</h2>
+                <h2 class="text-lg">{{ __('Socials') }}</h2>
                 <div class="flex mt-3 space-x-4 rtl:space-x-reverse">
                     <a href="javascript:"
                        class="w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[#33CCFF] hover:bg-gray-900">

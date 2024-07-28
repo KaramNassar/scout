@@ -1,8 +1,10 @@
 @props(['src', 'address'])
 
 <div>
-    <a href="#" class="block rounded-lg p-4 max-md:max-w-md shadow-sm shadow-indigo-100 group hover:shadow-lg hover:shadow-indigo-200 transition duration-300 ease-in-out relative">
-        <x-img :src="$src" :alt="$address" class="rounded-md transition duration-300 ease-in-out group-hover:brightness-50"/>
+    <a href="{{ route('article') }}"
+       class="block rounded-lg p-4 max-md:max-w-md shadow-sm shadow-indigo-100 group hover:shadow-lg hover:shadow-indigo-200 transition duration-300 ease-in-out relative">
+        <x-img :src="$src" :alt="$address"
+               class="rounded-md transition duration-300 ease-in-out group-hover:brightness-50"/>
 
         <div class="mt-2 relative h-12 text-center overflow-hidden">
             <dl>
@@ -14,8 +16,8 @@
             </dl>
         </div>
 
-        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
-{{--            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">{{ __('Read More') }}</button>--}}
+        <div
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
             <x-read-more-button link="#"/>
         </div>
     </a>

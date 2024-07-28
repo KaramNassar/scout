@@ -1,5 +1,5 @@
 <div>
-    <button @click="open = true" class="flex items-center gap-1 py-2 justify-center">
+    <button @click="openSearch = true" class="flex items-center gap-1 py-2 justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
              stroke="currentColor" aria-hidden="true"
              class="size-3 mt-2.5 -translate-y-1/2 text-slate-700/50 dark:text-slate-300/50">
@@ -10,12 +10,12 @@
 
     </button>
 
-    <div x-show="open" x-cloak @keydown.escape.window="open = false"
+    <div x-show="openSearch" x-cloak @keydown.escape.window="openSearch = false"
          class="fixed inset-0 z-50 flex items-start justify-center bg-gray-800 bg-opacity-80 pt-20"
-         @click.self="open = false"
-         x-init="$watch('open', value => value === true && $nextTick(() => $refs.searchInput.focus()))">
+         @click.self="openSearch = false"
+         x-init="$watch('openSearch', value => value === true && $nextTick(() => $refs.searchInput.focus()))">
         <div class="relative w-full max-w-3xl mx-4 p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg">
-            <button @click="open = false" type="button"
+            <button @click="openSearch = false" type="button"
                     class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-10 rounded-full p-2 inline-flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-100">
                 <span class="sr-only">Close menu</span>
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -29,9 +29,9 @@
                        class="w-full rounded-full border border-gray-300 bg-gray-50 px-4 py-2 rtl:pr-4 rtl:pl-10 text-sm leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-main-light focus:border-main-light dark:placeholder-gray-400 dark:bg-gray-600 dark:text-gray-100 dark:focus:ring-main-dark"
                        placeholder="{{ __('search') }}"
                        wire:model.live="query"
-                       @keydown.escape.window="open = false"
-                       @focus="open = true"
-                       :autofocus="{ open }"
+                       @keydown.escape.window="openSearch = false"
+                       @focus="openSearch = true"
+                       :autofocus="{ openSearch }"
                        x-ref="searchInput">
 
                 @if ($query)
@@ -69,8 +69,6 @@
                         </div>
                     @endif
                 @endif
-
-
             </div>
         </div>
     </div>

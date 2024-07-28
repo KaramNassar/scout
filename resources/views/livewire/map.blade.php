@@ -1,46 +1,29 @@
-<div>
-    <div id="map" class="h-100"></div>
+<div x-data="{ modalTitle: '', modalInfo: '' }">
+    <div class="relative" style="direction: ltr;">
+        <x-dynamic-component :component="'svg.syria-map-' . config('app.locale')" :pins="$pins"/>
+    </div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""></script>
-    <script>
-        window.L = L;
-        const bounds = [
-            [32.0, 35.5],
-            [38.0, 43.0]
-        ];
+    <div x-show="showMapModal" @click.away="showMapModal = false" x-cloak @keydown.escape.window="showMapModal = false"
+         @click.self="showMapModal = false"
+         class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75" x-transition>
+        <div
+            class="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-800">
+            <x-img :src="asset('storage/images/1.jpg')" alt="fds"/>
 
-        const map = L.map('map', {
-            maxBounds: bounds,
-            maxBoundsViscosity: 1.0,
-            zoomSnap: 0.1,
-            zoomDelta: 0.1,
-            minZoom: 6
-        }).setView([34.8021, 38.9968], 6.5);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-        const customIcon = L.icon({
-            iconUrl: '/images/marker-icon-2x.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [50, 150],
-        });
-
-        let marker = L.marker();
-
-
-        @foreach($troops as $troop)
-
-            marker = L.marker([{{ $troop['lat'] }}, {{ $troop['lng'] }}], {icon: customIcon}).addTo(map);
-            marker.bindPopup('<img class="rounded-md object-cover" src="{{ $troop['img'] }}" /><br><b>{{ $troop['name'] }}</b><br><p class="text-center">{!! $troop['link']  !!}</p>', {
-                keepInView: true,
-                autoPan: true
-            });
-
-        @endforeach
-
-
-    </script>
+            <div class="p-5">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                    x-text="modalTitle"></h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400" x-text="modalInfo"></p>
+                <div class="flex justify-between">
+                    <a href="#">
+                        <x-read-more-button/>
+                    </a>
+                    <button @click="showMapModal = false"
+                            class="rounded-lg bg-red-500 px-3 py-2 text-sm font-medium text-white hover:bg-red-400 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
+                        {{ __('Close') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

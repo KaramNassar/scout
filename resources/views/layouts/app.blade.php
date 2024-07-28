@@ -8,9 +8,9 @@
 
     @yield('header')
 
-    <main class="container mx-auto px-6 md:px-8  xl:px-32">
+    <x-container>
         @yield('content')
-    </main>
+    </x-container>
 
     @isset($slot)
         {{ $slot }}
@@ -19,7 +19,6 @@
     <x-footer/>
 
     <x-share-buttons/>
-
 
 @endsection
 

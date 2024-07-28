@@ -91,12 +91,28 @@
 
 
     <x-sidebar-section :title="__('Popular tags')">
-        <ul class="-m-1 flex flex-wrap justify-start">
+        <ul class="-m-1 flex flex-wrap gap-1 justify-start">
+            <li>
+                <a href="/tags/work">
+                    <span
+                        class="whitespace-nowrap rounded-full border border-gray-300 text-xs px-2.5 py-0.5 hover:text-main-light dark:border-gray-600 dark:text-gray-100 dark:hover:text-main-dark">
+                        News
+                    </span>
+                </a>
+            </li>
             <li>
                 <a href="/tags/work">
                     <span
                         class="whitespace-nowrap rounded-full border border-gray-300 text-xs px-2.5 py-0.5 hover:text-main-light dark:border-gray-600 dark:text-gray-100 dark:hover:text-main-dark">
                         Work
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags/work">
+                    <span
+                        class="whitespace-nowrap rounded-full border border-gray-300 text-xs px-2.5 py-0.5 hover:text-main-light dark:border-gray-600 dark:text-gray-100 dark:hover:text-main-dark">
+                        Camps
                     </span>
                 </a>
             </li>

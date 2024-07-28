@@ -4,12 +4,10 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Swiper from 'swiper';
 import {Navigation} from 'swiper/modules';
-import 'leaflet/dist/leaflet.css';
 
 import lightGallery from 'lightgallery';
 import 'lightgallery/css/lightgallery-bundle.min.css';
 
-// LightGallery Plugins
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgFullScreen from 'lightgallery/plugins/fullscreen';
 import lgZoom from 'lightgallery/plugins/zoom';
