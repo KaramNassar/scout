@@ -19,7 +19,6 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "aos": "^3.0.0-beta.6",
         "lightgallery": "^2.7.2",
         "lozad": "^1.16.0",
         "swiper": "^11.1.4"

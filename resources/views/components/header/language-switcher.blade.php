@@ -2,7 +2,7 @@
     <div>
         <button @click="open = !open"
                 class="inline-flex justify-center w-full rounded-md p-2 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none">
-            <span>{{ ucwords(app()->getLocale()) }}</span>
+            <span>{{ config('locales')[app()->getLocale()]['display'] }}</span>
         </button>
     </div>
     <div x-show="open" x-cloak @click.away="open = false" x-transition

@@ -8,7 +8,7 @@
 
     <x-stat-bar/>
 
-    <x-content-showcase :heading="__('Featured Stories')"  data-aos="fade-left">
+    <x-content-showcase :heading="__('Featured Stories')" >
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-md:max-w-md mx-auto">
             <x-card.featured :src="asset('storage/images/1.jpg')"
                              address="National Scout Organizations"></x-card.featured>
@@ -24,7 +24,7 @@
 
     </x-content-showcase>
 
-    <x-content-showcase :heading="__('Latest News')" data-aos="fade-right">
+    <x-content-showcase :heading="__('Latest News')">
         <x-swiper>
             <x-card.latest-news :src="asset('storage/images/1.jpg')"
                                 :post="['title' => 'World Scout Movement', 'excerpt' => 'Here are the biggest enterprise technology acquisitions of 2021 so far']"></x-card.latest-news>
@@ -43,7 +43,7 @@
 
     </x-content-showcase>
 
-    <x-content-showcase :heading="__('Activities')" data-aos="fade-up">
+    <x-content-showcase :heading="__('Activities')">
         <div class="w-full h-full">
             <div class="max-w-6xl mx-auto">
                 <ul class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -84,7 +84,7 @@
         </div>
     </x-content-showcase>
 
-    <x-content-showcase :heading="__('Where We Work')" data-aos="fade-left">
+    <x-content-showcase :heading="__('Where We Work')">
         <livewire:map/>
     </x-content-showcase>
 

@@ -1,16 +1,10 @@
 import './bootstrap';
 import lozad from 'lozad';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import Swiper from 'swiper';
 import {Navigation} from 'swiper/modules';
 
 const observer = lozad();
 observer.observe();
-
-AOS.init({
-    duration: 700,
-});
 
 const swiper = new Swiper(".multiple-slide-carousel", {
     modules: [Navigation],
