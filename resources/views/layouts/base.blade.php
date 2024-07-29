@@ -17,8 +17,6 @@
     @livewireStyles
     @livewireScripts
 
-    @yield('styles')
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -26,6 +24,6 @@
 <body class="dark:bg-gray-800 font-roboto rtl:font-cairo">
 @yield('body')
 
-@yield('scripts')
+@stack('scripts')
 </body>
 </html>

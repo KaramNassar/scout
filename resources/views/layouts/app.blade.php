@@ -22,7 +22,7 @@
 
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script>
         const lightSwitches = document.querySelectorAll('.light-switch');
         if (lightSwitches.length > 0) {
@@ -55,4 +55,4 @@
             document.querySelector('html').classList.remove('dark');
         }
     </script>
-@endsection
+@endpush

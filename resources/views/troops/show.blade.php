@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('styles')
-    @vite(['node_modules/lightgallery/css/lightgallery.css', 'node_modules/lightgallery/css/lightgallery-bundle.min.css'])
-@endsection
-
 @section('content')
     <h1 class="text-2xl text-center md:text-start lg:text-4xl font-bold text-gray-900 dark:text-white my-20">
         {{ __('The Fourth Musical Scout Troop in Al-Hasakah') }}
@@ -74,6 +70,7 @@
     </x-swiper>
 
 @endsection
-@section('scripts')
+
+@push('scripts')
     @vite('resources/js/light-gallery/single-photo.js')
-@endsection
+@endpush

@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('styles')
-    @vite(['node_modules/lightgallery/css/lightgallery.css', 'node_modules/lightgallery/css/lightgallery-bundle.min.css'])
-@endsection
-
 @section('header')
     <x-category-page-header :title="__('The Fourth Musical Scout Troop in Al-Hasakah')"></x-category-page-header>
 @endsection
@@ -55,6 +51,6 @@
 
 @endsection
 
-@section('scripts')
+@push('scripts')
     @vite('resources/js/light-gallery/gallery.js')
-@endsection
+@endpush

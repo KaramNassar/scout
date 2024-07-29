@@ -1,4 +1,6 @@
 import lightGallery from "lightgallery";
+import 'lightgallery/css/lightgallery-bundle.min.css';
+
 import lgZoom from 'lightgallery/plugins/zoom';
 
 lightGallery(document.getElementById('singlePhoto'), {
