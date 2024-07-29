@@ -6,6 +6,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                cairo: ['Cairo', 'sans-serif'],
+                roboto : ['Roboto', 'sans-serif']
             },
             colors:{
                 'purple': '#622599',

@@ -13,9 +13,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
     @livewireScripts
@@ -26,7 +23,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="dark:bg-gray-800">
+<body class="dark:bg-gray-800 font-roboto rtl:font-cairo">
 @yield('body')
 
 @yield('scripts')
