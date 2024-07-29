@@ -21,7 +21,7 @@
                         class="relative px-5 py-4 space-x-6 rtl:space-x-reverse transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md hover:bg-opacity-0">
                         <span>{{ __('Find out more') }}</span>
                         <span
-                            class="relative shrink-0 rounded-full border border-current rtl:rotate-180 bg-white px-3 py-2.5 text-indigo-600 active:text-indigo-500 transform transition-transform duration-300 ease-in-out hover:translate-x-1"
+                            class="relative shrink-0 rounded-full border border-current rtl:rotate-180 bg-white px-3 py-2.5 rtl:py-1 text-indigo-600 active:text-indigo-500 transform transition-transform duration-300 ease-in-out hover:translate-x-1"
                         >
                                  &rarr;
                         </span>
