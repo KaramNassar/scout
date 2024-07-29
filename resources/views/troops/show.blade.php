@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('styles')
+    @vite(['node_modules/lightgallery/css/lightgallery.css', 'node_modules/lightgallery/css/lightgallery-bundle.min.css'])
+@endsection
 
 @section('content')
     <h1 class="text-2xl text-center md:text-start lg:text-4xl font-bold text-gray-900 dark:text-white my-20">
@@ -12,7 +15,7 @@
                 class="mx-auto px-1.5 md:max-w-3xl">
                 <article class="dark:bg-gray-800 rounded-md">
 
-                    <div id="lightgallery" class="mb-10">
+                    <div id="singlePhoto" class="mb-10">
                         <a class="item" href="{{ asset('storage/hero-bg.jpg') }}">
                             <x-img :src="asset('storage/hero-bg.jpg')" alt=""
                                    class="rounded-lg h-96"/>
@@ -70,4 +73,7 @@
 
     </x-swiper>
 
+@endsection
+@section('scripts')
+    @vite('resources/js/light-gallery/single-photo.js')
 @endsection

@@ -8,7 +8,7 @@
          class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-[1000]" x-transition>
         <div
             class="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-800">
-            <x-img :src="asset('storage/images/1.jpg')" alt="fds"/>
+            <x-img :src="asset('storage/images/1.jpg')" alt="fds" class="h-72 w-full"/>
 
             <div class="p-5">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
