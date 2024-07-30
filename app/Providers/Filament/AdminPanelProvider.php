@@ -13,6 +13,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\SpatieLaravelTranslatablePlugin;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -97,6 +98,8 @@ class AdminPanelProvider extends PanelProvider
                     ->usingPage(HealthCheckResults::class),
                 FilamentSpatieLaravelBackupPlugin::make()
                     ->usingPage(Backups::class),
+                SpatieLaravelTranslatablePlugin::make()
+                    ->defaultLocales(['en', 'ar']),
             ]);
     }
 }

@@ -8,6 +8,6 @@
 
 @section('content')
 
-    <x-timeline/>
+    <x-timeline :troops="$troops"/>
 
 @endsection
