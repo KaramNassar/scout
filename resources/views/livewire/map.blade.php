@@ -1,21 +1,25 @@
-<div x-data="{ modalTitle: '', modalInfo: '' }">
+<div x-data="{ modalTitle: '', modalSlug: '', modalImage: '' }">
     <div class="relative" style="direction: ltr;">
-        <x-dynamic-component :component="'svg.syria-map-' . config('app.locale')" :pins="$pins"/>
+        <x-dynamic-component :component="'svg.syria-map-' . config('app.locale')" :troops="$troops"/>
     </div>
 
-    <div x-show="showMapModal" @click.away="showMapModal = false" x-cloak @keydown.escape.window="showMapModal = false"
+    <div x-show="showMapModal"
+         @click.away="showMapModal = false"
+         @keydown.escape.window="showMapModal = false"
          @click.self="showMapModal = false"
-         class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-[1000]" x-transition>
+         x-cloak
+         class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-[1000] x-transition">
         <div
             class="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-800">
-            <x-img :src="asset('storage/images/1.jpg')" alt="fds" class="h-72 w-full"/>
+            <a :href="'{{ route('troops.show', '') }}/' + modalSlug">
+                <x-img x-bind:src="modalImage" x-bind:alt="modalTitle" class="h-72 w-full"/>
+            </a>
 
             <div class="p-5">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white mb-6"
                     x-text="modalTitle"></h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400" x-text="modalInfo"></p>
                 <div class="flex justify-between">
-                    <a href="#">
+                    <a :href="'{{ route('troops.show', '') }}/' + modalSlug">
                         <x-read-more-button/>
                     </a>
                     <button @click="showMapModal = false"

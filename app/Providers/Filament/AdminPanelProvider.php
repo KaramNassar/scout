@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\Pages\Backups;
 use App\Filament\Pages\HealthCheckResults;
 use App\Livewire\CustomProfile;
+use Awcodes\Curator\CuratorPlugin;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
@@ -51,6 +52,7 @@ class AdminPanelProvider extends PanelProvider
             ->authGuard('admin')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->pages([
                 Pages\Dashboard::class,
             ])
@@ -93,13 +95,19 @@ class AdminPanelProvider extends PanelProvider
                 FilamentTranslationsPlugin::make()
                     ->allowCreate()
                     ->allowGoogleTranslateScan(),
-                FilamentTranslationsSwitcherPlugin::make(),
                 FilamentSpatieLaravelHealthPlugin::make()
                     ->usingPage(HealthCheckResults::class),
                 FilamentSpatieLaravelBackupPlugin::make()
                     ->usingPage(Backups::class),
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(['en', 'ar']),
+                CuratorPlugin::make()
+                    ->label('Media')
+                    ->pluralLabel('Media')
+                    ->navigationIcon('heroicon-o-photo')
+                    ->navigationGroup('Content Management')
+                    ->navigationSort(3)
+
             ]);
     }
 }

@@ -10,14 +10,19 @@
             <div
                 class="mx-auto px-1.5 md:max-w-3xl">
                 <article class="dark:bg-gray-800 rounded-md">
+                    @if($troop->getFeaturedImage())
 
-                    <div id="singlePhoto" class="mb-10">
-                        <a class="item" href="{{ $troop->getFirstMedia('troops')->getUrl() }}">
-                            <x-img :src="$troop->getFirstMedia('troops')->getUrl()" :alt="$troop->name"
-                                   class="rounded-lg h-96"/>
-                        </a>
-                    </div>
+                        <div id="singlePhoto" class="mb-10">
+                            <a class="item" href="{{  $troop->getFeaturedImage() }}">
+                                <x-curator-glider :media="$troop->media()"
+                                                  class="rounded-xl"
+                                                  quality="75"
+                                                  format="webp"
+                                                  loading="lazy"/>
+                            </a>
+                        </div>
 
+                    @endif
                     <div class="prose dark:prose-invert max-w-full mb-16">
 
                         {!! $troop->description !!}
@@ -36,7 +41,6 @@
             <x-card.troop :troop="$troop"/>
 
         @endforeach
-
     </x-swiper>
 
 @endsection

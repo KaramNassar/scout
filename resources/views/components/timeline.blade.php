@@ -1,14 +1,10 @@
 @props(['troops'])
-<div class="w-full max-w-6xl mx-auto px-4 md:px-6 pb-16">
-    <div class="flex flex-col justify-center divide-y divide-slate-200">
+<div class="flex flex-col justify-center items-center px-2">
 
-        <div class="w-full max-w-5xl mx-auto">
-            @forelse($troops as $troop)
-                <x-card.timeline :troop="$troop"/>
-            @empty
-                <p>No Troops</p>
-            @endforelse
+        @forelse($troops as $troop)
+            <x-card.timeline :troop="$troop"/>
+        @empty
+            <p>{{ __('No Troops has been added yet') }}</p>
+        @endforelse
 
-        </div>
-    </div>
 </div>

@@ -1,5 +1,3 @@
-@props(['src', 'alt', 'gallery' => false])
-
 <div x-data="{ imageLoaded: false }" class="relative overflow-hidden w-full">
     <div role="status"
          x-show="!imageLoaded"
@@ -10,9 +8,6 @@
     <img
         :class="{ 'opacity-100': imageLoaded, 'opacity-0': !imageLoaded }"
         @load="imageLoaded = true"
-        data-src="{{ $src }}"
-        alt="{{ $alt }}"
         {{ $attributes->class(['h-56 w-full object-cover lozad']) }}
     />
-    <span x-show="imageLoaded" class="sr-only">{{ $alt }}</span>
 </div>

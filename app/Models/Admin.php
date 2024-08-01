@@ -13,15 +13,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Scout\Searchable;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Image\Enums\Fit;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
-class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar, HasName, HasMedia
+class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar, HasName
 {
-    use InteractsWithMedia;
     use HasRoles;
     use Notifiable;
     use SoftDeletes;
@@ -38,6 +33,7 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
         'email',
         'firstname',
         'lastname',
+        'avatar',
         'password',
     ];
 
@@ -77,9 +73,7 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
 
     public function getFilamentAvatarUrl(): ?string
     {
-        return $this->getMedia('avatars')?->first()?->getUrl() ?? $this->getMedia('avatars')?->first()?->getUrl(
-            'thumb'
-        ) ?? null;
+        return $this->avatar ? '/storage/'.$this->avatar : null;
     }
 
     // Define an accessor for the 'name' attribute
@@ -93,12 +87,6 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
         return $this->hasRole(config('filament-shield.super_admin.name'));
     }
 
-    public function registerMediaConversions(Media|null $media = null): void
-    {
-        $this->addMediaConversion('thumb')
-            ->fit(Fit::Contain, 300, 300)
-            ->nonQueued();
-    }
 
     public function getActivitylogOptions(): LogOptions
     {

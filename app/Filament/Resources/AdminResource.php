@@ -19,6 +19,7 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\RestoreAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
@@ -26,9 +27,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
 use Rmsramos\Activitylog\Actions\ActivityLogTimelineAction;
-
 use Rmsramos\Activitylog\RelationManagers\ActivitylogRelationManager;
 
 use function __;
@@ -50,12 +49,6 @@ class AdminResource extends Resource
                     ->schema([
                         Grid::make()
                             ->schema([
-                                SpatieMediaLibraryFileUpload::make('media')
-                                    ->hiddenLabel()
-                                    ->avatar()
-                                    ->collection('avatars')
-                                    ->alignCenter()
-                                    ->columnSpanFull(),
                                 TextInput::make('username')
                                     ->required()
                                     ->maxLength(255),
@@ -127,8 +120,8 @@ class AdminResource extends Resource
     {
         return $table
             ->columns([
-                SpatieMediaLibraryImageColumn::make('media')->label('Avatar')
-                    ->collection('avatars')
+                ImageColumn::make('avatar')
+                    ->circular()
                     ->wrap(),
                 TextColumn::make('username')->label('Username')
                     ->description(fn(Model $record) => $record->firstname.' '.$record->lastname)
@@ -163,16 +156,6 @@ class AdminResource extends Resource
                 DeleteAction::make(),
                 RestoreAction::make(),
                 ForceDeleteAction::make(),
-                ActivityLogTimelineAction::make('Activities')
-                    ->timelineIcons([
-                        'created' => 'heroicon-m-check-badge',
-                        'updated' => 'heroicon-m-pencil-square',
-                    ])
-                    ->timelineIconColors([
-                        'created' => 'info',
-                        'updated' => 'warning',
-                    ])
-                    ->limit(10),
             ]);
     }
 

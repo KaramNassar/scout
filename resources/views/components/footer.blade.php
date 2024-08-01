@@ -10,10 +10,6 @@
                                  alt="logo" width="50">
                         </a>
                         <p class="py-8 text-sm text-gray-500 dark:text-gray-400 lg:max-w-xs">{{ __('hero-description') }}</p>
-                        <x-round-button link="{{ route('contact') }}">
-                            {{ __('Contact us') }}
-                        </x-round-button>
-
                     </div>
                 </div>
                 <div class="mb-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:col-span-2">
@@ -46,10 +42,10 @@
                         </ul>
                     </div>
                     <div class="rtl:lg:mr-0 rtl:lg:ml-auto lg:mx-auto">
-                        <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ __('Subscribe') }}</h4>
-                        <p class="mb-7 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ __('Subscribe to get the latest news from us') }}</p>
-                        <x-round-button link="#">
-                            {{ __('Subscribe') }}
+                        <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ __('Contact us') }}</h4>
+                        <p class="mb-7 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ __('contact form message') }}</p>
+                        <x-round-button link="{{ route('contact') }}">
+                            {{ __('Contact us') }}
                             <span class="rtl:rotate-180">
                             &rarr;
                         </span>

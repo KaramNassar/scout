@@ -2,9 +2,9 @@
 
 <div class="swiper-slide">
     <div
-        class="bg-white shadow-md border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-600 transition-transform duration-300 hover:scale-105">
+        class="bg-white shadow-md border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-600">
         <a href="#">
-            <x-img :src="$src" alt="fds"/>
+            <x-img :src="$src" alt="fds" class="transition-transform duration-300 hover:scale-105"/>
 
             <div class="p-5">
                 <time datetime="2022-10-10" class="block text-xs dark:text-white/90"> {{ __('10th Oct 2022') }}</time>

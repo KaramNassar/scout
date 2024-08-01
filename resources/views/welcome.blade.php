@@ -49,32 +49,32 @@
                 <ul class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5">
 
                     <li>
-                        <x-card.gallery title="How we design and code open-source projects?"
+                        <x-card.activity title="How we design and code open-source projects?"
                                         :src="asset('storage/images/7.jpg')"/>
                     </li>
 
                     <li>
-                        <x-card.gallery title="How we design and code open-source projects?"
+                        <x-card.activity title="How we design and code open-source projects?"
                                         :src="asset('storage/images/5.jpg')"/>
                     </li>
 
                     <li>
-                        <x-card.gallery title="How we design and code open-source projects?"
+                        <x-card.activity title="How we design and code open-source projects?"
                                         :src="asset('storage/images/3.jpg')"/>
                     </li>
 
                     <li>
-                        <x-card.gallery title="How we design and code open-source projects?"
+                        <x-card.activity title="How we design and code open-source projects?"
                                         :src="asset('storage/images/4.jpg')"/>
                     </li>
 
                     <li>
-                        <x-card.gallery title="How we design and code open-source projects?"
+                        <x-card.activity title="How we design and code open-source projects?"
                                         :src="asset('storage/images/2.jpg')"/>
                     </li>
 
                     <li>
-                        <x-card.gallery title="How we design and code open-source projects?"
+                        <x-card.activity title="How we design and code open-source projects?"
                                         :src="asset('storage/images/1.jpg')"/>
                     </li>
 

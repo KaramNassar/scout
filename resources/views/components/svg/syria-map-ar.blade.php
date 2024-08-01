@@ -1,3 +1,4 @@
+@props(['troops'])
 <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
     <defs>
         <style bx:fonts="Cairo">@import url(https://fonts.googleapis.com/css2?family=Cairo%3Aital%2Cwght%400%2C200..1000&amp;display=swap);</style>
@@ -50,9 +51,5 @@
     <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);" cx="20.642" cy="444.271" rx="3.068" ry="3.068"/>
     <text style="fill: rgb(255, 255, 255); font-family: Cairo; font-size: 17.2px; white-space: pre;" x="22.167" y="421.87">القنيطرة</text>
     <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);" cx="18.465" cy="415.829" rx="3.068" ry="3.068"/>
-    @foreach($pins as $pin)
-        <x-svg.marker x="{{ $pin['x'] }}" y="{{ $pin['y'] }}"
-                      @click="showMapModal = true; modalTitle = '{{ $pin['title'] }}'; modalInfo = '{{ $pin['info'] }}'"
-                      class="cursor-pointer"/>
-    @endforeach
+    <x-map-pins :troops="$troops"/>
 </svg>

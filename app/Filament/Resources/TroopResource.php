@@ -7,11 +7,12 @@ use App\Filament\Resources\TroopResource\Pages\CreateTroop;
 use App\Filament\Resources\TroopResource\Pages\EditTroop;
 use App\Filament\Resources\TroopResource\Pages\ListTroops;
 use App\Models\Troop;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
@@ -20,7 +21,9 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\LocaleSwitcher;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput as TextInputWithCounter;
+
 
 class TroopResource extends Resource
 {
@@ -28,7 +31,7 @@ class TroopResource extends Resource
 
     protected static ?string $model = Troop::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-check-badge';
 
     protected static ?string $navigationGroup = 'Content Management';
 
@@ -55,11 +58,11 @@ class TroopResource extends Resource
                         ->characterLimit(5)
                         ->required(),
                 ]),
-                SpatieMediaLibraryFileUpload::make('Image')
+                CuratorPicker::make('featured_image_id')
+                    ->relationship('featuredImage', 'id')
+                    ->directory('media/troops')
                     ->columnSpanFull()
-                    ->imageEditor()
-                    ->required()
-                    ->collection('troops'),
+                    ->required(),
                 TinyEditor::make('description')
                     ->profile('default')
                     ->required()

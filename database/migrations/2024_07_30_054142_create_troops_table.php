@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->unsignedBigInteger('featured_image_id')->nullable();
             $table->string('location');
             $table->decimal('lat');
             $table->decimal('lng');
