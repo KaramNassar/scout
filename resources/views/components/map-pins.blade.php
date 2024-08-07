@@ -1,7 +1,7 @@
 @props(['troops'])
 
-@foreach($troops as $troops)
-    <x-svg.marker x="{{ $troops->x }}" y="{{ $troops->y }}"
-                  @click="showMapModal = true; modalTitle = '{{ $troops->name }}'; modalSlug = '{{ $troops->slug }}', modalImage = '{{ $troops->getFeaturedImage() }}'"
+@foreach($troops as $troop)
+    <x-svg.marker x="{{ $troop->x }}" y="{{ $troop->y }}"
+                  @click="showMapModal = true; modalTitle = '{{ $troop->name }}'; modalSlug = '{{ $troop->slug }}', modalImage = '{{ $troop->getFeaturedImage()->url }}'"
                   class="cursor-pointer"/>
 @endforeach

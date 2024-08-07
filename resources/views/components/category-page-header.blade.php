@@ -1,12 +1,17 @@
-@props(['title'])
+@props(['title', 'date' => null])
 
 <section class="mb-16 bg-gray-50 py-12 dark:bg-gray-700/50 sm:py-20">
     <x-container>
         <div class="flex w-full flex-col items-center lg:flex-row lg:justify-between">
             <div class="mt-6 text-center md:ml-5 md:text-start lg:mt-0 order-2 lg:order-1">
-                <h1 class="text-2xl font-medium leading-9 text-gray-900 dark:text-gray-100 sm:text-3xl">
+                <h1 class="text-2xl font-medium leading-9 text-gray-900 dark:text-gray-100 sm:text-3xl mb-4">
                     {!! $title !!}
                 </h1>
+                @if($date)
+                    <time class="text-gray-900 dark:text-gray-100">
+                        {!! '<strong>' . __('published_at') . ':</strong> ' . $date !!}
+                    </time>
+                @endif
             </div>
             <div class="order-1 lg:order-2">
                 <nav aria-label="breadcrumb" class="flex items-center text-[15px]">
@@ -31,7 +36,7 @@
                                   clip-rule="evenodd"></path>
                         </svg>
                     </span>
-                    <span class="text-main-light dark:text-main-dark space-x-1.5 dark:text-pink-400 sm:space-x-4">Technology</span>
+                    <span class="text-main-light dark:text-main-dark space-x-1.5 sm:space-x-4">Technology</span>
                 </nav>
             </div>
         </div>

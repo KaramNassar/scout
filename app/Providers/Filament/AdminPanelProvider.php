@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Services\Blog;
 use App\Filament\Pages\Backups;
 use App\Filament\Pages\HealthCheckResults;
 use App\Livewire\CustomProfile;
@@ -32,7 +33,6 @@ use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 use Tapp\FilamentMailLog\FilamentMailLogPlugin;
 use TomatoPHP\FilamentTranslations\FilamentTranslationsPlugin;
-use TomatoPHP\FilamentTranslations\FilamentTranslationsSwitcherPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -106,7 +106,8 @@ class AdminPanelProvider extends PanelProvider
                     ->pluralLabel('Media')
                     ->navigationIcon('heroicon-o-photo')
                     ->navigationGroup('Content Management')
-                    ->navigationSort(3)
+                    ->navigationSort(3),
+//                Blog::make()
 
             ]);
     }

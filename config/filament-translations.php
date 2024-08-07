@@ -6,7 +6,7 @@ return [
     | Paths
     |--------------------------------------------------------------------------
     |
-    | add path that will be shown to the scaner to catch lanuages tags
+    | add path that will be show to the scaner to catch lanuages tags
     |
     */
     "paths" => [
@@ -55,7 +55,6 @@ return [
             "label" => "Arabic",
             "flag" => "sy"
         ],
-
     ],
 
 
@@ -77,7 +76,7 @@ return [
     | Enable the language switcher feature in the Filament top bar.
     |
     */
-    'language_switcher' => true,
+    'language_switcher' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -130,4 +129,40 @@ return [
     'scan_enabled' => true,
     'export_enabled' => true,
     'import_enabled' => true,
+
+
+    /*
+     |--------------------------------------------------------------------------
+     |
+     | Translation resource.
+     |
+     */
+    'translation_resource' => \TomatoPHP\FilamentTranslations\Resources\TranslationResource::class,
+
+    /*
+     |--------------------------------------------------------------------------
+     |
+     | Custom Excel export.
+     |
+     */
+    'path_to_custom_excel_export' => null,
+
+    /*
+     |--------------------------------------------------------------------------
+     |
+     | Custom Excel import.
+     |
+     */
+    'path_to_custom_excel_import' => null,
+
+
+    /*
+     |--------------------------------------------------------------------------
+     |
+     | Language Switch Middlewares
+     |
+     */
+    'language_switcher_middlewares' => [
+        'web'
+    ]
 ];

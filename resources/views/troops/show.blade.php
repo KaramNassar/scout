@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
+@section('header')
+    <x-category-page-header :title="__($troop->name)"></x-category-page-header>
+@endsection
+
 @section('content')
-    <h1 class="text-2xl text-center md:text-start lg:text-4xl font-bold text-gray-900 dark:text-white my-20">
-        {{ $troop->name }}
-    </h1>
 
     <div class="w-full lg:grid lg:grid-cols-3 lg:gap-8">
         <div class="col-span-2 mb-16">
@@ -13,8 +14,8 @@
                     @if($troop->getFeaturedImage())
 
                         <div id="singlePhoto" class="mb-10">
-                            <a class="item" href="{{  $troop->getFeaturedImage() }}">
-                                <x-curator-glider :media="$troop->media()"
+                            <a class="item" href="{{  $troop->getFeaturedImage()->url }}">
+                                <x-curator-glider :media="$troop->getFeaturedImage()"
                                                   class="rounded-xl"
                                                   quality="75"
                                                   format="webp"

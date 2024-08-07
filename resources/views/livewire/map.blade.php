@@ -16,14 +16,15 @@
             </a>
 
             <div class="p-5">
-                <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white mb-6"
-                    x-text="modalTitle"></h5>
+                <h5 class="text-xl font-medium tracking-tight text-gray-900 dark:text-white mb-6"
+                    x-text="modalTitle">
+                </h5>
                 <div class="flex justify-between">
                     <a :href="'{{ route('troops.show', '') }}/' + modalSlug">
                         <x-read-more-button/>
                     </a>
                     <button @click="showMapModal = false"
-                            class="rounded-lg bg-red-500 px-3 py-2 text-sm font-medium text-white hover:bg-red-400 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
+                            class="rounded-lg bg-main-light dark:bg-main-dark px-3 py-2 text-sm font-medium text-white hover:bg-red-400 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
                         {{ __('Close') }}
                     </button>
                 </div>

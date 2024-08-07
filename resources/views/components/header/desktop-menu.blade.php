@@ -13,7 +13,7 @@
         <x-header.submenu-btn title="News and Activities"/>
 
         <x-header.submenu class="absolute">
-            <x-header.submenu-link href="/all-news">{{ __('All News') }}</x-header.submenu-link>
+            <x-header.submenu-link href="{{ route('posts.index') }}">{{ __('All News') }}</x-header.submenu-link>
             <x-header.submenu-link href="/about">{{ __('Scout Meetings') }}</x-header.submenu-link>
             <x-header.submenu-link href="">{{ __('Scout Decisions') }}</x-header.submenu-link>
             <x-header.submenu-link href="">{{ __('Scout Camps') }}</x-header.submenu-link>

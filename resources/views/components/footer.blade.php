@@ -47,8 +47,8 @@
                         <x-round-button link="{{ route('contact') }}">
                             {{ __('Contact us') }}
                             <span class="rtl:rotate-180">
-                            &rarr;
-                        </span>
+                                &rarr;
+                            </span>
                         </x-round-button>
                     </div>
                 </div>

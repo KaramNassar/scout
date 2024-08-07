@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\SeoDetail;
 use App\Policies\ActivityPolicy;
 use App\Policies\ExceptionPolicy;
 use App\Policies\MailLogPolicy;
 use App\Policies\TranslationPolicy;
+use App\Services\SEOMeta;
 use BezhanSalleh\FilamentExceptions\Models\Exception;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -47,6 +50,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Translation::class, TranslationPolicy::class);
 
         View::share('settings', GeneralSetting::first());
+        Carbon::setLocale(config('app.locale'));
 
         Health::checks([
             OptimizedAppCheck::new(),

@@ -15,14 +15,31 @@ class Troop extends Model
     use HasTranslations;
 
     public $timestamps = false;
-    public array $translatable = ['name', 'location', 'description'];
-    protected $fillable = ['name', 'location', 'description', 'lat', 'lng', 'created_date'];
 
-    public function setNameAttribute($value): void
+    public array $translatable = ['name', 'location', 'description'];
+
+    protected $fillable = ['name', 'featured_image_id', 'location', 'description', 'lat', 'lng', 'created_date'];
+
+    public static function boot(): void
     {
-        $slug = Str::slug($this->getTranslation('name', 'en'));
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = $slug;
+        parent::boot();
+
+        static::created(function ($model) {
+            $model->updateSlug();
+        });
+
+        static::updated(function ($model) {
+            $model->updateSlug();
+        });
+    }
+
+    public function updateSlug(): void
+    {
+        $slug = Str::slug($this->getTranslation('name', 'en')) ?: Str::slug($this->getTranslation('name', 'ar'));
+
+        $this->slug = $slug;
+
+        $this->saveQuietly();
     }
 
     public function featuredImage(): BelongsTo
@@ -30,20 +47,13 @@ class Troop extends Model
         return $this->belongsTo(Media::class, 'featured_image_id');
     }
 
-    public function getFeaturedImage(): string|null
+    public function getFeaturedImage(): Media|null
     {
-        return asset(Media::find($this->featuredImage)?->first()->path) ?? null;
-    }
-
-    public function media(): Media|null
-    {
-        return Media::find($this->featuredImage)?->first() ?? null;
+        return Media::find($this->featured_image_id);
     }
 
     protected function createdDate(): Attribute
     {
-        Carbon::setLocale(config('app.locale'));
-
         return Attribute::make(
             get: fn(string $value) => Carbon::parse($value)->translatedFormat('F Y'),
         );

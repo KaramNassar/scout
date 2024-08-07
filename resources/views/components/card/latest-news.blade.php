@@ -1,15 +1,15 @@
-@props(['src', 'post'])
+@props(['post'])
 
 <div class="swiper-slide">
     <div
         class="bg-white shadow-md border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-600">
-        <a href="#">
-            <x-img :src="$src" alt="fds" class="transition-transform duration-300 hover:scale-105"/>
+        <a href="{{ route('posts.show', $post->slug) }}">
+            <x-image :model="$post" loading="lazy" class="h-56 rounded-t-lg"/>
 
-            <div class="p-5">
-                <time datetime="2022-10-10" class="block text-xs dark:text-white/90"> {{ __('10th Oct 2022') }}</time>
-                <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{ $post['title'] }}</h5>
-                <p class="font-normal text-gray-700 mb-3 dark:text-gray-400">{{ $post['excerpt'] }}</p>
+            <div class="p-5 space-y-4">
+                <time datetime="2022-10-10" class="block text-xs dark:text-white/90"> {{ __($post->published_at) }}</time>
+                <h5 class="text-gray-900 line-clamp-1 font-bold text-xl tracking-tight mb-2 dark:text-gray-200">{{ $post->title }}</h5>
+                <p class="font-normal line-clamp-3 text-gray-700 mb-3 dark:text-gray-400">{{ $post->body }}</p>
                 <x-read-more-button/>
             </div>
         </a>
