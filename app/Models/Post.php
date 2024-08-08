@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use LaravelIdea\Helper\App\Models\_IH_Post_C;
 use Spatie\Translatable\HasTranslations;
 
 class Post extends Model
@@ -49,6 +48,7 @@ class Post extends Model
         'status'        => PostStatus::class,
         'admin_id'      => 'integer',
     ];
+
     private array $arabicMonths = [
         "كانون الثاني",
         "شباط",

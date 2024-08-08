@@ -3,11 +3,11 @@
 namespace App\Livewire;
 
 use App\Mail\ContactMail;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 use Livewire\Component;
+use Throwable;
 
 class ContactForm extends Component
 {
@@ -16,6 +16,7 @@ class ContactForm extends Component
     public $subject;
     public $message;
     public $success = false;
+    public $fail = false;
 
     protected $rules = [
         'name'    => 'required|string|max:255',
@@ -28,12 +29,17 @@ class ContactForm extends Component
     {
         $details = $this->validate();
 
-        Mail::to(GeneralSetting::value('support_email'))
-            ->send(new ContactMail($details));
+        try {
+            Mail::to(GeneralSetting::value('support_email'))
+                ->send(new ContactMail($details));
 
-        $this->reset(['name', 'email', 'subject', 'message']);
-
-        $this->success = true;
+            $this->reset(['name', 'email', 'subject', 'message']);
+            $this->success = true;
+            $this->fail = false;
+        } catch (Throwable) {
+            $this->fail = true;
+            $this->success = false;
+        }
     }
 
     public function render(): View

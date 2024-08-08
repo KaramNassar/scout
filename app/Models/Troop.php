@@ -47,11 +47,28 @@ class Troop extends Model
         return $this->belongsTo(Media::class, 'featured_image_id');
     }
 
-    protected function createdDate(): Attribute
+    private array $arabicMonths = [
+        "كانون الثاني",
+        "شباط",
+        "آذار",
+        "نيسان",
+        "أيار",
+        "حزيران",
+        "تموز",
+        "آب",
+        "أيلول",
+        "تشرين الأول",
+        "تشرين الثاني",
+        "كانون الأول"
+    ];
+
+    public function getCreatedDateAttribute($value): string
     {
-        return Attribute::make(
-            get: fn(string $value) => Carbon::parse($value)->translatedFormat('F Y'),
-        );
+        $date = Carbon::parse($value);
+        $month = config('app.locale') === 'ar' ? $this->arabicMonths[$date->month - 1] : $date->monthName;
+        $year = $date->year;
+
+        return "$month $year";
     }
 
 }

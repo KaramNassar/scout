@@ -4,7 +4,7 @@
     <div
         class="bg-white shadow-md border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-600">
         <a href="{{ route('posts.show', $post->slug) }}">
-            <x-image :model="$post" loading="lazy" class="h-56 rounded-t-lg"/>
+            <x-image :model="$post" loading="lazy" class="h-56 rounded-t-lg transition duration-300 ease-in-out hover:scale-105"/>
 
             <div class="p-5 space-y-4">
                 <time datetime="2022-10-10" class="block text-xs dark:text-white/90"> {{ __($post->published_at) }}</time>
