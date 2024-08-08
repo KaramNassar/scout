@@ -47,11 +47,6 @@ class Troop extends Model
         return $this->belongsTo(Media::class, 'featured_image_id');
     }
 
-    public function getFeaturedImage(): Media|null
-    {
-        return Media::find($this->featured_image_id);
-    }
-
     protected function createdDate(): Attribute
     {
         return Attribute::make(

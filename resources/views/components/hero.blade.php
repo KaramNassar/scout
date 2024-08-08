@@ -16,9 +16,7 @@
         >
             <div class="max-w-2xl text-center ltr:sm:text-left rtl:sm:text-right">
                 <h1 class="text-3xl rtl:text-2xl font-extrabold sm:text-6xl rtl:sm:text-5xl text-gray-900 dark:text-white">
-                    {{ __('Syrian Syrian Scout') }}
-
-                    <strong class="block font-extrabold text-2xl text-rose-700 dark:text-rose-500 mt-4"> Scout Slogan </strong>
+                    {{ __('Syrian Syriac Scout') }}
                 </h1>
 
                 <p class="mt-4 max-w-xl text-gray-900 sm:text-2xl/relaxed dark:text-white">

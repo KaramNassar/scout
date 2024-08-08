@@ -11,11 +11,11 @@
             <div
                 class="mx-auto px-8 sm:px-6 md:max-w-3xl md:px-8 lg:px-0">
                 <article class="dark:bg-gray-800 rounded-md px-0 lg:px-4">
-                    @if($post->getFeaturedImage())
+                    @if($post->featuredImage)
 
                         <div id="singlePhoto" class="mb-10">
-                            <a class="item" href="{{  $post->getFeaturedImage()->url }}">
-                                <x-curator-glider :media="$post->getFeaturedImage()"
+                            <a class="item" href="{{  $post->featuredImage->url }}">
+                                <x-curator-glider :media="$post->featuredImage"
                                                   class="rounded-xl"
                                                   quality="75"
                                                   format="webp"

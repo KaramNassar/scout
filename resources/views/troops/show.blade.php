@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    <x-category-page-header :title="__($troop->name)"></x-category-page-header>
+    <x-category-page-header :title="__($troop->name)"/>
 @endsection
 
 @section('content')
@@ -11,11 +11,11 @@
             <div
                 class="mx-auto px-1.5 md:max-w-3xl">
                 <article class="dark:bg-gray-800 rounded-md">
-                    @if($troop->getFeaturedImage())
+                    @if($troop->featuredImage)
 
                         <div id="singlePhoto" class="mb-10">
-                            <a class="item" href="{{  $troop->getFeaturedImage()->url }}">
-                                <x-curator-glider :media="$troop->getFeaturedImage()"
+                            <a class="item" href="{{  $troop->featuredImage->url }}">
+                                <x-curator-glider :media="$troop->featuredImage"
                                                   class="rounded-xl"
                                                   quality="75"
                                                   format="webp"

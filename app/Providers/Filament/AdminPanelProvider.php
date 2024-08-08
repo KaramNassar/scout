@@ -2,7 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Services\Blog;
 use App\Filament\Pages\Backups;
 use App\Filament\Pages\HealthCheckResults;
 use App\Livewire\CustomProfile;
@@ -107,8 +106,6 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationIcon('heroicon-o-photo')
                     ->navigationGroup('Content Management')
                     ->navigationSort(3),
-//                Blog::make()
-
             ]);
     }
 }

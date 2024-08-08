@@ -170,11 +170,6 @@ class Post extends Model
             ->belongsToMany(Media::class, 'media_post', 'post_id', 'media_id');
     }
 
-    public function getFeaturedImage(): Media|null
-    {
-        return Media::find($this->featured_image_id);
-    }
-
     public function getPublishedAtAttribute($value): string
     {
         $date = Carbon::parse($value);

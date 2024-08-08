@@ -26,6 +26,12 @@
             @endforeach
 
         </x-swiper>
+
+        <div class="flex justify-center">
+            <x-round-button :link="route('posts.index')">
+                {{ __('Explore All News') }}
+            </x-round-button>
+        </div>
     </x-content-showcase>
 
     <x-content-showcase :heading="__('Activities')">

@@ -7,9 +7,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
                 cairo: ['Cairo', 'sans-serif'],
-                roboto : ['Roboto', 'sans-serif']
+                roboto: ['Roboto', 'sans-serif']
             },
-            colors:{
+            colors: {
                 'purple': '#622599',
                 'purple-600': '#9333ea',
                 'purple-100': '#f3e8ff',
@@ -17,6 +17,10 @@ module.exports = {
                 'orange': '#ffa500',
                 'green': '#05b65d',
                 'green-300': '#86efac',
+                'green-800': '#2E7D32',
+                'green-700': '#388E3C',
+                'green-400': '#66BB6A',
+                'green-50': '#E8F5E9',
                 'dark-blue': '#033781',
                 'instagram': '#E44E4E',
                 'main-light': '#1c79cb',
@@ -36,8 +40,8 @@ module.exports = {
             },
             keyframes: {
                 background: {
-                    '0%, 100%': { backgroundPosition: '0% 50%' },
-                    '50%': { backgroundPosition: '100% 50%' },
+                    '0%, 100%': {backgroundPosition: '0% 50%'},
+                    '50%': {backgroundPosition: '100% 50%'},
                 },
             },
         },

@@ -2,14 +2,13 @@
 
 namespace App\Providers;
 
-use App\Models\SeoDetail;
 use App\Policies\ActivityPolicy;
 use App\Policies\ExceptionPolicy;
 use App\Policies\MailLogPolicy;
 use App\Policies\TranslationPolicy;
-use App\Services\SEOMeta;
 use BezhanSalleh\FilamentExceptions\Models\Exception;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -65,5 +64,23 @@ class AppServiceProvider extends ServiceProvider
             UsedDiskSpaceCheck::new(),
 
         ]);
+
+        $settings = GeneralSetting::first(['email_settings', 'email_from_address', 'email_from_name']);
+
+        $mailSettings = $settings->email_settings;
+
+        Config::set('mail.mailers.smtp', [
+            'transport'  => $mailSettings['default_email_provider'],
+            'host'       => $mailSettings['smtp_host'],
+            'port'       => $mailSettings['smtp_port'],
+            'encryption' => $mailSettings['smtp_encryption'],
+            'timeout'    => $mailSettings['smtp_timeout'],
+            'username'   => $mailSettings['smtp_username'],
+            'password'   => $mailSettings['smtp_password'],
+        ]);
+
+        Config::set('mail.from.address', $settings->email_from_address);
+        Config::set('mail.from.name', $settings->email_from_name);
+
     }
 }

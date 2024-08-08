@@ -3,7 +3,7 @@
 <div>
     <a href="{{ route('posts.show', $post->slug) }}"
        class="block rounded-lg p-4 max-md:max-w-md shadow-sm shadow-indigo-100 group hover:shadow-lg hover:shadow-indigo-200 transition duration-300 ease-in-out relative">
-        <x-image :model="$post" loading="lazy" class="h-56 rounded-lg"/>
+        <x-image :model="$post" loading="lazy" class="h-56 rounded-lg transition duration-300 ease-in-out group-hover:brightness-50"/>
 
         <div class="mt-2 relative h-14 text-center overflow-hidden">
             <dl>
