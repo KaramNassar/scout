@@ -1,5 +1,5 @@
 <footer
-    class="mt-32 pb-6 md:pb-0 bg-white text-center shadow-inner dark:shadow-white/15 dark:bg-gray-800 sm:text-start">
+    class="mt-32 bg-white pb-6 text-center shadow-inner dark:shadow-white/15 dark:bg-gray-800 sm:text-start md:pb-0">
     <x-container>
         <div class="pt-16 pb-6 lg:pt-24">
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -9,7 +9,7 @@
                            class="flex items-center justify-center gap-2 text-lg font-bold text-black dark:text-white sm:justify-start">
                             <img src="{{ asset($settings->site_logo) }}"
                                  alt="logo" width="50">
-                            <h5 class="text-2xl rtl:text-xl text-gray-900 dark:text-gray-200">
+                            <h5 class="rtl:text-xl text-2xl text-gray-900 dark:text-gray-200">
                                 {{ __('Syrian Syriac Scout') }}
                             </h5>
                         </a>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="rtl:lg:mr-0 rtl:lg:ml-auto lg:mx-auto">
                         <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ __('News and Activities') }}</h4>
-                        <ul class="text-sm text-gray-600 transition-all duration-500 dark:text-gray-400">
+                        <ul class="text-sm text-gray-500 transition-all duration-500 dark:text-gray-400">
                             <li class="mb-6">
                                 <x-footer-link href="{{ route('posts.index') }}">
                                     {{ __('All News') }}
