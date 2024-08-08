@@ -132,16 +132,6 @@ class PostResource extends Resource
                                     ->inline()
                                     ->options(PostStatus::class)
                                     ->required(),
-
-                                DateTimePicker::make('scheduled_for')
-                                    ->visible(function ($get) {
-                                        return $get('status') === PostStatus::SCHEDULED->value;
-                                    })
-                                    ->required(function ($get) {
-                                        return $get('status') === PostStatus::SCHEDULED->value;
-                                    })
-                                    ->minDate(now()->addMinutes(5))
-                                    ->native(false),
                             ]),
                         \Filament\Forms\Components\Fieldset::make('Featured Post')
                             ->schema([
@@ -219,10 +209,6 @@ class PostResource extends Resource
                                 }),
                             TextEntry::make('published_at')->visible(function (Post $record) {
                                 return $record->status === PostStatus::PUBLISHED;
-                            }),
-
-                            TextEntry::make('scheduled_for')->visible(function (Post $record) {
-                                return $record->status === PostStatus::SCHEDULED;
                             }),
                         ]),
                     Fieldset::make('Description')

@@ -11,7 +11,6 @@ class PostsChart extends BaseWidget
     {
         return [
             BaseWidget\Stat::make('Published Post', Post::published()->count()),
-            BaseWidget\Stat::make('Scheduled Post', Post::scheduled()->count()),
             BaseWidget\Stat::make('Pending Post', Post::pending()->count()),
         ];
     }

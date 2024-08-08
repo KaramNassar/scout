@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\PostResource\Pages;
 
-use App\Services\Events\BlogPublished;
 use App\Filament\Resources\PostResource;
 use App\Models\Post;
 use Filament\Actions;
@@ -28,15 +27,6 @@ class ViewPost extends ViewRecord
     {
         return [
             Actions\LocaleSwitcher::make(),
-            Action::make('sendNotification')
-                ->label('Send Notification')
-                ->requiresConfirmation()
-                ->icon('heroicon-o-bell')->action(function (Post $record) {
-                    event(new BlogPublished($record));
-                })
-                ->disabled(function (Post $record) {
-                    return $record->isNotPublished();
-                }),
             Action::make('preview')
                 ->label('Preview')
                 ->requiresConfirmation()

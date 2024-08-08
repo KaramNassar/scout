@@ -42,11 +42,6 @@ class ListPosts extends ListRecords
                     $query->pending();
                 })
                 ->icon('heroicon-o-clock'),
-            'scheduled' => Tab::make('Scheduled')
-                ->modifyQueryUsing(function ($query) {
-                    $query->scheduled();
-                })
-                ->icon('heroicon-o-calendar-days'),
         ];
     }
 }

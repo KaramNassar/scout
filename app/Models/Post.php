@@ -30,21 +30,15 @@ class Post extends Model
         'body',
         'status',
         'published_at',
-        'scheduled_for',
         'featured_image_id',
         'is_featured',
         'admin_id',
         'category_id',
     ];
 
-    protected array $dates = [
-        'scheduled_for',
-    ];
-
     protected $casts = [
         'id'            => 'integer',
         'published_at'  => 'date',
-        'scheduled_for' => 'datetime',
         'status'        => PostStatus::class,
         'admin_id'      => 'integer',
     ];
@@ -131,11 +125,6 @@ class Post extends Model
         return $query->where('status', PostStatus::PUBLISHED)->latest('published_at');
     }
 
-    public function scopeScheduled(Builder $query)
-    {
-        return $query->where('status', PostStatus::SCHEDULED)->latest('scheduled_for');
-    }
-
     public function scopePending(Builder $query)
     {
         return $query->where('status', PostStatus::PENDING)->latest('created_at');
@@ -144,11 +133,6 @@ class Post extends Model
     public function formattedPublishedDate(): ?string
     {
         return $this->published_at?->format('d M Y');
-    }
-
-    public function isScheduled(): bool
-    {
-        return $this->status === PostStatus::SCHEDULED;
     }
 
     public function relatedPosts($take = 3): array
