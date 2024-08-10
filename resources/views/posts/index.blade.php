@@ -21,7 +21,7 @@
 
                             <div class="bg-white p-4 dark:bg-gray-900 sm:p-6">
                                 <time datetime="2022-10-10"
-                                      class="block text-xs text-gray-500">{{ $post->published_at }}</time>
+                                      class="block text-xs text-gray-500 dark:text-gray-400">{{ $post->published_at }}</time>
                                 <div class="mt-4 flex flex-wrap gap-1">
                                     @foreach($post->tags as $tag)
                                         <a href="{{ route('tags.show', $tag->slug) }}">

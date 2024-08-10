@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchResultsController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TroopController;
-use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -19,7 +20,9 @@ Route::get('/troops/{troop:slug}', [TroopController::class, 'show'])->name('troo
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/tags/{tag:slug}', [PostController::class, 'index'])->name('tags.show');
+
+Route::get('/tags/{tag:slug}', TagController::class)->name('tags.show');
+Route::get('/categories/{category:slug}', CategoryController::class)->name('categories.show');
 
 Route::get('/search-results', SearchResultsController::class)->name('search-results');
 

@@ -14,9 +14,9 @@
 
         <x-header.submenu class="absolute">
             <x-header.submenu-link href="{{ route('posts.index') }}">{{ __('All News') }}</x-header.submenu-link>
-            <x-header.submenu-link href="/about">{{ __('Scout Meetings') }}</x-header.submenu-link>
-            <x-header.submenu-link href="">{{ __('Scout Decisions') }}</x-header.submenu-link>
-            <x-header.submenu-link href="">{{ __('Scout Camps') }}</x-header.submenu-link>
+            <x-header.submenu-link href="{{ route('categories.show', 'meetings') }}">{{ __('Scout Meetings') }}</x-header.submenu-link>
+            <x-header.submenu-link href="{{ route('categories.show', 'decisions') }}">{{ __('Scout Decisions') }}</x-header.submenu-link>
+            <x-header.submenu-link href="{{ route('categories.show', 'camps') }}">{{ __('Scout Camps') }}</x-header.submenu-link>
         </x-header.submenu>
     </x-header.submenu-navlink>
 
