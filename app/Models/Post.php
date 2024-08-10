@@ -12,12 +12,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 use Spatie\Translatable\HasTranslations;
 
 class Post extends Model
 {
     use HasFactory;
     use HasTranslations;
+    use Searchable;
+
 
     public array $translatable = [
         'title',
@@ -36,13 +39,14 @@ class Post extends Model
         'category_id',
     ];
 
-    protected $casts = [
-        'id'            => 'integer',
-        'published_at'  => 'date',
-        'status'        => PostStatus::class,
-        'admin_id'      => 'integer',
-    ];
+    protected $with = ['featuredImage'];
 
+    protected $casts = [
+        'id'           => 'integer',
+        'published_at' => 'date',
+        'status'       => PostStatus::class,
+        'admin_id'     => 'integer',
+    ];
     private array $arabicMonths = [
         "كانون الثاني",
         "شباط",
@@ -95,6 +99,14 @@ class Post extends Model
         return Post::take(6)->latest()->get();
     }
 
+    public function toSearchableArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'body'  => $this->body,
+        ];
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -107,7 +119,7 @@ class Post extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
 
     public function isNotPublished(): bool

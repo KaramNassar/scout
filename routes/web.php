@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchResultsController;
@@ -7,11 +8,7 @@ use App\Http\Controllers\TroopController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home', [
-    'featuredPosts' => Post::featuredPosts(),
-    'newsPosts'     => Post::newsPosts(),
-    'activityPosts'     => Post::activityPosts(),
-])->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::view('/about-the-scout', 'about')->name('about');
 Route::view('/history-of-the-scout', 'history')->name('history-of-the-scout');

@@ -4,21 +4,44 @@ namespace App\Models;
 
 use Awcodes\Curator\Models\Media;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 use Spatie\Translatable\HasTranslations;
 
 class Troop extends Model
 {
     use HasTranslations;
+    use Searchable;
 
     public $timestamps = false;
-
     public array $translatable = ['name', 'location', 'description'];
-
-    protected $fillable = ['name', 'featured_image_id', 'location', 'description', 'lat', 'lng', 'created_date'];
+    protected $with = ['featuredImage'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'featured_image_id',
+        'location',
+        'description',
+        'lat',
+        'lng',
+        'created_date'
+    ];
+    private array $arabicMonths = [
+        "كانون الثاني",
+        "شباط",
+        "آذار",
+        "نيسان",
+        "أيار",
+        "حزيران",
+        "تموز",
+        "آب",
+        "أيلول",
+        "تشرين الأول",
+        "تشرين الثاني",
+        "كانون الأول"
+    ];
 
     public static function boot(): void
     {
@@ -42,25 +65,17 @@ class Troop extends Model
         $this->saveQuietly();
     }
 
+    public function toSearchableArray(): array
+    {
+        return [
+            'name' => $this->name,
+        ];
+    }
+
     public function featuredImage(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'featured_image_id');
     }
-
-    private array $arabicMonths = [
-        "كانون الثاني",
-        "شباط",
-        "آذار",
-        "نيسان",
-        "أيار",
-        "حزيران",
-        "تموز",
-        "آب",
-        "أيلول",
-        "تشرين الأول",
-        "تشرين الثاني",
-        "كانون الأول"
-    ];
 
     public function getCreatedDateAttribute($value): string
     {

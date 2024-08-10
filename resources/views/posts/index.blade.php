@@ -22,14 +22,6 @@
                             <div class="bg-white p-4 dark:bg-gray-900 sm:p-6">
                                 <time datetime="2022-10-10"
                                       class="block text-xs text-gray-500">{{ $post->published_at }}</time>
-
-                                <a href="{{ route('posts.show', $post->slug) }}">
-                                    <h3 class="text-lg text-gray-900 mt-0.5 dark:text-white">{{ $post->title }}</h3>
-                                </a>
-
-                                <p class="mt-2 text-gray-500 line-clamp-3 text-sm/relaxed dark:text-gray-400">
-                                    {{ $post->body }}
-                                </p>
                                 <div class="mt-4 flex flex-wrap gap-1">
                                     @foreach($post->tags as $tag)
                                         <a href="{{ route('tags.show', $tag->slug) }}">
@@ -41,6 +33,14 @@
 
                                     @endforeach
                                 </div>
+                                <a href="{{ route('posts.show', $post->slug) }}">
+                                    <h3 class="text-lg text-gray-900 mt-0.5 dark:text-white">{{ $post->title }}</h3>
+                                </a>
+
+                                <p class="mt-2 text-gray-500 line-clamp-3 text-sm/relaxed dark:text-gray-400">
+                                    {!! $post->body !!}
+                                </p>
+
                                 <a href="{{ route('posts.show', $post->slug) }}">
                                     <x-read-more-link/>
                                 </a>

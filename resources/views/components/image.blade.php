@@ -1,6 +1,6 @@
 @props(['model'])
 
-<div x-data="{ imageLoaded: false }" class="relative overflow-hidden w-full">
+<div x-data="{ imageLoaded: false }" class="relative">
     <div role="status"
          x-show="!imageLoaded"
         {{ $attributes->class(['flex justify-center items-center bg-gray-300 dark:bg-gray-500']) }}>

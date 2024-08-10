@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Services\Models\Post;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasName;
@@ -12,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Scout\Searchable;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
@@ -23,7 +21,6 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
     use Notifiable;
     use SoftDeletes;
     use LogsActivity;
-    use Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -81,7 +78,7 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
     // Define an accessor for the 'name' attribute
     public function getNameAttribute(): string
     {
-        return "{$this->firstname} {$this->lastname}";
+        return ucwords("{$this->firstname} {$this->lastname}");
     }
 
     public function isSuperAdmin(): bool
@@ -93,14 +90,6 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logFillable();
-    }
-
-    public function toSearchableArray()
-    {
-        // Only return the fields you want to be searchable
-        return [
-            'firstname' => $this->firstname,
-        ];
     }
 
     public function posts(): HasMany

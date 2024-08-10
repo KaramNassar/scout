@@ -8,6 +8,8 @@ use App\Policies\MailLogPolicy;
 use App\Policies\TranslationPolicy;
 use BezhanSalleh\FilamentExceptions\Models\Exception;
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
@@ -82,5 +84,20 @@ class AppServiceProvider extends ServiceProvider
         Config::set('mail.from.address', $settings->email_from_address);
         Config::set('mail.from.name', $settings->email_from_name);
 
+        Collection::macro('simplePaginate', function ($perPage = 5, $page = null, $pageName = 'page') {
+            $page = $page ?: Paginator::resolveCurrentPage($pageName);
+
+            $items = $this->slice(($page - 1) * $perPage);
+
+            return new Paginator(
+                $items->take($perPage + 1),
+                $perPage,
+                $page,
+                [
+                    'path'     => Paginator::resolveCurrentPath(),
+                    'pageName' => $pageName,
+                ]
+            );
+        });
     }
 }

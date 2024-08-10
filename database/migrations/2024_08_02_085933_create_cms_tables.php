@@ -12,14 +12,14 @@ return new class extends Migration {
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 155)->unique();
+            $table->string('name', 155)->unique()->index();
             $table->string('slug', 155)->nullable()->unique();
             $table->timestamps();
         });
 
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 500);
+            $table->string('title', 500)->index();
             $table->string('slug')->nullable()->unique();
             $table->string('sub_title')->nullable();
             $table->longText('body');
@@ -31,11 +31,12 @@ return new class extends Migration {
             $table->foreignId('admin_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
+
         });
 
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50)->unique();
+            $table->string('name', 50)->index()->unique();
             $table->string('slug', 155)->nullable()->unique();
             $table->timestamps();
         });
