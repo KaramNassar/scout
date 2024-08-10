@@ -20,6 +20,7 @@
         "laravel/scout": "^10.10",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
+        "mcamara/laravel-localization": "^2.0",
         "rmsramos/activitylog": "^1.0",
         "schmeits/filament-character-counter": "^1.2",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2",
