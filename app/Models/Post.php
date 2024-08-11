@@ -40,7 +40,7 @@ class Post extends Model
         'category_id',
     ];
 
-    protected $with = ['featuredImage'];
+    protected $with = ['featuredImage', 'tags'];
 
     protected $casts = [
         'id'           => 'integer',

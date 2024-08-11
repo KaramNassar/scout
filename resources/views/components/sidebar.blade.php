@@ -122,9 +122,10 @@
 
     <x-sidebar-section :title="__('Follow us')">
         <div class="overflow-hidden">
-            <x-social-link name="facebook"/>
-            <hr class="w-full border-t border-dashed border-gray-300/70 ml-13 my-2.5 dark:border-gray-300/30">
-            <x-social-link name="instagram"/>
+            @foreach($settings->social_network as $name => $link)
+                <x-social-link :name="$name" :link="$link"/>
+                <hr class="w-full border-t border-dashed border-gray-300/70 ml-13 my-2.5 dark:border-gray-300/30">
+            @endforeach
         </div>
     </x-sidebar-section>
 </div>
