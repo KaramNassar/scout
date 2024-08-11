@@ -10,8 +10,11 @@ class TagController extends Controller
     {
         $posts = $tag->posts->simplePaginate(6);
 
+        $pageTitle = $tag->name;
+
         return view('posts.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'pageTitle' => $pageTitle,
         ]);
     }
 }

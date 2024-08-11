@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    <x-category-page-header :title="__('All News')"/>
+    <x-page-header :title="__($pageTitle)"/>
 @endsection
 
 @section('content')

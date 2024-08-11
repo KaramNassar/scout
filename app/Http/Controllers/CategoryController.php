@@ -10,8 +10,11 @@ class CategoryController extends Controller
 	{
         $posts = $category->posts->simplePaginate(6);
 
+        $pageTitle = $category->name;
+
         return view('posts.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'pageTitle' => $pageTitle,
         ]);
 	}
 }

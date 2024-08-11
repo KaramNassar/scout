@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    <x-category-page-header :title="__($troop->name)"/>
+    <x-page-header :title="__($troop->name)"/>
 @endsection
 
 @section('content')

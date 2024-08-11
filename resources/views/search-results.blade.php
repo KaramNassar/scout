@@ -8,7 +8,7 @@
 @endphp
 
 @section('header')
-    <x-category-page-header :title="__('Search Results For ') . ' ' . $q"></x-category-page-header>
+    <x-page-header :title="__('Search Results For ') . ' ' . $q"/>
 @endsection
 
 @section('content')

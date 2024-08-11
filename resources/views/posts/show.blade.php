@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    <x-category-page-header :title="__($post->title)" :date="$post->published_at"></x-category-page-header>
+    <x-page-header :title="__($post->title)" :date="$post->published_at"></x-page-header>
 @endsection
 
 @section('content')

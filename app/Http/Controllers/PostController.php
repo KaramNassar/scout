@@ -10,8 +10,11 @@ class PostController extends Controller
 	{
         $posts = Post::published()->simplePaginate(6);
 
+        $pageTitle = "All News";
+
         return view('posts.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'pageTitle' => $pageTitle
         ]);
 	}
 
