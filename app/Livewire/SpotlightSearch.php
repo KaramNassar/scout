@@ -63,24 +63,30 @@ class SpotlightSearch extends Component
 
     public function updatedQuery(): void
     {
-        $this->results = [];
+        $this->results = [
+            'troops' => collect(),
+            'posts' => collect(),
+        ];
 
-        $locale = app()->getLocale();
+        $search = trim($this->query);
+        if ($search) {
+            $locale = app()->getLocale();
 
-        $this->results['troops'] = Troop::query()
-            ->whereLike(DB::raw("lower(name->'$.$locale')"),"%".strtolower(trim($this->query))."%")
-            ->take(2)
-            ->get(['featured_image_id', 'name', 'description', 'slug']);
+            $this->results['troops'] = Troop::query()
+                ->whereLike(DB::raw("lower(name->'$.$locale')"), "%".strtolower($search)."%")
+                ->take(2)
+                ->get(['featured_image_id', 'name', 'description', 'slug']);
 
 
-        $this->results['posts'] = Post::query()
-            ->where(function ($query) use ($locale) {
-                $query->whereLike(DB::raw("lower(title->'$.$locale')"),"%".strtolower(trim($this->query))."%")
-                    ->orWhereLike(DB::raw("lower(body->'$.$locale')"),"%".strtolower(trim($this->query))."%");
-            })
-            ->where('status', 'published')
-            ->take(3)
-            ->get(['featured_image_id', 'title', 'body', 'slug']);
+            $this->results['posts'] = Post::query()
+                ->where(function ($query) use ($locale, $search) {
+                    $query->whereLike(DB::raw("lower(title->'$.$locale')"), "%".strtolower($search)."%")
+                        ->orWhereLike(DB::raw("lower(body->'$.$locale')"), "%".strtolower($search)."%");
+                })
+                ->where('status', 'published')
+                ->take(3)
+                ->get(['featured_image_id', 'title', 'body', 'slug']);
+        }
     }
 
     public function render(): View

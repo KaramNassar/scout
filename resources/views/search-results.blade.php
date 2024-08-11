@@ -1,14 +1,11 @@
 @extends('layouts.app')
 
 @php
-    $q = '';
-        if (request('query')){
-            $q = '<span class="text-main-light dark:text-main-dark">' . request('query') . '</span>';
-        }
+    $search = '<span class="text-main-light dark:text-main-dark">' . $search . '</span>';
 @endphp
 
 @section('header')
-    <x-page-header :title="__('Search Results For ') . ' ' . $q"/>
+    <x-page-header :title="__('Search Results For ') . ' ' . $search"/>
 @endsection
 
 @section('content')
@@ -52,7 +49,7 @@
                     <h3 class="text-center text-gray-500 dark:text-gray-400 text-4xl">{{ __('Sorry, No Search Results Found') }}</h3>
                 @endforelse
             </ul>
-            {{ $results->withQueryString()->links() }}
+            {{ $results->isNotEmpty() ? $results->withQueryString()->links() : '' }}
         </div>
         <x-sidebar/>
     </div>

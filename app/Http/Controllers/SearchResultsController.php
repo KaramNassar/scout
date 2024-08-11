@@ -12,27 +12,33 @@ class SearchResultsController extends Controller
     {
 //        $troopsResults = Troop::search(request('query'))->get();
 //        $postResults = Post::search(request('query'))->where('status', 'published')->get();
+
         $results = collect();
-        $locale = app()->getLocale();
 
-        $troopsResults = Troop::query()
-            ->whereLike(DB::raw("lower(name->'$.$locale')"), "%".strtolower(trim(request('query')))."%")
-            ->get(['featured_image_id', 'name', 'description', 'slug']);
+        $search = trim(request('query'));
+        if ($search) {
+            $locale = app()->getLocale();
 
-
-        $postResults = Post::query()
-            ->where(function ($query) use ($locale) {
-                $query->whereLike(DB::raw("lower(title->'$.$locale')"), "%".strtolower(trim(request('query')))."%")
-                    ->orWhereLike(DB::raw("lower(body->'$.$locale')"), "%".strtolower(trim(request('query')))."%");
-            })
-            ->where('status', 'published')
-            ->get(['featured_image_id', 'title', 'body', 'slug']);
+            $troopsResults = Troop::query()
+                ->whereLike(DB::raw("lower(name->'$.$locale')"), "%".strtolower($search)."%")
+                ->get(['featured_image_id', 'name', 'description', 'slug']);
 
 
-        $results = $troopsResults->merge($postResults)->simplePaginate();
+            $postResults = Post::query()
+                ->where(function ($query) use ($locale, $search) {
+                    $query->whereLike(DB::raw("lower(title->'$.$locale')"), "%".strtolower($search)."%")
+                        ->orWhereLike(DB::raw("lower(body->'$.$locale')"), "%".strtolower($search)."%");
+                })
+                ->where('status', 'published')
+                ->get(['featured_image_id', 'title', 'body', 'slug']);
+
+            $results = $troopsResults->concat($postResults)->simplePaginate();
+        }
+
 
         return view('search-results', [
             'results' => $results,
+            'search' => $search,
         ]);
     }
 }
