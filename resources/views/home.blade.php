@@ -22,7 +22,9 @@
         <x-swiper>
 
             @foreach($newsPosts as $newsPost)
-                <x-card.latest-news :post="$newsPost"/>
+                <div class="relative swiper-slide">
+                    <x-card.latest-news :post="$newsPost"/>
+                </div>
             @endforeach
 
         </x-swiper>

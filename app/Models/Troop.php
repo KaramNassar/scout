@@ -16,8 +16,11 @@ class Troop extends Model
     use Searchable;
 
     public $timestamps = false;
+
     public array $translatable = ['name', 'location', 'description'];
+
     protected $with = ['featuredImage'];
+
     protected $fillable = [
         'name',
         'slug',
@@ -28,6 +31,7 @@ class Troop extends Model
         'lng',
         'created_date'
     ];
+
     private array $arabicMonths = [
         "كانون الثاني",
         "شباط",

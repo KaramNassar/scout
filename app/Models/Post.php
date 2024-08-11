@@ -26,6 +26,7 @@ class Post extends Model
         'title',
         'body',
     ];
+
     protected $fillable = [
         'title',
         'slug',
@@ -47,6 +48,7 @@ class Post extends Model
         'status'       => PostStatus::class,
         'admin_id'     => 'integer',
     ];
+
     private array $arabicMonths = [
         "كانون الثاني",
         "شباط",

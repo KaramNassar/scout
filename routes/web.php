@@ -30,6 +30,10 @@ Route::group([
     Route::get('/categories/{category:slug}', CategoryController::class)->name('categories.show');
 
     Route::get('/search-results', SearchResultsController::class)->name('search-results');
+
+    Livewire::setUpdateRoute(function ($handle) {
+        return Route::post('/livewire/update', $handle);
+    });
 });
 
 

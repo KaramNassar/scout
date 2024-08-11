@@ -1,4 +1,4 @@
-<div class="swiper multiple-slide-carousel swiper-container relative text-center">
+<div class="swiper multiple-slide-carousel swiper-container relative">
     <div class="swiper-wrapper mb-16">
         {{ $slot }}
     </div>

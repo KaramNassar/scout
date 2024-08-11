@@ -14,7 +14,6 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Rules\UniqueTranslation;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
-use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -150,7 +149,8 @@ class PostResource extends Resource
                     ->description(function (Post $record) {
                         return Str::limit($record->sub_title, 40);
                     })
-                    ->searchable()->limit(20),
+                    ->searchable()
+                    ->limit(20),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
                     ->color(function ($state) {

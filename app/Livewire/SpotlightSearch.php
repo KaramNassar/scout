@@ -67,6 +67,7 @@ class SpotlightSearch extends Component
         $this->results['troops'] = Troop::search($this->query)->take(2)->get();
         $this->results['posts'] = Post::search($this->query)->take(3)->get();
 
+
 //        $this->results['troops'] = Troop::query()
 //            ->where('name->' . app()->getLocale(), 'LIKE', "%$this->query%")
 //            ->take(2)
