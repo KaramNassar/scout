@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use App\Models\Troop;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -64,21 +65,22 @@ class SpotlightSearch extends Component
     {
         $this->results = [];
 
-        $this->results['troops'] = Troop::search($this->query)->take(2)->get();
-        $this->results['posts'] = Post::search($this->query)->take(3)->get();
+        $locale = app()->getLocale();
+
+        $this->results['troops'] = Troop::query()
+            ->whereLike(DB::raw("lower(name->'$.$locale')"),"%".strtolower(trim($this->query))."%")
+            ->take(2)
+            ->get(['featured_image_id', 'name', 'description', 'slug']);
 
 
-//        $this->results['troops'] = Troop::query()
-//            ->where('name->' . app()->getLocale(), 'LIKE', "%$this->query%")
-//            ->take(2)
-//            ->get();
-//
-//        $this->results['posts'] = Post::query()
-//            ->where('name->' . app()->getLocale(), 'LIKE', "%$this->query%")
-//            ->orWhere('body', 'LIKE', "%$this->query%")
-//            ->where('status', 'published')
-//            ->take(3)
-//            ->get();
+        $this->results['posts'] = Post::query()
+            ->where(function ($query) use ($locale) {
+                $query->whereLike(DB::raw("lower(title->'$.$locale')"),"%".strtolower(trim($this->query))."%")
+                    ->orWhereLike(DB::raw("lower(body->'$.$locale')"),"%".strtolower(trim($this->query))."%");
+            })
+            ->where('status', 'published')
+            ->take(3)
+            ->get(['featured_image_id', 'title', 'body', 'slug']);
     }
 
     public function render(): View
