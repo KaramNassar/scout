@@ -30,7 +30,7 @@ class SearchResultsController extends Controller
                         ->orWhereLike(DB::raw("lower(body->'$.$locale')"), "%".strtolower($search)."%");
                 })
                 ->where('status', 'published')
-                ->get(['featured_image_id', 'title', 'body', 'slug']);
+                ->get(['id', 'featured_image_id', 'title', 'body', 'slug']);
 
             $results = $troopsResults->concat($postResults)->simplePaginate();
         }
