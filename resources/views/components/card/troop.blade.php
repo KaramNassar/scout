@@ -1,16 +1,24 @@
 @props(['troop'])
 
 <div class="swiper-slide">
-    <div
-        class="bg-white shadow-md border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-600">
-        <a href="{{ route('troops.show', $troop->slug) }}">
-                <x-image :model="$troop" loading="lazy" class="h-56"/>
-
-            <div class="p-5">
-                <time datetime="2022-10-10" class="block text-xs dark:text-white/90"> {{ $troop->created_date }}</time>
-                <h5 class="text-gray-900 font-bold text-2xl tracking-tight my-4 dark:text-white">{{ $troop->name }}</h5>
-                <x-read-more-button/>
-            </div>
+    <article
+        class="relative text-center overflow-hidden rounded-lg pb-0 shadow transition h-[370px] hover:shadow-lg dark:shadow-gray-700 md:pb-10">
+        <a href="{{ route('posts.show', $troop->slug) }}">
+            <x-image :model="$troop"
+                     class="h-56 transition duration-300 ease-in-out hover:scale-105"/>
         </a>
-    </div>
+
+        <div class="bg-white p-4 space-y-1 dark:bg-gray-900 sm:p-6">
+            <time class="block text-xs text-gray-500 dark:text-gray-400">{{ $troop->created_date }}</time>
+            <a href="{{ route('posts.show', $troop->slug) }}">
+                <h3 class="text-lg font-medium text-gray-900 line-clamp-2 mt-0.5 dark:text-gray-100">{{ $troop->name }}</h3>
+            </a>
+
+            <a href="{{ route('posts.show', $troop->slug) }}">
+                <x-read-more-link/>
+            </a>
+
+        </div>
+    </article>
+
 </div>

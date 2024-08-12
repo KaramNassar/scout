@@ -17,7 +17,7 @@
                     <li class="flex flex-col justify-center">
                         <a href="{{ route($result instanceof App\Models\Troop ? 'troops.show' :'posts.show', $result->slug) }}">
                             <div
-                                class="relative flex flex-col w-80 md:w-full md:flex-row gap-4 space-y-3 md:space-y-0 rounded-xl shadow-md p-3 mx-auto border border-white dark:border-gray-800 dark:bg-gray-700 hover:shadow-lg dark:hover:shadow-gray-700">
+                                class="relative flex flex-col w-80 md:w-full h-[420px] md:h-auto md:flex-row gap-4 space-y-3 md:space-y-0 rounded-xl shadow-md p-3 mx-auto border border-white dark:border-gray-800 dark:bg-gray-700 hover:shadow-lg dark:hover:shadow-gray-700">
                                 <div class="">
                                     <x-image :model="$result" class="rounded-xl h-44 md:min-w-44 md:w-44"/>
                                 </div>
@@ -39,7 +39,7 @@
                                     <p class="text-gray-500 text-sm line-clamp-3 dark:text-gray-400">
                                         {{ $result instanceof App\Models\Troop ?  strip_tags($result->description) : strip_tags($result->body) }}
                                     </p>
-                                    <x-read-more-link class="mx-auto"/>
+                                    <x-read-more-link class="inset-x-auto"/>
                                 </div>
                             </div>
 
