@@ -7,13 +7,11 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
-use Laravel\Scout\Searchable;
 use Spatie\Translatable\HasTranslations;
 
 class Troop extends Model
 {
     use HasTranslations;
-    use Searchable;
 
     public $timestamps = false;
 
@@ -67,13 +65,6 @@ class Troop extends Model
         $this->slug = $slug;
 
         $this->saveQuietly();
-    }
-
-    public function toSearchableArray(): array
-    {
-        return [
-            'name' => $this->name,
-        ];
     }
 
     public function featuredImage(): BelongsTo

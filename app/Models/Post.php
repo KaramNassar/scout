@@ -12,14 +12,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Laravel\Scout\Searchable;
 use Spatie\Translatable\HasTranslations;
 
 class Post extends Model
 {
     use HasFactory;
     use HasTranslations;
-    use Searchable;
 
 
     public array $translatable = [
@@ -99,14 +97,6 @@ class Post extends Model
     public static function activityPosts(): Collection
     {
         return Post::take(6)->latest()->get();
-    }
-
-    public function toSearchableArray(): array
-    {
-        return [
-            'title' => $this->title,
-            'body'  => $this->body,
-        ];
     }
 
     public function category(): BelongsTo
