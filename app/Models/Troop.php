@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
 
 class Troop extends Model
 {
     use HasTranslations;
+    use LogsActivity;
+
 
     public $timestamps = false;
 
@@ -85,6 +89,11 @@ class Troop extends Model
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logFillable();
     }
 
 }

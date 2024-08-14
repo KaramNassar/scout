@@ -12,13 +12,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
 
 class Post extends Model
 {
     use HasFactory;
     use HasTranslations;
-
+    use LogsActivity;
 
     public array $translatable = [
         'title',
@@ -172,5 +174,10 @@ class Post extends Model
     public function troop(): BelongsTo
     {
         return $this->belongsTo(Troop::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logFillable();
     }
 }

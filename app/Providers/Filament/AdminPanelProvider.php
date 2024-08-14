@@ -48,7 +48,6 @@ class AdminPanelProvider extends PanelProvider
                 'gray'    => 'rgb(107, 114, 128)',
             ])
             ->favicon(GeneralSetting::value('site_favicon'))
-            ->authGuard('admin')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->viteTheme('resources/css/filament/admin/theme.css')
@@ -58,7 +57,6 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

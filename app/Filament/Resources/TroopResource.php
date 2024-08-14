@@ -90,11 +90,6 @@ class TroopResource extends Resource
             ])
             ->headerActions([
                 LocaleSwitcher::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
             ]);
     }
 

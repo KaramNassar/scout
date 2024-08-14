@@ -16,6 +16,7 @@ class Tag extends Model
     use HasTranslations;
     use LogsActivity;
 
+
     public array $translatable = ['name'];
 
     protected $fillable = [

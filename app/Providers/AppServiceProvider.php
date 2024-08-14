@@ -2,10 +2,20 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\Troop;
 use App\Policies\ActivityPolicy;
+use App\Policies\CategoryPolicy;
 use App\Policies\ExceptionPolicy;
 use App\Policies\MailLogPolicy;
+use App\Policies\MediaPolicy;
+use App\Policies\PostPolicy;
+use App\Policies\TagPolicy;
 use App\Policies\TranslationPolicy;
+use App\Policies\TroopPolicy;
+use Awcodes\Curator\Models\Media;
 use BezhanSalleh\FilamentExceptions\Models\Exception;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
@@ -49,6 +59,11 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Activity::class, ActivityPolicy::class);
         Gate::policy(MailLog::class, MailLogPolicy::class);
         Gate::policy(Translation::class, TranslationPolicy::class);
+        Gate::policy(Category::class, CategoryPolicy::class);
+        Gate::policy(Tag::class, TagPolicy::class);
+        Gate::policy(Troop::class, TroopPolicy::class);
+        Gate::policy(Post::class, PostPolicy::class);
+        Gate::policy(Media::class, MediaPolicy::class);
 
         View::share('settings', GeneralSetting::first());
         Carbon::setLocale(config('app.locale'));
