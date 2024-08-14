@@ -1,7 +1,7 @@
 @props(['troop'])
 <div class="relative pb-16 pl-8 group space-y-2 sm:pl-32 ">
     <div
-        class="mb-1 text-lg font-medium font-caveat text-main-light dark:text-main-dark sm:mb-0 sm:text-2xl">{{ $troop->name }}</div>
+        class="mb-1 text-lg font-medium max-w-[600px] text-main-light dark:text-main-dark sm:mb-0 sm:text-xl">{{ $troop->name }}</div>
     <div
         class="group-last:before:hidden before:absolute after:absolute before:left-2 after:left-2 mb-1 after:box-content flex after:h-2 before:h-full after:w-2 before:-translate-x-1/2 after:-translate-x-1/2 before:translate-y-3 flex-col items-start before:self-start after:rounded-full after:border-4 after:border-slate-50 before:bg-slate-300 after:bg-indigo-600 before:px-px after:translate-y-1.5 sm:before:ml-[6.5rem] sm:after:ml-[6.5rem] sm:before:left-0 sm:after:left-0 sm:flex-row">
         <time

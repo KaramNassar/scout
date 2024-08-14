@@ -123,7 +123,6 @@
 
                     regenerateTextItems() {
                         this.selectedItem = "";
-                        console.log(originalSelect.value);
                         this.items.forEach((item) => {
                             const label = item.querySelector("label");
 
