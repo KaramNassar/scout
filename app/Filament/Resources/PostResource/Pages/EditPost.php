@@ -24,7 +24,7 @@ class EditPost extends EditRecord
     protected function beforeSave()
     {
         if ($this->data['status'] === PostStatus::PUBLISHED->value) {
-            $this->record->published_at = $this->record->published_at ?? date('Y-m-d H:i:s');
+            $this->record->published_at = date('Y-m-d H:i:s');
         }
     }
 }

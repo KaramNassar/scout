@@ -51,7 +51,8 @@ class SearchResultsController extends Controller
                     $query->where('troop_id', $troop);
                 });
             })
-            ->whereStatus('published')
+            ->published()
+            ->latest('published_at')
             ->get(['id', 'featured_image_id', 'title', 'body', 'slug']);
 
 

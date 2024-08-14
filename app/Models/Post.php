@@ -42,7 +42,7 @@ class Post extends Model
 
     protected $casts = [
         'id'           => 'integer',
-        'published_at' => 'date',
+        'published_at' => 'timestamp',
         'status'       => PostStatus::class,
         'admin_id'     => 'integer',
     ];
@@ -86,17 +86,18 @@ class Post extends Model
 
     public static function featuredPosts(): Collection
     {
-        return Post::whereIsFeatured(1)->take(6)->latest()->get();
+        return Post::whereIsFeatured(1)->take(6)->latest('published_at')->get();
     }
 
     public static function newsPosts(): Collection
     {
-        return Post::whereIsFeatured(0)->take(6)->latest()->get();
+        return Post::whereIsFeatured(0)->whereRelation('category', 'slug', '!=', ['camps', 'meetings'])->take(6)->latest('published_at')->get();
     }
 
     public static function activityPosts(): Collection
     {
-        return Post::take(6)->latest()->get();
+        return Post::whereIsFeatured(0)->whereRelation('category', 'slug', '=', ['camps', 'meetings'])->take(6)->latest('published_at')->get();
+
     }
 
     public function category(): BelongsTo
@@ -124,9 +125,9 @@ class Post extends Model
         return $this->status === PostStatus::PUBLISHED;
     }
 
-    public function scopePublished(Builder $query)
+    public function scopePublished(Builder $query): Builder
     {
-        return $query->where('status', PostStatus::PUBLISHED)->latest('published_at');
+        return $query->where('status', PostStatus::PUBLISHED);
     }
 
     public function scopePending(Builder $query)

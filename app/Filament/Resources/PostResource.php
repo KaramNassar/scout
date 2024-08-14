@@ -7,13 +7,14 @@ use App\Enums\PostStatus;
 use App\Filament\Resources\PostResource\Pages\CreatePost;
 use App\Filament\Resources\PostResource\Pages\EditPost;
 use App\Filament\Resources\PostResource\Pages\ListPosts;
-use App\Filament\Resources\PostResource\Pages\ViewPost;
 use App\Filament\Resources\PostResource\Widgets\PostsChart;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Rules\UniqueTranslation;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Awcodes\Curator\Models\Media;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -22,6 +23,7 @@ use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Infolists\Components\Fieldset;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
@@ -69,6 +71,14 @@ class PostResource extends Resource
                                     ->searchable()
                                     ->relationship('category', 'name')
                                     ->required()
+                                    ->columnSpanFull(),
+
+                                Select::make('troop_id')
+                                    ->hint('Leave it empty if not associated with a troop.')
+                                    ->preload()
+                                    ->createOptionForm(Category::getForm())
+                                    ->searchable()
+                                    ->relationship('troop', 'name')
                                     ->columnSpanFull(),
 
                                 TextInput::make('title')
@@ -153,16 +163,14 @@ class PostResource extends Resource
                     ->limit(20),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
+                    ->sortable()
                     ->color(function ($state) {
                         return $state->getColor();
                     }),
-                Tables\Columns\ImageColumn::make('cover_photo_path')->label('Cover Photo'),
+                CuratorColumn::make('featured_image_id')
+                    ->size(100),
 
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('published_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -177,7 +185,7 @@ class PostResource extends Resource
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\EditAction::make(),
-                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
                 ]),
             ])
             ->bulkActions([
@@ -185,48 +193,6 @@ class PostResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function infolist(Infolist $infolist): Infolist
-    {
-        return $infolist->schema([
-            Section::make('Post')
-                ->icon(function (Post $record) {
-                    return $record->is_featured === 1 ? 'heroicon-s-star' : '';
-                })
-                ->iconColor('warning')
-                ->schema([
-                    Fieldset::make('General')
-                        ->schema([
-                            TextEntry::make('title'),
-                            TextEntry::make('sub_title'),
-                        ]),
-                    Fieldset::make('Publish Information')
-                        ->schema([
-                            TextEntry::make('status')
-                                ->badge()->color(function ($state) {
-                                    return $state->getColor();
-                                }),
-                            TextEntry::make('published_at')->visible(function (Post $record) {
-                                return $record->status === PostStatus::PUBLISHED;
-                            }),
-                        ]),
-                    Fieldset::make('Description')
-                        ->schema([
-                            TextEntry::make('body')
-                                ->html()
-                                ->columnSpanFull(),
-                        ]),
-                ]),
-        ]);
-    }
-
-    public static function getRecordSubNavigation(Page $page): array
-    {
-        return $page->generateNavigationItems([
-            ViewPost::class,
-            EditPost::class,
-        ]);
     }
 
     public static function getWidgets(): array
@@ -242,7 +208,6 @@ class PostResource extends Resource
             'index'  => ListPosts::route('/'),
             'create' => CreatePost::route('/create'),
             'edit'   => EditPost::route('/{record}/edit'),
-            'view'   => ViewPost::route('/{record}'),
         ];
     }
 }

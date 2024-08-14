@@ -11,7 +11,7 @@ class PostController extends Controller
 {
 	public function index()
 	{
-        $posts = Post::published()->simplePaginate(6);
+        $posts = Post::published()->latest('published_at')->simplePaginate(6);
 
         $pageTitle = "All News";
 
