@@ -30,8 +30,8 @@ return new class extends Migration {
             $table->boolean('is_featured')->default(0);
             $table->foreignId('admin_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('troop_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
-
         });
 
         Schema::create('tags', function (Blueprint $table) {

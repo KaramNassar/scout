@@ -27,7 +27,7 @@ Route::group([
     Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
     Route::get('/tags/{tag:slug}', TagController::class)->name('tags.show');
-    Route::get('/categories/{category:slug}', CategoryController::class)->name('categories.show');
+    Route::get('/categories/{postCategory:slug}', CategoryController::class)->name('categories.show');
 
     Route::get('/search-results', SearchResultsController::class)->name('search-results');
 
@@ -35,6 +35,3 @@ Route::group([
         return Route::post('/livewire/update', $handle);
     });
 });
-
-
-//Route::get('/locale/{locale}', LocalesController::class)->name('locale.switch');

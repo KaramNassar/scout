@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
 @php
-    $search = '<span class="text-main-light dark:text-main-dark">' . $search . '</span>';
+    $search = $search ? (__('Search Results For') . ': <span class="text-main-light dark:text-main-dark">' . $search . '</span><br>') : '';
+    $category = $category ? (__('Category') . ': <span class="text-main-light dark:text-main-dark">' . $category . '</span><br>') : '';
+    $troop = $troop ? (__('Troop') . ': <span class="text-main-light dark:text-main-dark">' . $troop . '</span><br>') : '';
+    $tags = $tags ? (__('Tags') . ': <span class="text-main-light dark:text-main-dark">' . $tags . '</span>') : '';
+    $title = $search . $category . $troop . $tags;
+
+    $title = $title ?: __('All News')
 @endphp
 
 @section('header')
-    <x-page-header :title="__('Search Results For ') . ' ' . $search"/>
+    <x-page-header :title="$title" class="{{ $title !== __('All News') ? 'text-start' : '' }}"/>
 @endsection
 
 @section('content')
@@ -24,6 +30,7 @@
 
                             </div>
                             <div>
+
                                 @if($result instanceof App\Models\Post)
                                     <div class="flex flex-wrap mb-2 gap-1">
                                         @foreach($result->tags as $tag)

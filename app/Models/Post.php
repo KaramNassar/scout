@@ -167,4 +167,9 @@ class Post extends Model
 
         return "$day $month , $year";
     }
+
+    public function troop(): BelongsTo
+    {
+        return $this->belongsTo(Troop::class);
+    }
 }
