@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Troop;
@@ -11,6 +12,7 @@ use App\Policies\CategoryPolicy;
 use App\Policies\ExceptionPolicy;
 use App\Policies\MailLogPolicy;
 use App\Policies\MediaPolicy;
+use App\Policies\PagePolicy;
 use App\Policies\PostPolicy;
 use App\Policies\TagPolicy;
 use App\Policies\TranslationPolicy;
@@ -63,6 +65,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Tag::class, TagPolicy::class);
         Gate::policy(Troop::class, TroopPolicy::class);
         Gate::policy(Post::class, PostPolicy::class);
+        Gate::policy(Page::class, PagePolicy::class);
         Gate::policy(Media::class, MediaPolicy::class);
 
         View::share('settings', GeneralSetting::first());

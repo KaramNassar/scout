@@ -14,8 +14,9 @@ use App\Models\Tag;
 use App\Rules\UniqueTranslation;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\ToggleButtons;
@@ -26,7 +27,6 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Support\Str;
 
 
 class PostResource extends Resource
@@ -54,9 +54,9 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                \Filament\Forms\Components\Section::make('Blog Details')
+                Section::make('Blog Details')
                     ->schema([
-                        \Filament\Forms\Components\Fieldset::make('Titles')
+                        Fieldset::make('Titles')
                             ->schema([
                                 Select::make('category_id')
                                     ->preload()
@@ -69,7 +69,6 @@ class PostResource extends Resource
                                 Select::make('troop_id')
                                     ->hint('Leave it empty if not associated with a troop.')
                                     ->preload()
-                                    ->createOptionForm(Category::getForm())
                                     ->searchable()
                                     ->relationship('troop', 'name')
                                     ->columnSpanFull(),
@@ -88,10 +87,6 @@ class PostResource extends Resource
                                     ->maxLength(255)
                                     ->columnSpanFull(),
 
-                                Textarea::make('sub_title')
-                                    ->maxLength(255)
-                                    ->columnSpanFull(),
-
                                 Select::make('tag_id')
                                     ->multiple()
                                     ->preload()
@@ -105,9 +100,10 @@ class PostResource extends Resource
                             ->required()
                             ->columnSpanFull(),
 
-                        \Filament\Forms\Components\Fieldset::make('Featured Image')
+                        Fieldset::make('Featured Image')
                             ->schema([
                                 CuratorPicker::make('featured_image_id')
+                                    ->label('')
                                     ->relationship('featuredImage', 'id')
                                     ->directory(function (Get $get) {
                                         return ('media/'.$get('title'));
@@ -115,7 +111,7 @@ class PostResource extends Resource
                                     ->columnSpanFull(),
                             ])->columns(1),
 
-                        \Filament\Forms\Components\Fieldset::make('Gallery')
+                        Fieldset::make('Gallery')
                             ->schema([
                                 CuratorPicker::make('gallery')
                                     ->relationship('gallery', 'id')
@@ -126,7 +122,7 @@ class PostResource extends Resource
                                     }),
                             ])->columns(1),
 
-                        \Filament\Forms\Components\Fieldset::make('Status')
+                        Fieldset::make('Status')
                             ->schema([
 
                                 ToggleButtons::make('status')
@@ -135,7 +131,7 @@ class PostResource extends Resource
                                     ->options(PostStatus::class)
                                     ->required(),
                             ]),
-                        \Filament\Forms\Components\Fieldset::make('Featured Post')
+                        Fieldset::make('Featured Post')
                             ->schema([
                                 Toggle::make('is_featured')
                             ])
@@ -149,18 +145,15 @@ class PostResource extends Resource
             ->deferLoading()
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->description(function (Post $record) {
-                        return Str::limit($record->sub_title, 40);
-                    })
                     ->searchable()
                     ->limit(20),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->sortable()
                     ->color(function ($state) {
                         return $state->getColor();
                     }),
                 CuratorColumn::make('featured_image_id')
+                    ->label('Featured image')
                     ->size(100),
 
                 Tables\Columns\TextColumn::make('published_at')

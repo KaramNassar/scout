@@ -21,7 +21,6 @@ return new class extends Migration {
             $table->id();
             $table->string('title', 500)->index();
             $table->string('slug')->nullable()->unique();
-            $table->string('sub_title')->nullable();
             $table->longText('body');
             $table->enum('status', ['published', 'scheduled', 'pending'])->default('pending');
             $table->dateTime('published_at')->nullable();
