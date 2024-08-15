@@ -171,6 +171,11 @@ class PostResource extends Resource
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\Action::make('preview')
+                        ->icon('heroicon-s-eye')
+                        ->url(function (Post $record) {
+                        return route('posts.show', $record->slug);
+                    }, true)
                 ]),
             ]);
     }

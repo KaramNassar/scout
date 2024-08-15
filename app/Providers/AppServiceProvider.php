@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Menu;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Tag;
@@ -12,6 +13,7 @@ use App\Policies\CategoryPolicy;
 use App\Policies\ExceptionPolicy;
 use App\Policies\MailLogPolicy;
 use App\Policies\MediaPolicy;
+use App\Policies\MenuPolicy;
 use App\Policies\PagePolicy;
 use App\Policies\PostPolicy;
 use App\Policies\TagPolicy;
@@ -67,6 +69,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Post::class, PostPolicy::class);
         Gate::policy(Page::class, PagePolicy::class);
         Gate::policy(Media::class, MediaPolicy::class);
+        Gate::policy(Menu::class, MenuPolicy::class);
 
         View::share('settings', GeneralSetting::first());
         Carbon::setLocale(config('app.locale'));

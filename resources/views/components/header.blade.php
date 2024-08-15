@@ -22,21 +22,7 @@
                         </svg>
                     </button>
 
-                    <ul
-                        class='max-lg:fixed max-lg:top-0 max-lg:left-0 rtl:max-lg:right-0 z-50 max-lg:h-full max-lg:w-2/3 max-lg:overflow-auto max-lg:bg-white dark:bg-gray-800 max-lg:p-4 max-lg:shadow-md max-lg:space-y-3 max-lg:min-w-[300px] lg:flex lg:gap-x-8'>
-                        <x-header.submenu title="Who we are">
-
-                        </x-header.submenu>
-                        <x-header.submenu title="News and Activities">
-
-                        </x-header.submenu>
-                        <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
-                            <a href='{{ route('contact') }}'
-                               class='text-slate-700 transition duration-300 ease-in-out hover:text-main-light dark:text-slate-300 dark:hover:text-main-dark'>
-                                {{ __('Contact us') }}
-                            </a>
-                        </li>
-                    </ul>
+                    <x-nav-bar/>
                 </div>
             </div>
 

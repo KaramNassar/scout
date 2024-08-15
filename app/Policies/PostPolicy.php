@@ -36,7 +36,7 @@ class PostPolicy
      */
     public function update(Admin $admin, Post $post): bool
     {
-        return $admin->can('update_post');
+        return ($admin->can('update_post') && ($post->admin_id == auth()->id() or $admin->roles->first()->name === 'super_admin'));
     }
 
     /**
@@ -44,7 +44,7 @@ class PostPolicy
      */
     public function delete(Admin $admin, Post $post): bool
     {
-        return $admin->can('delete_post');
+        return ($admin->can('delete_post') && ($post->admin_id == auth()->id() or $admin->roles->first()->name === 'super_admin'));
     }
 
 }

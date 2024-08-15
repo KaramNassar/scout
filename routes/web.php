@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchResultsController;
 use App\Http\Controllers\TagController;
@@ -25,6 +26,8 @@ Route::group([
 
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+
+    Route::get('/page/{page:slug}', [PageController::class, 'show'])->name('page.show');
 
     Route::get('/tags/{tag:slug}', TagController::class)->name('tags.show');
     Route::get('/categories/{postCategory:slug}', CategoryController::class)->name('categories.show');

@@ -80,7 +80,7 @@ class AdminPanelProvider extends PanelProvider
                         'personal_info' => CustomProfile::class
                     ]),
                 FilamentGeneralSettingsPlugin::make()
-                    ->canAccess(fn() => auth('admin')->user()->can('page_GeneralSettingsPage'))
+                    ->canAccess(fn() => auth()->user()->can('page_GeneralSettingsPage'))
                     ->setSort(3)
                     ->setIcon('heroicon-o-cog')
                     ->setNavigationGroup('Settings')
