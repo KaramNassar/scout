@@ -24,7 +24,7 @@
         </a>
 
         <p class="mt-2 text-gray-500 line-clamp-2 text-sm/relaxed dark:text-gray-400">
-            {!! $post->body !!}
+            {!! strip_tags($post->body) !!}
         </p>
 
         <a href="{{ route('posts.show', $post->slug) }}">
