@@ -3,7 +3,7 @@
         {{ __('Find out more') }}
 
     <span aria-hidden="true"
-          class="rtl:mt-1 block rtl:rotate-180 transition-all group-hover:ms-0.5">
+          class="rtl:mt-1 block rtl:rotate-180 transition duration-300 ease-in-out group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5">
         &rarr;
     </span>
 </span>

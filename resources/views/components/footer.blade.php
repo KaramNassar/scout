@@ -67,9 +67,9 @@
                     <div class="rtl:lg:mr-0 rtl:lg:ml-auto lg:mx-auto">
                         <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ __('Contact us') }}</h4>
                         <p class="mb-7 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ __('contact form message') }}</p>
-                        <x-round-button link="{{ route('contact') }}">
+                        <x-round-button class="group" link="{{ route('contact') }}">
                             {{ __('Contact us') }}
-                            <span class="rtl:rotate-180">
+                            <span class="rtl:rotate-180 transition duration-300 ease-in-out group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5">
                                 &rarr;
                             </span>
                         </x-round-button>
