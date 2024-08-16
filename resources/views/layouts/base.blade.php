@@ -8,7 +8,7 @@
 
     @yield('seo')
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+    <link rel="shortcut icon" href="{{ asset($settings->site_favicon) }}">
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles

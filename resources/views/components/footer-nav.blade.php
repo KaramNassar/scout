@@ -7,7 +7,7 @@
             </a>
         </li>
     @else
-        <div class="rtl:lg:mr-0 rtl:lg:ml-auto lg:mx-auto">
+        <div class="lg:mx-auto">
             <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ $item->name }}</h4>
             <ul class="text-sm text-gray-600 transition-all duration-500 dark:text-gray-400">
 

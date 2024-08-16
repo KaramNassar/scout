@@ -27,4 +27,3 @@
         </div>
     </x-container>
 </section>
-

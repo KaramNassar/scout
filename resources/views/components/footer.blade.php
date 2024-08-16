@@ -16,16 +16,16 @@
                         <p class="py-8 text-sm text-gray-500 dark:text-gray-400 lg:max-w-xs">{{ __('hero-description') }}</p>
                     </div>
                 </div>
-                <div class="mb-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:col-span-2">
+                <div class="mb-10 pt-0 lg:pt-2 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:col-span-2">
 
                     <x-footer-nav/>
 
                     <div class="rtl:lg:mr-0 rtl:lg:ml-auto lg:mx-auto">
                         <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ __('Contact us') }}</h4>
                         <p class="mb-7 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ __('contact form message') }}</p>
-                        <x-round-button class="group" link="{{ route('contact') }}">
+                        <x-round-button class="group mx-auto" link="{{ route('contact') }}">
                             {{ __('Contact us') }}
-                            <span class="rtl:rotate-180 transition duration-300 ease-in-out group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5">
+                            <span class="rtl:rotate-180 transition duration-300 ease-in-out rtl:group-hover:-translate-x-1.5 group-hover:translate-x-1.5">
                                 &rarr;
                             </span>
                         </x-round-button>
