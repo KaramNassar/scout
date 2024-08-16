@@ -92,7 +92,7 @@ return [
     | Add groups that should be excluded in translation import from files to database
     |
     */
-    'exclude_groups' => [],
+    'exclude_groups' => ['validation'],
 
     /*
      |--------------------------------------------------------------------------
@@ -124,7 +124,7 @@ return [
      | Show buttons in Translation resource.
      |
      */
-    'scan_enabled' => true,
+    'scan_enabled' => false,
     'export_enabled' => true,
     'import_enabled' => true,
 

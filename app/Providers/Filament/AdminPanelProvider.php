@@ -90,8 +90,7 @@ class AdminPanelProvider extends PanelProvider
                 ActivitylogPlugin::make(),
                 FilamentMailLogPlugin::make(),
                 FilamentTranslationsPlugin::make()
-                    ->allowCreate()
-                    ->allowGoogleTranslateScan(),
+                    ->allowCreate(),
                 FilamentSpatieLaravelHealthPlugin::make()
                     ->usingPage(HealthCheckResults::class),
                 FilamentSpatieLaravelBackupPlugin::make()
