@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\SeoSiteMap;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchResultsController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TroopController;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -25,7 +27,7 @@ Route::group([
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
-    Route::get('/page/{page:slug}', [PageController::class, 'show'])->name('page.show');
+    Route::get('/pages/{page:slug}', [PageController::class, 'show'])->name('page.show');
 
     Route::get('/tags/{tag:slug}', TagController::class)->name('tags.show');
     Route::get('/categories/{postCategory:slug}', CategoryController::class)->name('categories.show');
@@ -34,5 +36,13 @@ Route::group([
 
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post('/livewire/update', $handle);
+    });
+
+    Route::get('/sitemap', function () {
+        $sitemap = (new SeoSiteMap())->attachCustom('/', Carbon::now()->format('Y-m-d H:i:s'));
+
+        return response($sitemap->toXml(), 200, [
+            'Content-Type' => 'application/xml',
+        ]);
     });
 });

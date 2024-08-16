@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\SeoSiteMapTrait;
 use Awcodes\Curator\Models\Media;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -16,7 +18,7 @@ class Troop extends Model
 {
     use HasTranslations;
     use LogsActivity;
-
+    use SeoSiteMapTrait;
 
     public $timestamps = false;
 
@@ -72,6 +74,11 @@ class Troop extends Model
         $this->saveQuietly();
     }
 
+    public static function getSitemapItems(): Collection
+    {
+        return static::get('slug');
+    }
+
     public function featuredImage(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'featured_image_id');
@@ -94,6 +101,11 @@ class Troop extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logFillable();
+    }
+
+    public function getSitemapItemUrl(): string
+    {
+        return url('/locale/troops/'.$this->slug);
     }
 
 }

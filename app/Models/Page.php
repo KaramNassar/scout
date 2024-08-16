@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\SeoSiteMapTrait;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,7 @@ class Page extends Model
 {
     use HasTranslations;
     use LogsActivity;
+    use SeoSiteMapTrait;
 
     public array $translatable = [
         'title',
@@ -58,5 +60,15 @@ class Page extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logFillable();
+    }
+
+    public function getSitemapItemUrl(): string
+    {
+        return url('/locale/pages/' . $this->slug);
+    }
+
+    public static function getSitemapItems(): Collection
+    {
+        return static::latest()->get(['slug', 'updated_at', 'created_at']);
     }
 }

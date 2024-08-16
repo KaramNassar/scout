@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\PostStatus;
+use App\Traits\SeoSiteMapTrait;
 use Awcodes\Curator\Models\Media;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -21,6 +22,7 @@ class Post extends Model
     use HasFactory;
     use HasTranslations;
     use LogsActivity;
+    use SeoSiteMapTrait;
 
     public array $translatable = [
         'title',
@@ -179,5 +181,15 @@ class Post extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->logFillable();
+    }
+
+    public function getSitemapItemUrl(): string
+    {
+        return url('/locale/posts/' . $this->slug);
+    }
+
+    public static function getSitemapItems(): Collection
+    {
+        return static::latest()->get(['slug', 'updated_at', 'created_at']);
     }
 }
