@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo')
+    <x-seo :post="$post"/>
+@endsection
+
 @section('header')
     <x-page-header :title="__($post->title)" :date="$post->published_at"></x-page-header>
 @endsection

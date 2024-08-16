@@ -7,8 +7,16 @@
     $tags = $tags ? (__('Tags') . ': <span class="text-main-light dark:text-main-dark">' . $tags . '</span>') : '';
     $title = $search . $category . $troop . $tags;
 
-    $title = $title ?: __('All News')
+    $title = $title ?: __('All News');
+
+    $page = new \App\Models\Page();
+    $page->title = strip_tags($title);
+    $page->content =  strip_tags($title);
 @endphp
+
+@section('seo')
+    <x-seo :page="$page"/>
+@endsection
 
 @section('header')
     <x-page-header :title="$title" class="{{ $title !== __('All News') ? 'text-start' : '' }}"/>

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('header')
     <x-page-header :title="__('Contact us')"/>
 @endsection

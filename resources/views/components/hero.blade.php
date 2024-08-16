@@ -23,15 +23,6 @@
                     {{ __('hero-description') }}
                 </p>
 
-                <div class="mt-8 flex flex-wrap gap-4 text-center">
-                    <a
-                        href="{{ route('about') }}"
-                        class="block rounded mx-auto sm:mx-0 bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
-                    >
-                        {{ __('Learn More') }}
-                    </a>
-
-                </div>
             </div>
         </div>
     </x-container>

@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Post;
-use App\Models\Tag;
-use App\Models\Troop;
 
 class PostController extends Controller
 {
-	public function index()
-	{
+    public function index()
+    {
         $posts = Post::published()->latest('published_at')->simplePaginate(6);
 
         $pageTitle = "All News";
 
         return view('posts.index', [
-            'posts' => $posts,
+            'posts'     => $posts,
             'pageTitle' => $pageTitle
         ]);
-	}
+    }
 
     public function show(Post $post)
     {

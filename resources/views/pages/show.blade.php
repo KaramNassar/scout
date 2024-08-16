@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo')
+    <x-seo :page="$page"/>
+@endsection
+
 @section('header')
     <x-page-header :title="__($page->title)"/>
 @endsection

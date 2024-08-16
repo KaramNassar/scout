@@ -6,7 +6,7 @@
         <x-heroicon-o-chevron-down class="inline-block h-5 w-5"/>
     </p>
     <ul
-        class='absolute z-50 block max-h-0 overflow-hidden bg-white px-6 shadow-lg transition-all duration-500 space-y-2 min-w-[250px] group-hover:max-h-[700px] group-hover:pt-6 group-hover:pb-4 group-hover:opacity-100 dark:bg-gray-700'>
+        class='absolute z-50 block max-h-0 overflow-hidden bg-white px-6 shadow-lg transition-all duration-300 space-y-2 min-w-[250px] group-hover:max-h-[700px] group-hover:pt-6 group-hover:pb-4 group-hover:opacity-100 dark:bg-gray-700'>
         {{ $slot }}
     </ul>
 </li>

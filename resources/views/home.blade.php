@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('seo')
+    <x-seo/>
+@endsection
+
 @section('hero')
     <x-hero/>
 @endsection

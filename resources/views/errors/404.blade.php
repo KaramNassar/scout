@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('seo')
+    <title>{{ __('404_title') }}</title>
+    <meta name="robots" content="noindex, nofollow"/>
+@endsection
+
 @section('header')
     <x-page-header :title="__('404_title')"/>
 @endsection

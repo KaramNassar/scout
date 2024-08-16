@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@php
+    $page = new \App\Models\Page();
+    $page->title = __($pageTitle);
+    $page->content =  __('Syrian Syriac Scout') . ' ' . __($pageTitle);
+@endphp
+@section('seo')
+    <x-seo :page="$page"/>
+@endsection
+
 @section('header')
     <x-page-header :title="__($pageTitle)"/>
 @endsection

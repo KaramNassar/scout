@@ -17,8 +17,6 @@ Route::group([
 ], function () {
     Route::get('/', HomeController::class)->name('home');
 
-    Route::view('/about-the-scout', 'about')->name('about');
-    Route::view('/history-of-the-scout', 'history')->name('history-of-the-scout');
     Route::view('/contact', 'contact')->name('contact');
 
     Route::get('/troops', [TroopController::class, 'index'])->name('troops.index');
