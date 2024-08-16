@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -24,6 +25,12 @@ class MenuItem extends Model
     ];
     protected $fillable = ['menu_id', 'parent_id', 'name', 'type', 'value', 'url', 'order'];
 
+    public static function getParentItemsForMenu(int $menuId)
+    {
+        return self::where('menu_id', $menuId)
+            ->whereNull('parent_id');
+    }
+
     public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class);
@@ -31,7 +38,7 @@ class MenuItem extends Model
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(MenuItem::class, 'parent_id')->whereNull('parent_id');
+        return $this->belongsTo(MenuItem::class, 'parent_id')->orderBy('order');
     }
 
     public function children(): HasMany

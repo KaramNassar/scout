@@ -1,4 +1,4 @@
 <a {{ $attributes }}
-   class="hover:text-gray-900 dark:hover:text-gray-200">
+   class="text-slate-700 transition duration-300 ease-in-out hover:text-main-light dark:text-slate-300 dark:hover:text-main-dark">
     {{ $slot }}
 </a>

@@ -48,10 +48,10 @@ class MenuItemsRelationManager extends RelationManager
                     ->required(),
                 Select::make('type')
                     ->options([
-                        'dropdown' => 'Dropdown',
+                        'dropdown'    => 'Dropdown',
                         'custom_link' => 'Custom Link',
-                        'page'     => 'Page',
-                        'category' => 'Category',
+                        'page'        => 'Page',
+                        'category'    => 'Category',
                     ])
                     ->reactive()
                     ->afterStateUpdated(fn($state, callable $set) => $set('url', null)),
@@ -76,13 +76,27 @@ class MenuItemsRelationManager extends RelationManager
                     ->searchable(),
                 Select::make('parent_id')
                     ->label('Parent Item')
-                    ->relationship('parent', 'name')
+                    ->options(function () use ($form) {
+                        $menuId = $form->getLivewire()->ownerRecord->id;
+                        $menuItemId = $form->getRecord()->id ?? 0;
+                        if ($form->getLivewire()->ownerRecord->id) {
+                            return MenuItem::getParentItemsForMenu($menuId)->where('id', '!=', $menuItemId)->pluck(
+                                'name',
+                                'id'
+                            );
+                        }
+
+                        return [];
+                    })
+                    ->disabled(function (Get $get) {
+                        return $get('type') === 'dropdown';
+                    })
                     ->nullable(),
                 TextInput::make('url')
-                    ->disabled(function (Get $get){
+                    ->disabled(function (Get $get) {
                         return $get('type') !== 'custom_link';
                     })
-                    ->required(function (Get $get){
+                    ->required(function (Get $get) {
                         return $get('type') === 'custom_link';
                     }),
             ]);
@@ -93,7 +107,8 @@ class MenuItemsRelationManager extends RelationManager
         return $table
             ->columns([
                 TextColumn::make('name')->sortable(),
-                TextColumn::make('url'),
+                TextColumn::make('parent.name'),
+                TextColumn::make('type  '),
             ])
             ->reorderable('order')
             ->defaultSort('order')
@@ -105,12 +120,10 @@ class MenuItemsRelationManager extends RelationManager
                     ->mutateFormDataUsing(function (array $data): array {
                         if ($data['type'] === 'category') {
                             $data['url'] = route('categories.show', $data['value']);
-
                         }
 
                         if ($data['type'] === 'page') {
                             $data['url'] = route('page.show', $data['value']);
-
                         }
 
                         return $data;
@@ -122,12 +135,10 @@ class MenuItemsRelationManager extends RelationManager
                     ->mutateFormDataUsing(function (array $data): array {
                         if ($data['type'] === 'category') {
                             $data['url'] = route('categories.show', $data['value']);
-
                         }
 
                         if ($data['type'] === 'page') {
                             $data['url'] = route('page.show', $data['value']);
-
                         }
 
                         return $data;

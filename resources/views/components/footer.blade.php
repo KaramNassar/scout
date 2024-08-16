@@ -18,52 +18,8 @@
                 </div>
                 <div class="mb-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:col-span-2">
 
-                    <div class="rtl:lg:mr-0 rtl:lg:ml-auto lg:mx-auto">
-                        <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ __('Who we are') }}</h4>
-                        <ul class="text-sm text-gray-600 transition-all duration-500 dark:text-gray-400">
-                            <li class="mb-6">
-                                <x-footer-link href="{{ route('history-of-the-scout') }}">
-                                    {{ __('History of the Movement') }}
-                                </x-footer-link>
-                            </li>
-                            <li class="mb-6">
-                                <x-footer-link href="{{ route('about') }}">
-                                    {{ __('About the Scout') }}
-                                </x-footer-link>
-                            </li>
-                            <li class="mb-6">
-                                <x-footer-link href="{{ route('troops.index') }}">
-                                    {{ __('Scout Troops') }}
-                                </x-footer-link>
-                            </li>
+                    <x-footer-nav/>
 
-                        </ul>
-                    </div>
-                    <div class="rtl:lg:mr-0 rtl:lg:ml-auto lg:mx-auto">
-                        <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ __('News and Activities') }}</h4>
-                        <ul class="text-sm text-gray-500 transition-all duration-500 dark:text-gray-400">
-                            <li class="mb-6">
-                                <x-footer-link href="{{ route('posts.index') }}">
-                                    {{ __('All News') }}
-                                </x-footer-link>
-                            </li>
-                            <li class="mb-6">
-                                <x-footer-link href="{{ route('history-of-the-scout') }}">
-                                    {{ __('Scout Meetings') }}
-                                </x-footer-link>
-                            </li>
-                            <li class="mb-6">
-                                <x-footer-link href="{{ route('history-of-the-scout') }}">
-                                    {{ __('Scout Decisions') }}
-                                </x-footer-link>
-                            </li>
-                            <li class="mb-6">
-                                <x-footer-link href="{{ route('history-of-the-scout') }}">
-                                    {{ __('Scout Camps') }}
-                                </x-footer-link>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="rtl:lg:mr-0 rtl:lg:ml-auto lg:mx-auto">
                         <h4 class="mb-7 text-lg font-medium text-gray-900 dark:text-white">{{ __('Contact us') }}</h4>
                         <p class="mb-7 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ __('contact form message') }}</p>
