@@ -3,7 +3,7 @@
         <li class='max-lg:border-b max-lg:px-3 max-lg:py-3'>
             <a href='{{ $item->url }}'
                class='text-slate-700 transition duration-300 ease-in-out hover:text-main-light dark:text-slate-300 dark:hover:text-main-dark'>
-                {{ __($item->name) }}
+                {{ $item->name }}
             </a>
         </li>
     @else

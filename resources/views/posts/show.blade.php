@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-    <x-page-header :title="__($post->title)" :date="$post->published_at"></x-page-header>
+    <x-page-header :title="$post->title" :date="$post->published_at"></x-page-header>
 @endsection
 
 @section('content')

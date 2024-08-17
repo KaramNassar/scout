@@ -20,12 +20,14 @@ class MenuItem extends Model
     use HasTranslations;
     use LogsActivity;
 
+    protected $with = ['children'];
+
     public array $translatable = [
         'name',
     ];
     protected $fillable = ['menu_id', 'parent_id', 'name', 'type', 'value', 'url', 'order'];
 
-    public static function getParentItemsForMenu(int $menuId)
+    public static function getParentItemsForMenu(int $menuId): MenuItem
     {
         return self::where('menu_id', $menuId)
             ->whereNull('parent_id');

@@ -36,19 +36,19 @@ class SearchResultsController extends Controller
                         ->orWhereLike(DB::raw("lower(body->'$.$locale')"), "%".strtolower($search)."%");
                 });
             })
-            ->when($category && $category !== 'all', function (Builder $query, string $category) {
+            ->when(($category && $category !== 'all'), function (Builder $query) use($category) {
                 $query->whereHas('category', function (Builder $query) use ($category) {
-                    $query->where('category_id', $category);
+                    $query->where('category_id', '=', $category);
                 });
             })
-            ->when($tags, function (Builder $query, array $tags) {
+            ->when($tags, function (Builder $query) use($tags) {
                 $query->whereHas('tags', function (Builder $query) use ($tags) {
                     $query->whereIn('tags.id', $tags);
                 });
             })
-            ->when($troop && $category !== 'all', function (Builder $query, string $troop) {
+            ->when(($troop && $troop !== 'all'), function (Builder $query) use($troop) {
                 $query->whereHas('troop', function (Builder $query) use ($troop) {
-                    $query->where('troop_id', $troop);
+                    $query->where('troop_id', '=', $troop);
                 });
             })
             ->published()

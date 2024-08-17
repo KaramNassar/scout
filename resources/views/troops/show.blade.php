@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-    <x-page-header :title="__($troop->name)"/>
+    <x-page-header :title="$troop->name"/>
 @endsection
 
 @section('content')

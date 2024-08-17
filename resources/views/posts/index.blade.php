@@ -2,15 +2,15 @@
 
 @php
     $page = new \App\Models\Page();
-    $page->title = __($pageTitle);
-    $page->content =  __('Syrian Syriac Scout') . ' ' . __($pageTitle);
+    $page->title = $pageTitle;
+    $page->content =  __('Syrian Syriac Scout') . ' ' . $pageTitle;
 @endphp
 @section('seo')
     <x-seo :page="$page"/>
 @endsection
 
 @section('header')
-    <x-page-header :title="__($pageTitle)"/>
+    <x-page-header :title="$pageTitle"/>
 @endsection
 
 @section('content')

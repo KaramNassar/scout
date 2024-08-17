@@ -131,11 +131,7 @@
                             }
                         });
 
-                        if (this.selectedItem === "") {
-                            textList.innerHTML = '<span class="text-neutral-400">{{ __("All $name") }}</span>';
-                        } else {
-                            textList.innerText = this.selectedItem;
-                        }
+                        textList.innerText = this.selectedItem;
                     },
 
                     selectTrigger: {
