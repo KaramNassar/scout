@@ -1,7 +1,7 @@
 @props(['post'])
 
 <a href="{{ route('posts.show', $post->slug) }}"
-   class="relative grid w-full flex-col items-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700 transition-transform duration-500 group max-w-[28rem] hover:z-10 hover:shadow-lg">
+   class="relative grid w-[310px] mx-auto flex-col items-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700 transition-transform duration-500 group hover:z-10 hover:shadow-lg">
     <div>
         <div class="absolute inset-0 z-10 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
         <x-image :model="$post" loading="lazy"

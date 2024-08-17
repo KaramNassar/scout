@@ -95,13 +95,29 @@ class Post extends Model
 
     public static function newsPosts(): Collection
     {
-        return Post::whereIsFeatured(0)->whereRelation('category', 'slug', '!=', ['camps', 'meetings'])->take(6)->latest('published_at')->get();
+        return Post::whereIsFeatured(0)
+            ->whereRelation('category', function ($query) {
+                $query->whereNotIn('slug', ['camps', 'meetings']);
+            })
+            ->take(6)
+            ->latest('published_at')
+            ->get();
     }
 
     public static function activityPosts(): Collection
     {
-        return Post::whereIsFeatured(0)->whereRelation('category', 'slug', '=', ['camps', 'meetings'])->take(6)->latest('published_at')->get();
+        return Post::whereIsFeatured(0)
+            ->whereRelation('category', function ($query) {
+                $query->whereIn('slug', ['camps', 'meetings']);
+            })
+            ->take(6)
+            ->latest('published_at')
+            ->get();
+    }
 
+    public static function getSitemapItems(): Collection
+    {
+        return static::latest()->get(['slug', 'updated_at', 'created_at']);
     }
 
     public function category(): BelongsTo
@@ -144,12 +160,14 @@ class Post extends Model
         return $this->published_at?->format('d M Y');
     }
 
-    public function relatedPosts($take = 3): array
+    public function relatedPosts($take = 3): Collection
     {
-        return $this->whereHas('categories', function ($query) {
-            $query->whereIn('categories.id', $this->categories->pluck('id'))
-                ->whereNotIn('posts.id', [$this->id]);
-        })->published()->take($take)->get();
+        return $this->whereHas('category', function (Builder $query){
+            $query->where('category_id', $this->category->id);
+        })
+            ->published()
+            ->take($take)
+            ->get();
     }
 
     public function featuredImage(): BelongsTo
@@ -185,11 +203,6 @@ class Post extends Model
 
     public function getSitemapItemUrl(): string
     {
-        return url('/locale/posts/' . $this->slug);
-    }
-
-    public static function getSitemapItems(): Collection
-    {
-        return static::latest()->get(['slug', 'updated_at', 'created_at']);
+        return url('/locale/posts/'.$this->slug);
     }
 }

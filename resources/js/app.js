@@ -24,6 +24,10 @@ const swiper = new Swiper(".multiple-slide-carousel", {
         990: {
             slidesPerView: 2,
             spaceBetween: 30
+        },
+        768:{
+            slidesPerView: 2,
+            spaceBetween: 30
         }
     }
 });

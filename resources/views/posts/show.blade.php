@@ -40,11 +40,31 @@
 
                         <x-gallery :images="$post->gallery"/>
                     @endif
+                    <div class="flex flex-wrap gap-1">
+                        @foreach($post->tags as $tag)
+                            <a href="{{ route('tags.show', $tag->slug) }}">
+                                <x-tag-span class="text-lg py-2 px-4">
+                                    {{ $tag->name }}
+                                </x-tag-span>
+                            </a>
+
+                        @endforeach
+                    </div>
+
 
                 </article>
+
             </div>
         </div>
         <x-sidebar/>
+    </div>
+
+    <h3 class="font-bold text-gray-500 dark:text-gray-300 text-2xl my-10">{{ __('Related Posts') }}</h3>
+
+    <div class="flex flex-col justify-center md:flex-row gap-4">
+        @foreach($relatedPosts as $post)
+            <x-card.latest-news :post="$post"/>
+        @endforeach
     </div>
 
 @endsection

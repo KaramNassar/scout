@@ -20,8 +20,11 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $relatedPosts = $post->relatedPosts();
+
         return view('posts.show', [
-            'post' => $post
+            'post' => $post,
+            'relatedPosts' => $relatedPosts
         ]);
     }
 }

@@ -2,7 +2,7 @@
 
 <div class="swiper-slide">
     <article
-        class="relative text-center overflow-hidden rounded-lg pb-0 shadow transition h-[400px] hover:shadow-lg dark:shadow-gray-700 md:pb-10">
+        class="relative text-center max-w-96 mx-auto overflow-hidden rounded-lg pb-0 shadow transition h-[400px] hover:shadow-lg dark:shadow-gray-700 md:pb-10">
         <a href="{{ route('posts.show', $troop->slug) }}">
             <x-image :model="$troop"
                      class="h-56 transition duration-300 ease-in-out hover:scale-105"/>

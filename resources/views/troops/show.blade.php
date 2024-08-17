@@ -39,7 +39,7 @@
         </div>
         <x-sidebar/>
     </div>
-    <h3 class="font-bold text-gray-500 dark:text-gray-300 text-2xl mt-10 mb-10">{{ __('Explore Other Troops') }}</h3>
+    <h3 class="font-bold text-gray-500 dark:text-gray-300 text-2xl my-10">{{ __('Explore Other Troops') }}</h3>
     <x-swiper>
         @foreach($troops as $troop)
 
