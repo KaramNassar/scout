@@ -8,4 +8,7 @@ use ShuvroRoy\FilamentSpatieLaravelHealth\Pages\HealthCheckResults as BaseHealth
 class HealthCheckResults extends BaseHealthCheckResultsAlias
 {
     use HasPageShield;
+
+    protected static ?int $navigationSort = 5;
+
 }

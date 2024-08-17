@@ -8,4 +8,7 @@ use ShuvroRoy\FilamentSpatieLaravelBackup\Pages\Backups as BaseBackups;
 class Backups extends BaseBackups
 {
     use HasPageShield;
+
+    protected static ?int $navigationSort = 5;
+
 }

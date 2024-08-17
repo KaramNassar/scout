@@ -8,7 +8,6 @@ use App\Filament\Resources\AdminResource\Pages\ListAdmins;
 use App\Models\Admin;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -27,7 +26,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Rmsramos\Activitylog\RelationManagers\ActivitylogRelationManager;
 
-use function __;
 use function filled;
 
 class AdminResource extends Resource
@@ -37,6 +35,10 @@ class AdminResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-user-plus';
 
     protected static ?string $navigationGroup = 'User Management';
+
+    protected static ?string $recordTitleAttribute = 'username';
+
+    protected static ?int $navigationSort = -2;
 
     public static function form(Form $form): Form
     {
@@ -97,16 +99,6 @@ class AdminResource extends Resource
                             ])
                             ->compact()
                             ->hidden(fn(string $operation): bool => $operation === 'edit'),
-                        Section::make()
-                            ->schema([
-                                Placeholder::make('created_at')
-                                    ->label(__('resource.general.created_at'))
-                                    ->content(fn(Admin $record): ?string => $record->created_at?->diffForHumans()),
-                                Placeholder::make('updated_at')
-                                    ->label(__('resource.general.updated_at'))
-                                    ->content(fn(Admin $record): ?string => $record->updated_at?->diffForHumans()),
-                            ])
-                            ->hidden(fn(string $operation): bool => $operation === 'create'),
                     ])
                     ->columnSpan(1),
             ])

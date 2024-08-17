@@ -9,6 +9,8 @@ use Rmsramos\Activitylog\Resources\ActivitylogResource as RmsramosActivitylogRes
 class ActivityLogResource extends RmsramosActivitylogResource implements HasShieldPermissions
 {
 
+    protected static ?int $navigationSort = 1;
+
     public static function getPermissionPrefixes(): array
     {
         return [
