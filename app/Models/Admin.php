@@ -63,10 +63,6 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // if ($panel->getId() === 'admin') {
-        //     return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
-        // }
-
         return true;
     }
 
@@ -75,7 +71,6 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
         return $this->avatar ? '/storage/'.$this->avatar : null;
     }
 
-    // Define an accessor for the 'name' attribute
     public function getNameAttribute(): string
     {
         return ucwords("{$this->firstname} {$this->lastname}");

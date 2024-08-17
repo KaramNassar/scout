@@ -77,20 +77,12 @@ class CategoryResource extends Resource
         ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            PostsRelationManager::class,
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
             'index'  => ListCategories::route('/'),
             'create' => CreateCategory::route('/create'),
             'edit'   => EditCategory::route('/{record}/edit'),
-            'view'   => ViewCategory::route('/{record}'),
         ];
     }
 

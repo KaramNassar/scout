@@ -79,7 +79,7 @@ class PostResource extends Resource
                                         new UniqueTranslation(
                                             'posts',
                                             'title',
-                                            $form->getLivewire()->otherLocaleData,
+                                            $form->getLivewire()->otherLocaleData ?? [],
                                             $form->getRecord()?->id
                                         )
                                     )
@@ -159,10 +159,26 @@ class PostResource extends Resource
                 Tables\Columns\TextColumn::make('published_at')
                     ->dateTime()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])->defaultSort('id', 'desc')
+            ])
+            ->defaultSort('id', 'desc')
             ->filters([
                 Tables\Filters\SelectFilter::make('user')
                     ->relationship('user', 'username')
+                    ->searchable()
+                    ->preload()
+                    ->multiple(),
+                Tables\Filters\SelectFilter::make('category')
+                    ->relationship('category', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->multiple(),
+                Tables\Filters\SelectFilter::make('troop')
+                    ->relationship('troop', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->multiple(),
+                Tables\Filters\SelectFilter::make('tags')
+                    ->relationship('tags', 'name')
                     ->searchable()
                     ->preload()
                     ->multiple(),
