@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use App\Models\Troop;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Component;
