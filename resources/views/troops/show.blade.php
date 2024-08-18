@@ -22,8 +22,7 @@
                                 <x-curator-glider :media="$troop->featuredImage"
                                                   class="rounded-xl"
                                                   quality="75"
-                                                  format="webp"
-                                                  loading="lazy"/>
+                                                  format="webp"/>
                             </a>
                         </div>
 

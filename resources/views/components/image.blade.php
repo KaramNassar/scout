@@ -17,9 +17,8 @@
         <x-curator-glider
             {{ $attributes->class(['object-cover']) }}
             :media="$model->featuredImage"
-            :width="600"
-            :height="450"
             format="webp"
+            quality="10"
             x-init="imageLoaded = true"
         />
     @endif
