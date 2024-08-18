@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::share('settings', GeneralSetting::first());
+        View::share('settings', GeneralSetting::first() ?? new GeneralSetting());
         Carbon::setLocale(config('app.locale'));
     }
 }

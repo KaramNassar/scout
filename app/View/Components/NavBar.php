@@ -10,7 +10,7 @@ class NavBar extends Component
 {
     public function render(): View
     {
-        $menu = Menu::whereLocation('header')->first();
+        $menu = Menu::whereLocation('header')->first() ?? new Menu();
 
         return view('components.nav-bar', ['menu' => $menu]);
     }

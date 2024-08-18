@@ -21,9 +21,18 @@ class MailConfigServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $defaultMailSettings = [
+            'default_email_provider' => '',
+            'smtp_host'              => '',
+            'smtp_port'              => '',
+            'smtp_encryption'        => '',
+            'smtp_timeout'           => '',
+            'smtp_username'          => '',
+            'smtp_password'          => '',
+        ];
         $settings = GeneralSetting::first(['email_settings', 'email_from_address', 'email_from_name']);
 
-        $mailSettings = $settings->email_settings;
+        $mailSettings = $settings?->email_settings ?? $defaultMailSettings;
 
         Config::set('mail.mailers.smtp', [
             'transport'  => $mailSettings['default_email_provider'],
@@ -35,7 +44,7 @@ class MailConfigServiceProvider extends ServiceProvider
             'password'   => $mailSettings['smtp_password'],
         ]);
 
-        Config::set('mail.from.address', $settings->email_from_address);
-        Config::set('mail.from.name', $settings->email_from_name);
+        Config::set('mail.from.address', $settings?->email_from_address ?? '');
+        Config::set('mail.from.name', $settings?->email_from_name ?? '');
     }
 }

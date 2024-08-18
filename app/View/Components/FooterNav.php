@@ -10,7 +10,7 @@ class FooterNav extends Component
 {
     public function render(): View
     {
-        $menu = Menu::whereLocation('footer')->first();
+        $menu = Menu::whereLocation('footer')->first() ?? new Menu();
 
         return view('components.footer-nav', ['menu' => $menu]);
     }
