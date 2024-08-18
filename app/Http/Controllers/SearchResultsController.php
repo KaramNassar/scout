@@ -24,7 +24,7 @@ class SearchResultsController extends Controller
 
         if ($search) {
             $troopsResults = Troop::query()
-                ->whereLike(DB::raw("lower(name->'$.$locale')"), "%".strtolower($search)."%")
+                ->whereLike(DB::raw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, '$.$locale')))"), "%".strtolower($search)."%")
                 ->get(['featured_image_id', 'name', 'description', 'slug']);
         }
 

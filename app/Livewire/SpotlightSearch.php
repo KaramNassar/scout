@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use App\Models\Troop;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -73,7 +74,7 @@ class SpotlightSearch extends Component
             $locale = app()->getLocale();
 
             $this->results['troops'] = Troop::query()
-                ->whereLike(DB::raw("lower(name->'$.$locale')"), "%".strtolower($search)."%")
+                ->whereLike(DB::raw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, '$.$locale')))"), "%".strtolower($search)."%")
                 ->take(2)
                 ->get(['featured_image_id', 'name', 'description', 'slug']);
 
