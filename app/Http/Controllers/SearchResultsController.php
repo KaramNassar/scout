@@ -32,21 +32,29 @@ class SearchResultsController extends Controller
         $postResults = Post::query()
             ->when($search, function (Builder $query, string $search) use ($locale) {
                 $query->where(function (Builder $query) use ($locale, $search) {
-                    $query->whereLike(DB::raw("lower(title->'$.$locale')"), "%".strtolower($search)."%")
-                        ->orWhereLike(DB::raw("lower(body->'$.$locale')"), "%".strtolower($search)."%");
+                    $query->where(
+                        DB::raw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.$locale')))"),
+                        'LIKE',
+                        "%".strtolower($search)."%"
+                    )
+                        ->orWhere(
+                            DB::raw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(body, '$.$locale')))"),
+                            'LIKE',
+                            "%".strtolower($search)."%"
+                        );
                 });
             })
-            ->when(($category && $category !== 'all'), function (Builder $query) use($category) {
+            ->when(($category && $category !== 'all'), function (Builder $query) use ($category) {
                 $query->whereHas('category', function (Builder $query) use ($category) {
                     $query->where('category_id', $category);
                 });
             })
-            ->when($tags, function (Builder $query) use($tags) {
+            ->when($tags, function (Builder $query) use ($tags) {
                 $query->whereHas('tags', function (Builder $query) use ($tags) {
                     $query->whereIn('tags.id', $tags);
                 });
             })
-            ->when(($troop && $troop !== 'all'), function (Builder $query) use($troop) {
+            ->when(($troop && $troop !== 'all'), function (Builder $query) use ($troop) {
                 $query->whereHas('troop', function (Builder $query) use ($troop) {
                     $query->where('troop_id', $troop);
                 });
@@ -63,7 +71,7 @@ class SearchResultsController extends Controller
             'category' => Category::find($category)?->name,
             'troop' => Troop::find($troop)?->name,
             'tags' => Tag::whereIn('id', $tags ?? [])?->pluck('name')->implode(', '),
-            'search'  => $search,
+            'search' => $search,
         ]);
     }
 }

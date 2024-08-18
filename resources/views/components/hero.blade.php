@@ -2,7 +2,7 @@
     class="relative"
 >
     <img
-        data-src="{{ asset('storage/hero-bg.jpg') }}"
+        data-src="{{ asset('hero-bg.webp') }}"
         alt="Background"
         class="absolute inset-0 w-full h-full object-cover lozad"
     />

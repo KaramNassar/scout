@@ -65,7 +65,7 @@ class SpotlightSearch extends Component
     {
         $this->results = [
             'troops' => collect(),
-            'posts' => collect(),
+            'posts'  => collect(),
         ];
 
         $search = trim($this->query);
@@ -79,9 +79,17 @@ class SpotlightSearch extends Component
 
 
             $this->results['posts'] = Post::query()
-                ->where(function ($query) use ($locale, $search) {
-                    $query->whereLike(DB::raw("lower(title->'$.$locale')"), "%".strtolower($search)."%")
-                        ->orWhereLike(DB::raw("lower(body->'$.$locale')"), "%".strtolower($search)."%");
+                ->where(function (Builder $query) use ($locale, $search) {
+                    $query->where(
+                        DB::raw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.$locale')))"),
+                        'LIKE',
+                        "%".strtolower($search)."%"
+                    )
+                        ->orWhere(
+                            DB::raw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(body, '$.$locale')))"),
+                            'LIKE',
+                            "%".strtolower($search)."%"
+                        );
                 })
                 ->where('status', 'published')
                 ->take(3)
