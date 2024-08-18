@@ -90,7 +90,11 @@ class Post extends Model
 
     public static function featuredPosts(): Collection
     {
-        return Post::whereIsFeatured(1)->take(6)->latest('published_at')->get();
+        return Post::whereIsFeatured(1)
+            ->without('tags')
+            ->take(6)
+            ->latest('published_at')
+            ->get();
     }
 
     public static function newsPosts(): Collection
@@ -107,6 +111,7 @@ class Post extends Model
     public static function activityPosts(): Collection
     {
         return Post::whereIsFeatured(0)
+            ->without('tags')
             ->whereRelation('category', function ($query) {
                 $query->whereIn('slug', ['camps', 'meetings']);
             })
@@ -135,16 +140,6 @@ class Post extends Model
         return $this->belongsTo(Admin::class, 'admin_id');
     }
 
-    public function isNotPublished(): bool
-    {
-        return !$this->isStatusPublished();
-    }
-
-    public function isStatusPublished(): bool
-    {
-        return $this->status === PostStatus::PUBLISHED;
-    }
-
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('status', PostStatus::PUBLISHED);
@@ -153,11 +148,6 @@ class Post extends Model
     public function scopePending(Builder $query)
     {
         return $query->where('status', PostStatus::PENDING)->latest('created_at');
-    }
-
-    public function formattedPublishedDate(): ?string
-    {
-        return $this->published_at?->format('d M Y');
     }
 
     public function relatedPosts($take = 3): Collection

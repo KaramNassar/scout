@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -20,16 +20,15 @@ class MenuItem extends Model
     use HasTranslations;
     use LogsActivity;
 
-    protected $with = ['children'];
-
     public array $translatable = [
         'name',
     ];
+    protected $with = ['children'];
     protected $fillable = ['menu_id', 'parent_id', 'name', 'type', 'value', 'url', 'order'];
 
-    public static function getParentItemsForMenu(int $menuId): MenuItem
+    public static function getParentItemsForMenu(int $menuId): Builder
     {
-        return self::where('menu_id', $menuId)
+        return static::where('menu_id', $menuId)
             ->whereNull('parent_id');
     }
 
@@ -67,7 +66,7 @@ class MenuItem extends Model
             $this->{$method}($value, $locale);
 
             $value = $this->attributes[$key];
-        } elseif($this->hasAttributeSetMutator($key)) { // handle new attribute mutator
+        } elseif ($this->hasAttributeSetMutator($key)) { // handle new attribute mutator
             $this->setAttributeMarkedMutatedAttributeValue($key, $value);
 
             $value = $this->attributes[$key];

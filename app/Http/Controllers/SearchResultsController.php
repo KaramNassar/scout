@@ -38,7 +38,7 @@ class SearchResultsController extends Controller
             })
             ->when(($category && $category !== 'all'), function (Builder $query) use($category) {
                 $query->whereHas('category', function (Builder $query) use ($category) {
-                    $query->where('category_id', '=', $category);
+                    $query->where('category_id', $category);
                 });
             })
             ->when($tags, function (Builder $query) use($tags) {
@@ -48,7 +48,7 @@ class SearchResultsController extends Controller
             })
             ->when(($troop && $troop !== 'all'), function (Builder $query) use($troop) {
                 $query->whereHas('troop', function (Builder $query) use ($troop) {
-                    $query->where('troop_id', '=', $troop);
+                    $query->where('troop_id', $troop);
                 });
             })
             ->published()
