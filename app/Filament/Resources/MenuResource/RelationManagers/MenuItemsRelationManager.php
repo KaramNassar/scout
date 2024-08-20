@@ -108,7 +108,7 @@ class MenuItemsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('name')->sortable(),
                 TextColumn::make('parent.name'),
-                TextColumn::make('type  '),
+                TextColumn::make('type'),
             ])
             ->reorderable('order')
             ->defaultSort('order')
