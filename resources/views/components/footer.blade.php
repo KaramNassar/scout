@@ -25,7 +25,8 @@
                         <p class="mb-7 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ __('contact form message') }}</p>
                         <x-round-button class="group mx-auto" link="{{ route('contact') }}">
                             {{ __('Contact us') }}
-                            <span class="rtl:rotate-180 transition duration-300 ease-in-out rtl:group-hover:-translate-x-1.5 group-hover:translate-x-1.5">
+                            <span
+                                class="rtl:rotate-180 transition duration-300 ease-in-out rtl:group-hover:-translate-x-1.5 group-hover:translate-x-1.5">
                                 &rarr;
                             </span>
                         </x-round-button>
@@ -39,9 +40,12 @@
                     class="text-sm text-gray-500">©{{ __(config('app.name')) }} {{ date('Y') }}, {{ __('All rights reserved') }}.</span>
                     <div class="mt-4 flex gap-1 sm:justify-center lg:mt-0">
                         @foreach($settings?->social_network ?? [] as $name => $link)
-                            <a href="{{ $link }}" target="_blank" class="transition duration-300 ease-in-out hover:scale-110">
-                                <x-dynamic-component :component="'svg.' . $name"/>
-                            </a>
+                            @if($link)
+                                <a href="{{ $link }}" target="_blank"
+                                   class="transition duration-300 ease-in-out hover:scale-110">
+                                    <x-dynamic-component :component="'svg.' . $name"/>
+                                </a>
+                            @endif
                         @endforeach
                     </div>
                 </div>
