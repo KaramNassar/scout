@@ -27,7 +27,7 @@ Route::group([
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
-    Route::get('/pages/{page:slug}', [PageController::class, 'show'])->name('page.show');
+    Route::get('/pages/{page:slug}', [PageController::class, 'show'])->name('pages.show');
 
     Route::get('/tags/{tag:slug}', TagController::class)->name('tags.show');
     Route::get('/categories/{postCategory:slug}', CategoryController::class)->name('categories.show');

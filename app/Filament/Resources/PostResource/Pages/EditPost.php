@@ -4,6 +4,7 @@ namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Enums\PostStatus;
 use App\Filament\Resources\PostResource;
+use App\Models\Post;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
@@ -16,6 +17,11 @@ class EditPost extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('Preview')->make('preview')
+                ->icon('heroicon-s-eye')
+                ->url(function (Post $record) {
+                    return route('posts.show', $record->slug);
+                }),
             Actions\DeleteAction::make(),
             Actions\LocaleSwitcher::make(),
         ];

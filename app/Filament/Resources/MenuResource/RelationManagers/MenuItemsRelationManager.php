@@ -54,6 +54,7 @@ class MenuItemsRelationManager extends RelationManager
                         'category'    => 'Category',
                     ])
                     ->reactive()
+                    ->required()
                     ->afterStateUpdated(fn($state, callable $set) => $set('url', null)),
                 Select::make('value')
                     ->options(function (callable $get) {
@@ -80,10 +81,10 @@ class MenuItemsRelationManager extends RelationManager
                         $menuId = $form->getLivewire()->ownerRecord->id;
                         $menuItemId = $form->getRecord()->id ?? 0;
                         if ($form->getLivewire()->ownerRecord->id) {
-                            return MenuItem::getParentItemsForMenu($menuId)->where('id', '!=', $menuItemId)->pluck(
-                                'name',
-                                'id'
-                            );
+                            return MenuItem::getParentItemsForMenu($menuId)
+                                ->where('id', '!=', $menuItemId)
+                                ->whereType('dropdown')
+                                ->pluck('name', 'id');
                         }
 
                         return [];
@@ -123,7 +124,7 @@ class MenuItemsRelationManager extends RelationManager
                         }
 
                         if ($data['type'] === 'page') {
-                            $data['url'] = route('page.show', $data['value']);
+                            $data['url'] = route('pages.show', $data['value']);
                         }
 
                         return $data;
@@ -138,7 +139,7 @@ class MenuItemsRelationManager extends RelationManager
                         }
 
                         if ($data['type'] === 'page') {
-                            $data['url'] = route('page.show', $data['value']);
+                            $data['url'] = route('pages.show', $data['value']);
                         }
 
                         return $data;

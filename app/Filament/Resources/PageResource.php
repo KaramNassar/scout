@@ -16,9 +16,8 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables;
 use Filament\Tables\Table;
 
 class PageResource extends Resource
@@ -91,8 +90,15 @@ class PageResource extends Resource
                 //
             ])
             ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\Action::make('preview')
+                        ->icon('heroicon-s-eye')
+                        ->url(function (Page $record) {
+                            return route('pages.show', $record->slug);
+                        }, true)
+                ]),
             ]);
     }
 
