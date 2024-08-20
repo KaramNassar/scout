@@ -2,13 +2,13 @@
         @click.away="mobileMenuIsOpen = false">
     <x-container>
         <section
-            class='flex flex-wrap items-center justify-between py-2'>
+            class='flex items-center justify-between py-2'>
 
             <a href="{{ route('home') }}" class="shrink-0">
-                <img src="{{ asset($settings->site_logo) }}" alt="logo" class='w-10'/>
+                <img src="{{ asset('storage/' . $settings->site_logo) }}" alt="logo" class='w-20'/>
             </a>
 
-            <div class='relative flex flex-wrap justify-center px-10 py-3'>
+            <div class='absolute lg:relative flex flex-wrap justify-center px-10 py-3'>
 
                 <div id="collapseMenu"
                      class='max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50'
