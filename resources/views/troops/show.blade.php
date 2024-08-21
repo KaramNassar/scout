@@ -33,6 +33,16 @@
 
                     </div>
 
+                    <div class="flex flex-wrap gap-1">
+                        @foreach(App\Models\Category::take(3)->get() as $category)
+                            <a href="{{ route('search-results') . '?troop=' . $troop->id . '&category=' . $category->id }}">
+                                <x-tag-span class="text-lg py-2 px-4">
+                                    {{ $category->name }}
+                                </x-tag-span>
+                            </a>
+                        @endforeach
+                    </div>
+
                 </article>
             </div>
         </div>
