@@ -10,7 +10,7 @@
          x-cloak
          class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-[1000] x-transition">
         <div
-            class="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-800">
+            class="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-600 dark:bg-gray-800 w-[310px]">
             <a :href="'{{ route('troops.show', '') }}/' + modalSlug">
                 <x-img x-bind:src="modalImage" x-bind:alt="modalTitle" class="h-72 w-full"/>
             </a>
