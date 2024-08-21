@@ -7,7 +7,7 @@
                     <div class="col-span-full lg:col-span-2 lg:mb-0">
                         <a href="{{ route('home') }}"
                            class="flex items-center justify-center gap-2 text-lg font-bold text-black dark:text-white sm:justify-start">
-                            <img src="{{ asset($settings->site_logo) }}"
+                            <img src="{{ asset('storage/' . $settings->site_logo) }}"
                                  alt="logo" width="50">
                             <h5 class="rtl:text-xl text-2xl text-gray-900 dark:text-gray-200">
                                 {{ __('Syrian Syriac Scout') }}
