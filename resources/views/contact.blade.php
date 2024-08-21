@@ -17,9 +17,11 @@
                 <h2 class="text-lg font-medium">{{ __('Follow Us On') }}:</h2>
                 <div class="mt-3 flex flex-wrap gap-1">
                     @foreach($settings->social_network as $name => $link)
-                        <a href="{{ $link }}" class="mb-2 transition duration-300 ease-in-out hover:scale-110">
-                            <x-dynamic-component :component="'svg.' . $name"/>
-                        </a>
+                        @if($link)
+                            <a href="{{ $link }}" class="mb-2 transition duration-300 ease-in-out hover:scale-110">
+                                <x-dynamic-component :component="'svg.' . $name"/>
+                            </a>
+                        @endif
                     @endforeach
                 </div>
             </div>
