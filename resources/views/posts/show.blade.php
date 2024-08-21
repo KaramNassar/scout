@@ -41,13 +41,19 @@
                         <x-gallery :images="$post->gallery"/>
                     @endif
                     <div class="flex flex-wrap gap-1">
+                        @if($post->troop)
+                            <a href="{{ route('search-results') . '?troop=' . $post->troop->id }}">
+                                <x-tag-span class="text-lg py-2 px-4">
+                                    {{ $post->troop->name }}
+                                </x-tag-span>
+                            </a>
+                        @endif
                         @foreach($post->tags as $tag)
                             <a href="{{ route('tags.show', $tag->slug) }}">
                                 <x-tag-span class="text-lg py-2 px-4">
                                     {{ $tag->name }}
                                 </x-tag-span>
                             </a>
-
                         @endforeach
                     </div>
 

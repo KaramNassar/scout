@@ -26,6 +26,17 @@
 
     <div class="w-full lg:grid lg:grid-cols-3 lg:gap-8">
         <div class="col-span-2 mb-16">
+            @if($troop)
+                <div class="flex flex-wrap gap-1 mb-10">
+                @foreach(App\Models\Category::whereNot('id', request('category'))->take(3)->get() as $category)
+                    <a href="{{ route('search-results') . '?troop=' . request('troop') . '&category=' . $category->id }}">
+                        <x-tag-span class="text-lg py-2 px-4">
+                            {{ $category->name }}
+                        </x-tag-span>
+                    </a>
+                @endforeach
+                </div>
+            @endif
             <ul class="grid gap-y-10 gap-x-6 mb-16">
                 @forelse($results as $result)
                     <li class="flex flex-col justify-center">
