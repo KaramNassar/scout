@@ -111,6 +111,23 @@ input:invalid, textarea:invalid, select:invalid {
     background: #555;
 }
 
-html[dir="rtl"] #lg-content-1 {
+#lg-container-1, #lg-inner-2 {
     direction: ltr;
 }
+
+//#lightGallery-action {
+//    direction: ltr;
+//}
+//#lightGallery-Gallery .thumb_cont {
+//    direction: ltr;
+//}
+
+//html[dir="rtl"] .lg-outer .lg-item.lg-complete.lg-zoomable .lg-image.reset-transition,
+//.lg-outer .lg-item.lg-complete.lg-zoomable .lg-dummy-img.reset-transition {
+//    left: auto !important;
+//    right: -50% !important;
+//}
+//
+//#lg-backdrop-1{
+//    direction: ltr;
+//}
