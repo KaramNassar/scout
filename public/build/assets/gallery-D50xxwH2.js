@@ -1,4 +1,4 @@
-import{l as c,Z as d}from"./lg-zoom.es5-CdnCY3dc.js";/*!
+import{l as c,Z as d}from"./lg-zoom.es5-Cn5n3zU-.js";/*!
  * lightgallery | 2.7.2 | September 20th 2023
  * http://www.lightgalleryjs.com/
  * Copyright (c) 2020 Sachin Neravath;

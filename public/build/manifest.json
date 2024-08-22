@@ -1,7 +1,21 @@
 {
-  "_lg-zoom.es5-CdnCY3dc.js": {
-    "file": "assets/lg-zoom.es5-CdnCY3dc.js",
-    "name": "lg-zoom.es5"
+  "_lg-zoom.es5-!~{006}~.js": {
+    "file": "assets/lg-zoom-BpGdt6Mz.css",
+    "src": "_lg-zoom.es5-!~{006}~.js"
+  },
+  "_lg-zoom.es5-Cn5n3zU-.js": {
+    "file": "assets/lg-zoom.es5-Cn5n3zU-.js",
+    "name": "lg-zoom.es5",
+    "css": [
+      "assets/lg-zoom-BpGdt6Mz.css"
+    ],
+    "assets": [
+      "assets/lg-C7ze34MH.woff2",
+      "assets/lg-oyjwlqP2.ttf",
+      "assets/lg-CosQH4Cu.woff",
+      "assets/lg-B0dIV2BS.svg",
+      "assets/loading-BZOHaeKn.gif"
+    ]
   },
   "node_modules/lightgallery/fonts/lg.svg": {
     "file": "assets/lg-B0dIV2BS.svg",
@@ -35,31 +49,21 @@
     "isEntry": true
   },
   "resources/js/light-gallery/gallery.js": {
-    "file": "assets/gallery-DAk9LAof.js",
+    "file": "assets/gallery-D50xxwH2.js",
     "name": "gallery",
     "src": "resources/js/light-gallery/gallery.js",
     "isEntry": true,
     "imports": [
-      "_lg-zoom.es5-CdnCY3dc.js"
-    ],
-    "css": [
-      "assets/gallery-BpGdt6Mz.css"
-    ],
-    "assets": [
-      "assets/lg-C7ze34MH.woff2",
-      "assets/lg-oyjwlqP2.ttf",
-      "assets/lg-CosQH4Cu.woff",
-      "assets/lg-B0dIV2BS.svg",
-      "assets/loading-BZOHaeKn.gif"
+      "_lg-zoom.es5-Cn5n3zU-.js"
     ]
   },
   "resources/js/light-gallery/single-photo.js": {
-    "file": "assets/single-photo-BneTeviB.js",
+    "file": "assets/single-photo-CYHU2XMk.js",
     "name": "single-photo",
     "src": "resources/js/light-gallery/single-photo.js",
     "isEntry": true,
     "imports": [
-      "_lg-zoom.es5-CdnCY3dc.js"
+      "_lg-zoom.es5-Cn5n3zU-.js"
     ]
   },
   "resources/sass/app.scss": {
