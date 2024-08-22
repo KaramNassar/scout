@@ -9,6 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('general_settings', function (Blueprint $table) {
+            $table->string('hero_image')->nullable()->after('site_description');
             $table->string('site_logo')->nullable()->after('site_description');
             $table->string('site_favicon')->nullable()->after('site_logo');
         });
@@ -20,6 +21,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('general_settings', function (Blueprint $table) {
+            $table->dropColumn('hero_image');
             $table->dropColumn('site_logo');
             $table->dropColumn('site_favicon');
         });
