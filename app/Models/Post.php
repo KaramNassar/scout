@@ -155,6 +155,7 @@ class Post extends Model
         return $this->whereHas('category', function (Builder $query){
             $query->where('category_id', $this->category->id);
         })
+            ->whereNot('id', $this->id)
             ->published()
             ->take($take)
             ->get();

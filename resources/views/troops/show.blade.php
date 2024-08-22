@@ -16,9 +16,8 @@
                 class="mx-auto px-1.5 md:max-w-3xl">
                 <article class="dark:bg-gray-800 rounded-md">
                     @if($troop->featuredImage)
-
                         <div id="singlePhoto" class="mb-10">
-                            <a class="item" href="{{  $troop->featuredImage->url }}">
+                            <a class="item" href="{{ $troop->featuredImage->url }}">
                                 <x-curator-glider :media="$troop->featuredImage"
                                                   class="rounded-xl"
                                                   quality="75"

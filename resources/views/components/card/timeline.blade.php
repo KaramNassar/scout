@@ -1,5 +1,5 @@
 @props(['troop'])
-<div class="relative pb-16 pl-8 group space-y-2 w-[400px] sm:pl-32">
+<div class="relative pb-16 pl-8 group space-y-2 w-[350px] sm:w-auto sm:max-w-[600px] sm:pl-32">
     <div
         class="mb-1 text-lg font-medium text-main-light dark:text-main-dark sm:mb-0 sm:text-xl">{{ $troop->name }}</div>
     <div
