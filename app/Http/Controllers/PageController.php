@@ -15,7 +15,7 @@ class PageController extends Controller
             'storage/'.GeneralSetting::first()->hero_image
         );
         \seo()
-            ->title(__('Syrian Syrian Scout').': '.$page->title, '')
+            ->title(__('Syrian Syriac Scout').': '.$page->title, '')
             ->description(Str::of($page->content)->substr(0, 155)->stripTags() . '...', '')
             ->images($image);
 

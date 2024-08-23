@@ -11,8 +11,8 @@
     $title = $title ?: __('All News');
 
      \seo()
-            ->title(__('Syrian Syrian Scout') . ': ' . $title, '')
-            ->description(__('Syrian Syrian Scout') . ': ' . $title, '')
+            ->title(__('Syrian Syriac Scout') . ': ' . $title, '')
+            ->description(__('Syrian Syriac Scout') . ': ' . $title, '')
             ->images(
                 asset('storage/' . GeneralSetting::first()->hero_image)
             );

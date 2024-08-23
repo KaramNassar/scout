@@ -15,8 +15,8 @@ class PostController extends Controller
         $pageTitle = "All News";
 
         \seo()
-            ->title(__('Syrian Syrian Scout') . ': ' . $pageTitle, '')
-            ->description(__('Syrian Syrian Scout') . ': ' . $pageTitle, '')
+            ->title(__('Syrian Syriac Scout') . ': ' . $pageTitle, '')
+            ->description(__('Syrian Syriac Scout') . ': ' . $pageTitle, '')
             ->images(
                 asset('storage/' . GeneralSetting::first()->hero_image)
             );
@@ -35,7 +35,7 @@ class PostController extends Controller
             'storage/'.GeneralSetting::first()->hero_image
         );
         \seo()
-            ->title(__('Syrian Syrian Scout').': '.$post->title, '')
+            ->title($post->title, '')
             ->description(Str::of($post->body)->substr(0, 155)->stripTags() . '...', '')
             ->images($image);
 

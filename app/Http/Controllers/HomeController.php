@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function __invoke()
     {
         \seo()
-            ->title(__('Syrian Syrian Scout'), '')
+            ->title(__('Syrian Syriac Scout'), '')
             ->description(__('hero-description'))
             ->images(
                 asset('storage/' . GeneralSetting::first()->hero_image)

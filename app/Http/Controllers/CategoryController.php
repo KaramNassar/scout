@@ -14,8 +14,8 @@ class CategoryController extends Controller
         $pageTitle = $postCategory->name;
 
         \seo()
-            ->title(__('Syrian Syrian Scout') . ': ' . $pageTitle, '')
-            ->description(__('Syrian Syrian Scout') . ': ' . $pageTitle, '')
+            ->title(__('Syrian Syriac Scout') . ': ' . $pageTitle, '')
+            ->description(__('Syrian Syriac Scout') . ': ' . $pageTitle, '')
             ->images(
                 asset('storage/' . GeneralSetting::first()->hero_image)
             );

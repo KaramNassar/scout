@@ -3,8 +3,8 @@
 
 @php
     \seo()
-           ->title(__('Syrian Syrian Scout') . ': ' . __('contact'), '')
-           ->description(__('Syrian Syrian Scout') . ': ' . __('contact'), '')
+           ->title(__('Syrian Syriac Scout') . ': ' . __('contact'), '')
+           ->description(__('Syrian Syriac Scout') . ': ' . __('contact'), '')
            ->images(
                asset('storage/' . GeneralSetting::first()->hero_image)
            );
