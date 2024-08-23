@@ -13,7 +13,7 @@ class TagController extends Controller
 
         $pageTitle = $tag->name;
 
-        seo()
+        \seo()
             ->title(__('Syrian Syrian Scout') . ': ' . $pageTitle, '')
             ->description(__('Syrian Syrian Scout') . ': ' . $pageTitle, '')
             ->images(

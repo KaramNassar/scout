@@ -13,7 +13,7 @@ class PostController extends Controller
 
         $pageTitle = "All News";
 
-        seo()
+        \seo()
             ->title(__('Syrian Syrian Scout') . ': ' . $pageTitle, '')
             ->description(__('Syrian Syrian Scout') . ': ' . $pageTitle, '')
             ->images(
@@ -33,7 +33,7 @@ class PostController extends Controller
         $image = isset($post->featuredImage) ? asset('storage/'.$post->featuredImage->url) : asset(
             'storage/'.GeneralSetting::first()->hero_image
         );
-        seo()
+        \seo()
             ->title(__('Syrian Syrian Scout').': '.$post->title, '')
             ->description(strip_tags(substr($post->body, 0, 156)).'...', '')
             ->images($image);

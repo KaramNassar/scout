@@ -11,7 +11,7 @@ class TroopController extends Controller
     {
         $troops = Troop::all();
 
-        seo()
+        \seo()
             ->title(__('Syrian Syrian Scout') . ': ' . __('Troops'), '')
             ->description(__('Syrian Syrian Scout') . ': ' . __('Troops'), '')
             ->images(
@@ -33,7 +33,7 @@ class TroopController extends Controller
             'storage/'.GeneralSetting::first()->hero_image
         );
 
-        seo()
+        \seo()
             ->title(__('Syrian Syrian Scout').': '.$troop->title, '')
             ->description(strip_tags(substr($troop->description, 0, 156)).'...', '')
             ->images($image);

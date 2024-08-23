@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        seo()
+        \seo()
             ->title(__('Syrian Syrian Scout'), '')
             ->description(__('hero-description'))
             ->images(

@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @php
-    seo()
+    \seo()
            ->title(__('Syrian Syrian Scout') . ': ' . __('contact'), '')
            ->description(__('Syrian Syrian Scout') . ': ' . __('contact'), '')
            ->images(

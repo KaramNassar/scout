@@ -10,7 +10,7 @@
 
     $title = $title ?: __('All News');
 
-     seo()
+     \seo()
             ->title(__('Syrian Syrian Scout') . ': ' . $title, '')
             ->description(__('Syrian Syrian Scout') . ': ' . $title, '')
             ->images(

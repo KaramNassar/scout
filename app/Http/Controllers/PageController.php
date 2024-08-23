@@ -13,7 +13,7 @@ class PageController extends Controller
         $image = isset($page->featuredImage) ? asset('storage/'.$page->featuredImage->url) : asset(
             'storage/'.GeneralSetting::first()->hero_image
         );
-        seo()
+        \seo()
             ->title(__('Syrian Syrian Scout').': '.$page->title, '')
             ->description(strip_tags(substr($page->content, 0, 156)).'...', '')
             ->images($image);
