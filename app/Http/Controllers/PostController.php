@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 
 class PostController extends Controller
@@ -35,7 +36,7 @@ class PostController extends Controller
         );
         \seo()
             ->title(__('Syrian Syrian Scout').': '.$post->title, '')
-            ->description(strip_tags(substr($post->body, 0, 156)).'...', '')
+            ->description(Str::of($post->body)->substr(0, 155)->stripTags() . '...', '')
             ->images($image);
 
         return view('posts.show', [

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use Illuminate\Support\Str;
 use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 
 class PageController extends Controller
@@ -15,7 +16,7 @@ class PageController extends Controller
         );
         \seo()
             ->title(__('Syrian Syrian Scout').': '.$page->title, '')
-            ->description(strip_tags(substr($page->content, 0, 156)).'...', '')
+            ->description(Str::of($page->content)->substr(0, 155)->stripTags() . '...', '')
             ->images($image);
 
         return view('pages.show', ['page' => $page]);
