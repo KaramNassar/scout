@@ -1,5 +1,14 @@
+@php use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting; @endphp
 @extends('layouts.app')
 
+@php
+    seo()
+           ->title(__('Syrian Syrian Scout') . ': ' . __('contact'), '')
+           ->description(__('Syrian Syrian Scout') . ': ' . __('contact'), '')
+           ->images(
+               asset('storage/' . GeneralSetting::first()->hero_image)
+           );
+@endphp
 @section('header')
     <x-page-header :title="__('Contact us')"/>
 @endsection

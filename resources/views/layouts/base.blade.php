@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @yield('seo')
+    @metadata
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('storage/' . $settings->site_favicon) }}">
 

@@ -1,3 +1,4 @@
+@php use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting; @endphp
 @extends('layouts.app')
 
 @php
@@ -9,14 +10,13 @@
 
     $title = $title ?: __('All News');
 
-    $page = new \App\Models\Page();
-    $page->title = strip_tags($title);
-    $page->content =  strip_tags($title);
+     seo()
+            ->title(__('Syrian Syrian Scout') . ': ' . $title, '')
+            ->description(__('Syrian Syrian Scout') . ': ' . $title, '')
+            ->images(
+                asset('storage/' . GeneralSetting::first()->hero_image)
+            );
 @endphp
-
-@section('seo')
-    <x-seo :page="$page"/>
-@endsection
 
 @section('header')
     <x-page-header :title="$title" class="{{ $title !== __('All News') ? 'text-start' : '' }}"/>
