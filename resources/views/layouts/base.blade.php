@@ -18,7 +18,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {!! $settings->more_configs['header_code'] !!}
+    {!! $settings->more_configs['header_code'] ?? '' !!}
 </head>
 
 <body class="dark:bg-gray-800 font-roboto rtl:font-cairo">
@@ -26,7 +26,7 @@
 
 @stack('scripts')
 
-{!! $settings->more_configs['footer_code'] !!}
+{!! $settings->more_configs['footer_code'] ?? '' !!}
 
 </body>
 </html>
