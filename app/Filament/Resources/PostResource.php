@@ -7,6 +7,7 @@ use App\Enums\PostStatus;
 use App\Filament\Resources\PostResource\Pages\CreatePost;
 use App\Filament\Resources\PostResource\Pages\EditPost;
 use App\Filament\Resources\PostResource\Pages\ListPosts;
+use App\Filament\Resources\PostResource\Pages\ViewPost;
 use App\Filament\Resources\PostResource\Widgets\PostsChart;
 use App\Models\Category;
 use App\Models\Post;
@@ -14,6 +15,7 @@ use App\Models\Tag;
 use App\Rules\UniqueTranslation;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -27,9 +29,10 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 
-class PostResource extends Resource
+class PostResource extends Resource implements HasShieldPermissions
 {
     use Translatable;
 
@@ -44,11 +47,6 @@ class PostResource extends Resource
     protected static ?int $navigationSort = 3;
 
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
-    public static function getNavigationBadge(): ?string
-    {
-        return Post::count();
-    }
 
     public static function form(Form $form): Form
     {
@@ -108,6 +106,7 @@ class PostResource extends Resource
                                     ->directory(function (Get $get) {
                                         return ('media/'.$get('title'));
                                     })
+                                    ->hideButtonsOn('view')
                                     ->columnSpanFull(),
                             ])->columns(1),
 
@@ -117,6 +116,7 @@ class PostResource extends Resource
                                     ->relationship('gallery', 'id')
                                     ->label('')
                                     ->multiple()
+                                    ->hideButtonsOn('view')
                                     ->directory(function (Get $get) {
                                         return ('media/'.$get('title'));
                                     }),
@@ -124,13 +124,41 @@ class PostResource extends Resource
 
                         Fieldset::make('Status')
                             ->schema([
-
                                 ToggleButtons::make('status')
                                     ->live()
                                     ->inline()
-                                    ->options(PostStatus::class)
+                                    ->options(function ($context) {
+                                        $options = [
+                                            PostStatus::PENDING->value => PostStatus::PENDING->getLabel(),
+                                            PostStatus::DRAFT->value   => PostStatus::DRAFT->getLabel(),
+                                        ];
+
+
+                                        if (auth()->user()->hasPermissionTo('publish_post') || $context === 'view' ) {
+                                            $options[PostStatus::PUBLISHED->value] = PostStatus::PUBLISHED->getLabel();
+                                        }
+
+                                        return $options;
+                                    })
+                                    ->colors([
+                                        'draft'     => 'info',
+                                        'pending'   => 'warning',
+                                        'published' => 'success',
+                                    ])
+                                    ->icons([
+                                        'draft'     => 'heroicon-o-pencil',
+                                        'pending'   => 'heroicon-o-clock',
+                                        'published' => 'heroicon-o-check-circle',
+                                    ])
+                                    ->label('Choose Status')
                                     ->required(),
-                            ]),
+                            ])->disabled(function (?Post $record) {
+                                if ($record) {
+                                    return (!auth()->user()->hasRole('super_admin') && $record->status != PostStatus::DRAFT);
+                                }
+
+                                return false;
+                            }),
                         Fieldset::make('Featured Post')
                             ->schema([
                                 Toggle::make('is_featured')
@@ -185,15 +213,31 @@ class PostResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
-                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\EditAction::make()
+                        ->color('primary'),
+                    Tables\Actions\ViewAction::make()
+                        ->color('success'),
                     Tables\Actions\DeleteAction::make(),
                     Tables\Actions\Action::make('preview')
-                        ->icon('heroicon-s-eye')
+                        ->icon('heroicon-o-eye')
+                        ->color('info')
                         ->url(function (Post $record) {
-                        return route('posts.show', $record->slug);
-                    }, true)
+                            return route('posts.show', $record->slug);
+                        }, true)
                 ]),
-            ]);
+            ])
+            ->modifyQueryUsing(fn(Builder $query) => static::applyRoleFilter($query));
+    }
+
+    protected static function applyRoleFilter(Builder $query): Builder
+    {
+        $user = auth()->user();
+
+        if ($user->hasPermissionTo('publish_post')) {
+            return $query;
+        }
+
+        return $query->where('admin_id', $user->id);
     }
 
     public static function getWidgets(): array
@@ -208,7 +252,22 @@ class PostResource extends Resource
         return [
             'index'  => ListPosts::route('/'),
             'create' => CreatePost::route('/create'),
+            'view'   => ViewPost::route('/{record}'),
             'edit'   => EditPost::route('/{record}/edit'),
         ];
     }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
+            'publish'
+        ];
+    }
+
 }

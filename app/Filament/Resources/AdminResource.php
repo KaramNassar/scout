@@ -24,6 +24,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Password;
 use Rmsramos\Activitylog\RelationManagers\ActivitylogRelationManager;
 
 use function filled;
@@ -99,6 +100,20 @@ class AdminResource extends Resource
                             ])
                             ->compact()
                             ->hidden(fn(string $operation): bool => $operation === 'edit'),
+
+                        Section::make('User New Password')
+                            ->schema([
+                                TextInput::make('new_password')
+                                    ->nullable()
+                                    ->password()
+                                    ->rule(Password::default()),
+                                TextInput::make('new_password_confirmation')
+                                    ->password()
+                                    ->same('new_password')
+                                    ->requiredWith('new_password'),
+                            ])
+                            ->visibleOn('edit')
+                            ->maxWidth('2xl'),
                     ])
                     ->columnSpan(1),
             ])

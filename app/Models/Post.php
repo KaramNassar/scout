@@ -125,6 +125,17 @@ class Post extends Model
         return static::latest()->get(['slug', 'updated_at', 'created_at']);
     }
 
+    public static function userPublishedPosts()
+    {
+        return Post::where('status', PostStatus::PUBLISHED)
+            ->where(function (Builder $query) {
+                if (!auth()->user()->hasPermissionTo('publish_post')) {
+                    $query->where('admin_id', auth()->id());
+                }
+            })
+            ->latest('created_at');
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -135,11 +146,6 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(Admin::class, 'admin_id');
-    }
-
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('status', PostStatus::PUBLISHED);
@@ -147,12 +153,30 @@ class Post extends Model
 
     public function scopePending(Builder $query)
     {
-        return $query->where('status', PostStatus::PENDING)->latest('created_at');
+        return $query->where('status', PostStatus::PENDING)
+            ->where(function (Builder $query) {
+                if (!auth()->user()->hasPermissionTo('publish_post')) {
+                    $query->where('admin_id', auth()->id());
+                }
+            })
+            ->latest('created_at');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
+
+    public function scopeDraft(Builder $query)
+    {
+        return $query->where('status', PostStatus::DRAFT)
+            ->where('admin_id', auth()->id())
+            ->latest('created_at');
     }
 
     public function relatedPosts($take = 3): Collection
     {
-        return $this->whereHas('category', function (Builder $query){
+        return $this->whereHas('category', function (Builder $query) {
             $query->where('category_id', $this->category->id);
         })
             ->whereNot('id', $this->id)
@@ -195,5 +219,15 @@ class Post extends Model
     public function getSitemapItemUrl(): string
     {
         return url('/locale/posts/'.$this->slug);
+    }
+
+    public function isDraft(): bool
+    {
+        return $this->status === PostStatus::DRAFT;
+    }
+
+    public function isPending(): bool
+    {
+        return $this->status === PostStatus::PENDING;
     }
 }

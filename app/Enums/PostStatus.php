@@ -10,20 +10,23 @@ enum PostStatus: string implements HasColor, HasIcon, HasLabel
 {
     case PENDING = 'pending';
     case PUBLISHED = 'published';
+    case DRAFT = 'draft';
 
     public function getColor(): string
     {
         return match ($this) {
             self::PENDING => 'info',
-            self::PUBLISHED => 'success'
+            self::PUBLISHED => 'success',
+            self::DRAFT => 'danger'
         };
     }
 
     public function getLabel(): string
     {
         return match ($this) {
-            self::PENDING => 'Pending',
-            self::PUBLISHED => 'Published'
+            self::PENDING => 'Ready to publish',
+            self::PUBLISHED => 'Published',
+            self::DRAFT => 'Draft'
         };
     }
 
@@ -32,6 +35,7 @@ enum PostStatus: string implements HasColor, HasIcon, HasLabel
         return match ($this) {
             self::PENDING => 'heroicon-o-clock',
             self::PUBLISHED => 'heroicon-o-check-badge',
+            self::DRAFT => 'heroicon-o-document-text',
         };
     }
 }

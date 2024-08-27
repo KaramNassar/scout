@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar, HasName
@@ -21,6 +22,8 @@ class Admin extends Authenticatable implements FilamentUser, MustVerifyEmail, Ha
     use Notifiable;
     use SoftDeletes;
     use LogsActivity;
+    use Notifiable;
+    use HasPermissions;
 
     /**
      * The attributes that are mass assignable.

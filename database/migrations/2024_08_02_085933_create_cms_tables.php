@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->string('title', 500)->index();
             $table->string('slug')->nullable()->unique();
             $table->longText('body');
-            $table->enum('status', ['published', 'scheduled', 'pending'])->default('pending');
+            $table->enum('status', ['published', 'draft', 'pending'])->default('draft');
             $table->dateTime('published_at')->nullable();
             $table->dateTime('scheduled_for')->nullable();
             $table->string('featured_image_id')->nullable();

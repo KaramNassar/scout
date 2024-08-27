@@ -5,13 +5,14 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\MenuResource\Pages;
 use App\Filament\Resources\MenuResource\RelationManagers\MenuItemsRelationManager;
 use App\Models\Menu;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class MenuResource extends Resource
+class MenuResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Menu::class;
 
@@ -59,6 +60,18 @@ class MenuResource extends Resource
             'create' => Pages\CreateMenu::route('/create'),
             'edit'   => Pages\EditMenu::route('/{record}/edit'),
             'view'   => Pages\ViewMenu::route('/{record}'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
         ];
     }
 }

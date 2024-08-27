@@ -10,6 +10,7 @@ use App\Models\Page;
 use App\Rules\UniqueTranslation;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -20,7 +21,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class PageResource extends Resource
+class PageResource extends Resource implements HasShieldPermissions
 {
     use Translatable;
 
@@ -108,6 +109,18 @@ class PageResource extends Resource
             'index'  => ListPages::route('/'),
             'create' => CreatePage::route('/create'),
             'edit'   => EditPage::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
         ];
     }
 }

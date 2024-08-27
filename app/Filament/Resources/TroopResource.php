@@ -8,6 +8,7 @@ use App\Filament\Resources\TroopResource\Pages\EditTroop;
 use App\Filament\Resources\TroopResource\Pages\ListTroops;
 use App\Models\Troop;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
@@ -25,7 +26,7 @@ use Illuminate\Support\Str;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput as TextInputWithCounter;
 
 
-class TroopResource extends Resource
+class TroopResource extends Resource implements HasShieldPermissions
 {
     use Translatable;
 
@@ -108,6 +109,18 @@ class TroopResource extends Resource
             'index'  => ListTroops::route('/'),
             'create' => CreateTroop::route('/create'),
             'edit'   => EditTroop::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
         ];
     }
 }

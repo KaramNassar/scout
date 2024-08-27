@@ -32,7 +32,6 @@ class ListPosts extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All'),
             'published' => Tab::make('Published')
                 ->modifyQueryUsing(function ($query) {
                     $query->published();
@@ -42,6 +41,11 @@ class ListPosts extends ListRecords
                     $query->pending();
                 })
                 ->icon('heroicon-o-clock'),
+            'draft' => Tab::make('Draft')
+                ->modifyQueryUsing(function ($query) {
+                    $query->draft();
+                })
+                ->icon('heroicon-o-pencil'),
         ];
     }
 }

@@ -6,6 +6,7 @@ use App\Filament\Resources\TagResource\Pages\CreateTag;
 use App\Filament\Resources\TagResource\Pages\EditTag;
 use App\Filament\Resources\TagResource\Pages\ListTags;
 use App\Models\Tag;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
@@ -14,7 +15,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class TagResource extends Resource
+class TagResource extends Resource implements HasShieldPermissions
 {
     use Translatable;
 
@@ -73,6 +74,18 @@ class TagResource extends Resource
             'index'  => ListTags::route('/'),
             'create' => CreateTag::route('/create'),
             'edit'   => EditTag::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
         ];
     }
 }
