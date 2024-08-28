@@ -194,6 +194,9 @@ class PostResource extends Resource implements HasShieldPermissions
                     ->relationship('user', 'username')
                     ->searchable()
                     ->preload()
+                    ->visible(function () {
+                        return auth()->user()->hasRole('super_admin');
+                    })
                     ->multiple(),
                 Tables\Filters\SelectFilter::make('category')
                     ->relationship('category', 'name')
