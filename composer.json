@@ -23,6 +23,7 @@
         "livewire/livewire": "^3.5",
         "mcamara/laravel-localization": "^2.0",
         "rmsramos/activitylog": "^1.0",
+        "ryangjchandler/laravel-cloudflare-turnstile": "^1.1",
         "schmeits/filament-character-counter": "^1.2",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2",
         "shuvroroy/filament-spatie-laravel-health": "^2.0",

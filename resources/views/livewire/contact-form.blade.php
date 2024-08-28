@@ -73,8 +73,8 @@
             @error('message') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div>
-            <x-turnstile-widget theme="light" language="en-US"/>
-            @error('cf-turnstile-response')
+            <x-turnstile wire:model="turnstile" data-theme="light" />
+            @error('turnstile')
             <p class="error">{{ $message }}</p>
             @enderror
         </div>

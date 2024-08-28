@@ -3,8 +3,8 @@
 namespace App\Livewire;
 
 use App\Mail\ContactMail;
-use Coderflex\LaravelTurnstile\Facades\LaravelTurnstile;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
 use Livewire\Component;
@@ -16,9 +16,9 @@ class ContactForm extends Component
     public $email;
     public $subject;
     public $message;
+    public $turnstile;
     public $success = false;
     public $fail = false;
-    public $turnstile = false;
 
     protected $rules = [
         'name'    => 'required|string|max:255',
@@ -29,23 +29,20 @@ class ContactForm extends Component
 
     public function submit(): void
     {
+        $this->validate([
+            'turnstile' => ['required', Rule::turnstile()],
+        ]);
+
         $details = $this->validate();
 
-        $response = LaravelTurnstile::validate();
+        try {
+            Mail::to(GeneralSetting::value('support_email'))
+                ->send(new ContactMail($details));
 
-        if ($response['success']) {
-            try {
-                Mail::to(GeneralSetting::value('support_email'))
-                    ->send(new ContactMail($details));
-
-                $this->reset(['name', 'email', 'subject', 'message']);
-                $this->success = true;
-                $this->fail = false;
-            } catch (Throwable) {
-                $this->fail = true;
-                $this->success = false;
-            }
-        }else{
+            $this->reset(['name', 'email', 'subject', 'message']);
+            $this->success = true;
+            $this->fail = false;
+        } catch (Throwable) {
             $this->fail = true;
             $this->success = false;
         }
