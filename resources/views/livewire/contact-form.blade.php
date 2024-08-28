@@ -72,6 +72,13 @@
                       class="w-full rounded-md px-4 border text-sm pt-2.5 outline-main-light dark:outline-main-dark dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300"></textarea>
             @error('message') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
+        <div>
+            <x-turnstile-widget theme="light" language="en-US"/>
+            @error('cf-turnstile-response')
+            <p class="error">{{ $message }}</p>
+            @enderror
+        </div>
+
         <button type='submit'
                 class="text-white bg-main-light dark:bg-main-dark hover:bg-secondary-light dark:hover:bg-secondary-dark font-semibold rounded-md text-sm px-4 py-2.5 w-full">
             {{ __('Send') }}

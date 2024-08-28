@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\Login;
 use App\Filament\Pages\Backups;
 use App\Filament\Pages\HealthCheckResults;
 use App\Livewire\CustomProfile;
@@ -41,7 +42,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(Login::class)
             ->databaseNotifications()
             ->sidebarCollapsibleOnDesktop()
             ->colors([
