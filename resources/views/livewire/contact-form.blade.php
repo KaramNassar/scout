@@ -74,9 +74,7 @@
         </div>
         <div>
             <x-turnstile wire:model="turnstile" data-theme="light" />
-            @error('turnstile')
-            <p class="error">{{ $message }}</p>
-            @enderror
+            @error('turnstile') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <button type='submit'

@@ -42,6 +42,7 @@ class ContactForm extends Component
             $this->reset(['name', 'email', 'subject', 'message']);
             $this->success = true;
             $this->fail = false;
+            $this->resetParameters();
         } catch (Throwable) {
             $this->fail = true;
             $this->success = false;
@@ -51,5 +52,13 @@ class ContactForm extends Component
     public function render(): View
     {
         return view('livewire.contact-form');
+    }
+
+    private function resetParameters(): void
+    {
+        $this->name = '';
+        $this->email = '';
+        $this->subject = '';
+        $this->message = '';
     }
 }
