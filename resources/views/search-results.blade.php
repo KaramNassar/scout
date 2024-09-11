@@ -6,7 +6,7 @@
     $category = $category ? (__('Category') . ': <span class="text-main-light dark:text-main-dark">' . $category . '</span><br>') : '';
     $troop = $troop ? (__('Troop') . ': <span class="text-main-light dark:text-main-dark">' . $troop . '</span><br>') : '';
     $tags = $tags ? (__('Tags') . ': <span class="text-main-light dark:text-main-dark">' . $tags . '</span>') : '';
-    $title = $search . $category . $troop . $tags;
+    $title = strip_tags($search . $category . $troop . $tags);
 
     $title = $title ?: __('All News');
 
@@ -14,7 +14,7 @@
             ->title(__('Syrian Syriac Scout') . ': ' . $title, '')
             ->description(__('Syrian Syriac Scout') . ': ' . $title, '')
             ->images(
-                asset('storage/' . GeneralSetting::first()->hero_image)
+                asset('storage/' . GeneralSetting::first()?->hero_image)
             );
 @endphp
 
