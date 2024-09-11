@@ -62,7 +62,7 @@
 
     <x-sidebar-section :title="__('Follow us')">
         <div class="overflow-hidden">
-            @foreach($settings->social_network as $name => $link)
+            @foreach($settings?->social_network ?? [] as $name => $link)
                 @if($link)
                     <x-social-link :name="$name" :link="$link"/>
                     <hr class="w-full border-t border-dashed border-gray-300/70 ml-13 my-2.5 dark:border-gray-300/30">

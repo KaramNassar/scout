@@ -7,7 +7,7 @@
                  class="h-56 transition duration-300 ease-in-out hover:scale-105"/>
     </a>
 
-    <div class="bg-white p-4 space-y-1 dark:bg-gray-900 sm:p-6">
+    <div class="p-4 space-y-1 sm:p-6">
         <time class="block text-xs text-gray-500 dark:text-gray-400">{{ $post->published_at }}</time>
         <div class="flex flex-wrap gap-1">
             @foreach($post->tags as $tag)
