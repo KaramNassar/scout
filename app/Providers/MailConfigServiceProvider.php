@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Joaopaulolndev\FilamentGeneralSettings\Models\GeneralSetting;
+use Schema;
 
 class MailConfigServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,7 @@ class MailConfigServiceProvider extends ServiceProvider
             'smtp_username'          => '',
             'smtp_password'          => '',
         ];
-        $settings = GeneralSetting::first(['email_settings', 'email_from_address', 'email_from_name']);
+        $settings = Schema::hasTable('general_settings') ? GeneralSetting::first(['email_settings', 'email_from_address', 'email_from_name']) : null;
 
         $mailSettings = $settings?->email_settings ?? $defaultMailSettings;
 

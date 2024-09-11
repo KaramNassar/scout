@@ -5,7 +5,7 @@
             class='flex items-center justify-between py-2'>
 
             <a href="{{ route('home') }}" class="shrink-0">
-                <img src="{{ asset('storage/' . $settings->site_logo) }}" alt="logo" class='w-20'/>
+                <img src="{{ asset('storage/' . $settings?->site_logo) }}" alt="logo" class='w-20'/>
             </a>
 
             <div class='absolute lg:relative flex flex-wrap justify-center px-10 py-3'>

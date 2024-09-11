@@ -2,7 +2,7 @@
     class="relative"
 >
     <img
-        data-src="{{ asset('storage/' . $settings->hero_image) }}"
+        data-src="{{ asset('storage/' . $settings?->hero_image) }}"
         alt="Background"
         class="absolute inset-0 w-full h-full object-cover lozad"
     />
