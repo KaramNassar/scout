@@ -13,7 +13,7 @@ class HomeController extends Controller
             ->title(__('Syrian Syriac Scout'), '')
             ->description(__('hero-description'))
             ->images(
-                asset('storage/' . GeneralSetting::first()->hero_image)
+                asset('storage/' . GeneralSetting::first()?->hero_image)
             );
 
         return view('home', [
