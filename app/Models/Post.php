@@ -196,9 +196,9 @@ class Post extends Model
             ->belongsToMany(Media::class, 'media_post', 'post_id', 'media_id');
     }
 
-    public function getPublishedAtAttribute($value): string
+    public function publishedAt(): string
     {
-        $date = Carbon::parse($value);
+        $date = Carbon::parse($this->published_at);
         $day = $date->day;
         $month = config('app.locale') === 'ar' ? $this->arabicMonths[$date->month - 1] : $date->monthName;
         $year = $date->year;

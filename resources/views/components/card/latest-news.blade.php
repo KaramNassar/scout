@@ -8,7 +8,7 @@
     </a>
 
     <div class="p-4 space-y-1 sm:p-6">
-        <time class="block text-xs text-gray-500 dark:text-gray-400">{{ $post->published_at }}</time>
+        <time class="block text-xs text-gray-500 dark:text-gray-400">{{ $post->publishedAt() }}</time>
         <div class="flex flex-wrap gap-1">
             @foreach($post->tags as $tag)
                 <a href="{{ route('tags.show', $tag->slug) }}">

@@ -12,14 +12,14 @@ return new class extends Migration {
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 155)->unique()->index();
+            $table->string('name', 255)->unique()->index();
             $table->string('slug', 155)->nullable()->unique();
             $table->timestamps();
         });
 
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 500)->index();
+            $table->string('title', 1000)->index();
             $table->string('slug')->nullable()->unique();
             $table->longText('body');
             $table->enum('status', ['published', 'draft', 'pending'])->default('draft');
@@ -35,7 +35,7 @@ return new class extends Migration {
 
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50)->index()->unique();
+            $table->string('name', 255)->index()->unique();
             $table->string('slug', 155)->nullable()->unique();
             $table->timestamps();
         });

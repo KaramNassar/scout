@@ -16,6 +16,7 @@ use App\Rules\UniqueTranslation;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -159,6 +160,9 @@ class PostResource extends Resource implements HasShieldPermissions
 
                                 return false;
                             }),
+                        DatePicker::make('published_at')
+                        ->default(now())
+                        ->required(),
                         Fieldset::make('Featured Post')
                             ->schema([
                                 Toggle::make('is_featured')
@@ -185,7 +189,8 @@ class PostResource extends Resource implements HasShieldPermissions
                     ->size(100),
 
                 Tables\Columns\TextColumn::make('published_at')
-                    ->dateTime()
+                    ->date()
+                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('id', 'desc')

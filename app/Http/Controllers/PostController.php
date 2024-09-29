@@ -18,7 +18,7 @@ class PostController extends Controller
             ->title(__('Syrian Syriac Scout') . ': ' . $pageTitle, '')
             ->description(__('Syrian Syriac Scout') . ': ' . $pageTitle, '')
             ->images(
-                asset('storage/' . GeneralSetting::first()->hero_image)
+                asset('storage/' . GeneralSetting::first()?->hero_image)
             );
 
         return view('posts.index', [
@@ -32,7 +32,7 @@ class PostController extends Controller
         $relatedPosts = $post->relatedPosts();
 
         $image = isset($post->featuredImage) ? asset('storage/'.$post->featuredImage->url) : asset(
-            'storage/'.GeneralSetting::first()->hero_image
+            'storage/'.GeneralSetting::first()?->hero_image
         );
         \seo()
             ->title($post->title, '')
