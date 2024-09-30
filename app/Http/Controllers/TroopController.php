@@ -18,7 +18,7 @@ class TroopController extends Controller
             ->title(__('Syrian Syriac Scout').': '.__('Troops'), '')
             ->description(__('Syrian Syriac Scout').': '.__('Troops'), '')
             ->images(
-                asset('storage/'.GeneralSetting::first()->hero_image)
+                asset('storage/'.GeneralSetting::first()?->hero_image)
             );
 
         return view('troops.index', [
@@ -26,11 +26,9 @@ class TroopController extends Controller
         ]);
     }
 
-    public function show(string $slug)
+    public function show(Troop $troop)
     {
         $troops = Troop::all();
-
-        $troop = $troops->where('slug', $slug)->firstOrFail();
 
         $image = isset($troop->featuredImage) ? asset('storage/'.$troop->featuredImage->url) : asset(
             'storage/'.GeneralSetting::first()->hero_image
@@ -44,7 +42,7 @@ class TroopController extends Controller
 
         return view('troops.show', [
             'troops' => $troops->filter(
-                fn($troop) => $troop->slug !== $slug
+                fn($tr) => $troop->slug !== $tr->slug
             ),
             'troop'  => $troop
         ]);
