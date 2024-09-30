@@ -30,7 +30,7 @@ class TroopController extends Controller
     {
         $troops = Troop::all();
 
-        $troop = $troops->where('slug', $slug)->first();
+        $troop = $troops->where('slug', $slug)->firstOrFail();
 
         $image = isset($troop->featuredImage) ? asset('storage/'.$troop->featuredImage->url) : asset(
             'storage/'.GeneralSetting::first()->hero_image
