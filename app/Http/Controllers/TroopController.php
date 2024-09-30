@@ -37,7 +37,7 @@ class TroopController extends Controller
         );
 
         seo()
-            ->title(__('Syrian Syriac Scout').': '.$troop->title, '')
+            ->title(__('Syrian Syriac Scout').': '.$troop->name, '')
             ->description(Str::of($troop->description)->substr(0, 155)->stripTags().'...', '')
             ->images($image);
 
