@@ -37,6 +37,10 @@ class Troop extends Model
         'created_date'
     ];
 
+    protected $casts = [
+        'id' => 'integer',
+    ];
+
     private array $arabicMonths = [
         "كانون الثاني",
         "شباط",

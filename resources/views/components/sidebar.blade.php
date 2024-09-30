@@ -23,7 +23,6 @@
             <x-filter-select name="troop" :models="$troops"/>
             <x-filter-select name="category" :models="$categories"/>
             <x-filter-select-mutiple name="tags" :models="$tags"/>
-            {{--            <x-date-range/>--}}
 
             <div class="flex justify-start items-center gap-2 mt-4">
                 <button type="submit"

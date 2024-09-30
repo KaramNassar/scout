@@ -26,9 +26,13 @@ class TroopController extends Controller
         ]);
     }
 
-    public function show(Troop $troop)
+    public function show(string $slug)
     {
         $troops = Troop::all();
+
+        $troop = $troops->where('slug', $slug)->first();
+
+        abort_if(!$troop, 404);
 
         $image = isset($troop->featuredImage) ? asset('storage/'.$troop->featuredImage->url) : asset(
             'storage/'.GeneralSetting::first()->hero_image
@@ -42,7 +46,7 @@ class TroopController extends Controller
 
         return view('troops.show', [
             'troops' => $troops->filter(
-                fn($tr) => $troop->slug !== $tr->slug
+                fn($troop) => $troop->slug !== $slug
             ),
             'troop'  => $troop
         ]);
