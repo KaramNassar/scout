@@ -33,7 +33,7 @@ class ViewPost extends ViewRecord
             Actions\LocaleSwitcher::make(),
             ActionGroup::make([
                 Actions\EditAction::make()
-                ->color('primary'),
+                    ->color('primary'),
                 Action::make('Publish')
                     ->requiresConfirmation()
                     ->icon('heroicon-s-arrow-up-tray')
@@ -42,6 +42,10 @@ class ViewPost extends ViewRecord
                         $record = $this->getRecord();
                         $record->status = 'published';
                         $record->save();
+                        Notification::make()
+                            ->title('Post has been published successfully')
+                            ->success()
+                            ->send();
                     })
                     ->visible(function (Post $record) {
                         return (auth()->user()->hasPermissionTo('publish_post') && $record->isPending());
@@ -64,6 +68,10 @@ class ViewPost extends ViewRecord
                                     ->markAsRead(),
                             ])
                             ->sendToDatabase($this->record->user);
+                        Notification::make()
+                            ->title('Revision request has been sent successfully')
+                            ->success()
+                            ->send();
                     })
                     ->visible(function (Post $record) {
                         return (auth()->user()->hasPermissionTo('publish_post') && $record->isPending());
@@ -80,4 +88,6 @@ class ViewPost extends ViewRecord
             ])
         ];
     }
+
+
 }

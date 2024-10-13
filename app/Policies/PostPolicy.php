@@ -21,7 +21,7 @@ class PostPolicy
      */
     public function view(Admin $admin, Post $post): bool
     {
-        return ($admin->can('view_post') && ($post->admin_id == auth()->id() or $admin->hasPermissionTo('publish_post')));
+        return ($admin->can('view_post') && (($post->admin_id == auth()->id() && $post->status !== PostStatus::PUBLISHED)  || $admin->hasPermissionTo('publish_post')) || $admin->hasRole('super_admin'));
     }
 
     /**
@@ -37,7 +37,7 @@ class PostPolicy
      */
     public function update(Admin $admin, Post $post): bool
     {
-        return ($admin->can('update_post') && (($post->admin_id == auth()->id() && $post->status !== PostStatus::PUBLISHED ) or $admin->hasRole('super_admin')));
+        return ($admin->can('update_post') && (($post->admin_id == auth()->id() && $post->status !== PostStatus::PUBLISHED)  || $admin->hasPermissionTo('publish_post')) || $admin->hasRole('super_admin'));
     }
 
     /**
@@ -45,7 +45,7 @@ class PostPolicy
      */
     public function delete(Admin $admin, Post $post): bool
     {
-        return ($admin->can('delete_post') && ($post->admin_id == auth()->id() or $admin->hasRole('super_admin')));
+        return ($admin->can('delete_post') && (($post->admin_id == auth()->id() && $post->status !== PostStatus::PUBLISHED)  || $admin->hasPermissionTo('publish_post')) || $admin->hasRole('super_admin'));
     }
 
     /**
@@ -53,7 +53,7 @@ class PostPolicy
      */
     public function publish(Admin $admin, Post $post): bool
     {
-        return ($admin->can('publish_post') && ($post->admin_id == auth()->id() or $admin->hasRole('super_admin')));
+        return ($admin->can('publish_post') || $admin->hasRole('super_admin'));
     }
 
 }
