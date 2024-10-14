@@ -90,7 +90,8 @@ class Post extends Model
 
     public static function featuredPosts(): Collection
     {
-        return Post::whereIsFeatured(1)
+        return Post::published()
+            ->whereIsFeatured(1)
             ->without('tags')
             ->take(6)
             ->latest('published_at')
@@ -99,7 +100,8 @@ class Post extends Model
 
     public static function newsPosts(): Collection
     {
-        return Post::whereIsFeatured(0)
+        return Post::published()
+            ->whereIsFeatured(0)
             ->whereRelation('category', function ($query) {
                 $query->whereNotIn('slug', ['camps', 'meetings']);
             })
@@ -110,7 +112,8 @@ class Post extends Model
 
     public static function activityPosts(): Collection
     {
-        return Post::whereIsFeatured(0)
+        return Post::published()
+            ->whereIsFeatured(0)
             ->without('tags')
             ->whereRelation('category', function ($query) {
                 $query->whereIn('slug', ['camps', 'meetings']);
@@ -134,6 +137,11 @@ class Post extends Model
                 }
             })
             ->latest('created_at');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
 
     public function category(): BelongsTo
@@ -160,11 +168,6 @@ class Post extends Model
                 }
             })
             ->latest('created_at');
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(Admin::class, 'admin_id');
     }
 
     public function scopeDraft(Builder $query)
