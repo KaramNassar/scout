@@ -9,7 +9,7 @@ use Illuminate\Translation\PotentiallyTranslatedString;
 class RequiredTranslation implements ValidationRule
 {
 
-    public function __construct(public ?array $otherLocaleData)
+    public function __construct(public ?array $otherLocaleData, public string $field)
     {
     }
 
@@ -21,10 +21,8 @@ class RequiredTranslation implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (array_key_exists('en', $this->otherLocaleData)) {
-            foreach ($this->otherLocaleData['en'] as $key => $otherLocaleDatum) {
-                if (!trim($otherLocaleDatum)) {
-                    $fail("The $key is required in English language.");
-                }
+            if (!trim($this->otherLocaleData['en'][$this->field])) {
+                $fail("The $this->field is required in English language.");
             }
         }
     }

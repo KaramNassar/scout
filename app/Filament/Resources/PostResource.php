@@ -12,6 +12,7 @@ use App\Filament\Resources\PostResource\Widgets\PostsChart;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Rules\RequiredTranslation;
 use App\Rules\UniqueTranslation;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
@@ -75,12 +76,22 @@ class PostResource extends Resource implements HasShieldPermissions
                                 TextInput::make('title')
                                     ->live(true)
                                     ->rule(
-                                        new UniqueTranslation(
-                                            'posts',
-                                            'title',
-                                            $form->getLivewire()->otherLocaleData ?? [],
-                                            $form->getRecord()?->id
-                                        )
+                                        function () use ($form) {
+                                            $rules = [
+                                                new UniqueTranslation(
+                                                    'posts',
+                                                    'title',
+                                                    $form->getLivewire()->otherLocaleData ?? [],
+                                                    $form->getRecord()?->id
+                                                )
+                                            ];
+                                            if ($form->getLivewire()->data['status'] !== PostStatus::DRAFT->value) {
+                                                $rules[] = new RequiredTranslation(
+                                                    $form->getLivewire()->otherLocaleData ?? [], 'title'
+                                                );
+                                            }
+                                            return $rules;
+                                        }
                                     )
                                     ->required()
                                     ->maxLength(255)
@@ -96,6 +107,10 @@ class PostResource extends Resource implements HasShieldPermissions
                             ]),
                         TinyEditor::make('body')
                             ->profile('default')
+                            ->rule(
+                                new RequiredTranslation($form->getLivewire()->otherLocaleData ?? [], 'body'),
+                                ($form->getLivewire()->data['status'] ?? '') !== PostStatus::DRAFT->value
+                            )
                             ->required()
                             ->columnSpanFull(),
 
@@ -135,7 +150,7 @@ class PostResource extends Resource implements HasShieldPermissions
                                         ];
 
 
-                                        if (auth()->user()->hasPermissionTo('publish_post') || $context === 'view' ) {
+                                        if (auth()->user()->hasPermissionTo('publish_post') || $context === 'view') {
                                             $options[PostStatus::PUBLISHED->value] = PostStatus::PUBLISHED->getLabel();
                                         }
 
@@ -155,14 +170,16 @@ class PostResource extends Resource implements HasShieldPermissions
                                     ->required(),
                             ])->disabled(function (?Post $record) {
                                 if ($record) {
-                                    return (!auth()->user()->hasRole('super_admin') && $record->status != PostStatus::DRAFT);
+                                    return (!auth()->user()->hasRole(
+                                            'super_admin'
+                                        ) && $record->status != PostStatus::DRAFT);
                                 }
 
                                 return false;
                             }),
                         DatePicker::make('published_at')
-                        ->default(now())
-                        ->required(),
+                            ->default(now())
+                            ->required(),
                         Fieldset::make('Featured Post')
                             ->schema([
                                 Toggle::make('is_featured')
