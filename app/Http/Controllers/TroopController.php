@@ -12,7 +12,7 @@ class TroopController extends Controller
 {
     public function index()
     {
-        $troops = Troop::all();
+        $troops = Troop::orderBy('created_date')->get();
 
         seo()
             ->title(__('Syrian Syriac Scout').': '.__('Troops'), '')
