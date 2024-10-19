@@ -63,9 +63,9 @@
 
     <h3 class="font-bold text-gray-500 dark:text-gray-300 text-2xl my-10">{{ __('Related Posts') }}</h3>
 
-    <div class="flex flex-col justify-center md:flex-row gap-4">
+    <div class="flex flex-col md:flex-row gap-4">
         @foreach($relatedPosts as $post)
-            <x-card.latest-news :post="$post"/>
+            <x-card.latest-news class="sm:mx-1" :post="$post"/>
         @endforeach
     </div>
 

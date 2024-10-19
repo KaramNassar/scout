@@ -1,7 +1,8 @@
 @props(['post'])
 
 <article
-    class="relative overflow-hidden rounded-lg pb-0 mx-auto shadow w-[310px] transition h-[468px] hover:shadow-lg dark:shadow-gray-700 md:pb-10">
+    {{ $attributes->class(['relative overflow-hidden rounded-lg pb-0 mx-auto shadow w-[310px] transition h-[468px] hover:shadow-lg dark:shadow-gray-700 md:pb-10']) }}
+>
     <a href="{{ route('posts.show', $post->slug) }}">
         <x-image :model="$post"
                  class="h-56 transition duration-300 ease-in-out hover:scale-105"/>
