@@ -6,13 +6,13 @@
     $category = $category ? (__('Category') . ': <span class="text-main-light dark:text-main-dark">' . $category . '</span><br>') : '';
     $troop = $troop ? (__('Troop') . ': <span class="text-main-light dark:text-main-dark">' . $troop . '</span><br>') : '';
     $tags = $tags ? (__('Tags') . ': <span class="text-main-light dark:text-main-dark">' . $tags . '</span>') : '';
-    $title = strip_tags($search . $category . $troop . $tags);
+    $title = $search . $category . $troop . $tags;
 
     $title = $title ?: __('All News');
 
-     \seo()
-            ->title(__('Syrian Syriac Scout') . ': ' . $title, '')
-            ->description(__('Syrian Syriac Scout') . ': ' . $title, '')
+     seo()
+            ->title(__('Syrian Syriac Scout') . ': ' . strip_tags($title), '')
+            ->description(__('Syrian Syriac Scout') . ': ' . strip_tags($title), '')
             ->images(
                 asset('storage/' . GeneralSetting::first()?->hero_image)
             );
@@ -28,13 +28,13 @@
         <div class="col-span-2 mb-16">
             @if($troop)
                 <div class="flex flex-wrap gap-1 mb-10">
-                @foreach(App\Models\Category::whereNot('id', request('category'))->take(3)->get() as $category)
-                    <a href="{{ route('search-results') . '?troop=' . request('troop') . '&category=' . $category->id }}">
-                        <x-tag-span class="text-lg py-2 px-4">
-                            {{ $category->name }}
-                        </x-tag-span>
-                    </a>
-                @endforeach
+                    @foreach(App\Models\Category::whereNot('id', request('category'))->take(3)->get() as $category)
+                        <a href="{{ route('search-results') . '?troop=' . request('troop') . '&category=' . $category->id }}">
+                            <x-tag-span class="text-lg py-2 px-4">
+                                {{ $category->name }}
+                            </x-tag-span>
+                        </a>
+                    @endforeach
                 </div>
             @endif
             <ul class="grid gap-y-10 gap-x-6 mb-16">
